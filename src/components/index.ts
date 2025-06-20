@@ -1,0 +1,13 @@
+export { Header } from './header';
+export { Hero } from './hero';
+export { ProblemSection } from './problem-section';
+export { HowItWorks } from './how-it-works';
+export { WhyConsultancy } from './why-consultancy';
+export { EducationHub } from './education-hub';
+export { PricingPlans } from './pricing-plans';
+export { Testimonials } from './testimonials';
+export { FAQ } from './faq';
+export { FinalCTA } from './final-cta';
+export { Footer } from './footer';
+export { WhatsAppButton } from './whatsapp-button';
+export { IsometricIllustration } from './isometric-illustration';
