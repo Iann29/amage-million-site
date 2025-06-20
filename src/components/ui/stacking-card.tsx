@@ -87,23 +87,21 @@ export const Card = ({
         }}
         className={`relative -top-[25%] h-[450px] md:h-[500px] w-[90%] md:w-[75%] lg:w-[65%] rounded-2xl overflow-hidden origin-top`}
       >
-        <div className={`flex h-full ${color !== '#D8AE63' ? 'md:pr-[35%]' : ''}`}>
+        <div className={`flex h-full md:pr-[35%]`}>
           <div className='flex flex-col p-6 md:p-8 lg:p-10 flex-1'>
             <h2 className='text-2xl md:text-3xl lg:text-4xl text-left font-bold font-[family-name:var(--font-lato)] mb-4 md:mb-6' style={{ color: color === '#2a2a2a' || color === '#1a1a1a' ? '#ffffff' : color === '#D8AE63' ? '#151515' : '#ffffff' }} dangerouslySetInnerHTML={{ __html: title }} />
-            <div className='text-sm md:text-base lg:text-lg font-[family-name:var(--font-lato)] leading-relaxed' style={{ color: color === '#2a2a2a' || color === '#1a1a1a' ? '#ffffff' : color === '#D8AE63' ? '#151515' : '#ffffff' }} dangerouslySetInnerHTML={{ __html: description }} />
+            <div className='text-sm md:text-base lg:text-lg font-[family-name:var(--font-lato)] leading-relaxed flex-1' style={{ color: color === '#2a2a2a' || color === '#1a1a1a' ? '#ffffff' : color === '#D8AE63' ? '#151515' : '#ffffff' }} dangerouslySetInnerHTML={{ __html: description }} />
           </div>
           
-          {color !== '#D8AE63' && (
-            <div className={`hidden md:block absolute right-0 top-0 w-[35%] h-full`}>
-              <div className={`w-full h-full bg-gradient-to-br from-white/5 to-white/10`}>
-                <img 
-                  src={url} 
-                  alt='image' 
-                  className='w-full h-full object-cover opacity-85 mix-blend-overlay' 
-                />
-              </div>
+          <div className={`hidden md:block absolute right-0 top-0 w-[35%] h-full`}>
+            <div className={`w-full h-full bg-gradient-to-br from-white/5 to-white/10`}>
+              <img 
+                src={url} 
+                alt='image' 
+                className='w-full h-full object-cover opacity-85 mix-blend-overlay' 
+              />
             </div>
-          )}
+          </div>
         </div>
       </motion.div>
     </div>

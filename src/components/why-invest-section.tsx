@@ -27,12 +27,6 @@ const investmentProblems = [
     link: 'https://images.unsplash.com/photo-1579621970795-87facc2f976d?q=80&w=1000&auto=format&fit=crop',
     color: '#2a2a2a',
   },
-  {
-    title: 'Nossa solução para <span class="underline decoration-primary decoration-4 underline-offset-4">você</span>',
-    description: '<div class="flex flex-col h-full justify-between"><div class="space-y-6"><p class="text-xl md:text-2xl mb-3"><span style="text-decoration: line-through; opacity: 0.5;">"É muito difícil começar"</span></p><p class="text-xl md:text-2xl font-bold">Com a Million, amanhã você já inicia o seu dia sabendo onde investir.</p></div><div class="mt-12"><a href="https://wa.me/5511999999999" target="_blank" class="group relative overflow-hidden inline-block bg-[#151515] text-[#D8AE63] px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold text-base md:text-lg transition-all duration-300 font-[family-name:var(--font-lato)] w-full md:w-auto text-center"><span class="mr-8 transition-opacity duration-500 group-hover:opacity-0">Falar com Consultor</span><i class="absolute right-2 top-1/2 -translate-y-1/2 rounded-sm z-10 grid w-8 h-8 md:w-10 md:h-10 place-items-center transition-all duration-500 bg-[#D8AE63]/20 group-hover:w-[calc(100%-1rem)] group-hover:h-[calc(100%-1rem)] group-hover:top-2 group-hover:translate-y-0 group-active:scale-95"><svg width="20" height="20" class="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 5L15.5 12L8.5 19" stroke="#D8AE63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i></a></div></div>',
-    link: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop',
-    color: '#D8AE63',
-  },
 ];
 
 export function WhyInvestSection() {
