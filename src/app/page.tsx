@@ -2,7 +2,6 @@ import { ModernHeader } from '@/components/modern-header';
 import { Hero } from '@/components/hero';
 import { WhyInvestSection } from '@/components/why-invest-section';
 import { QuizBanner } from '@/components/quiz-banner';
-import { PricingPlans } from '@/components/pricing-plans';
 import { TestimonialsSection } from '@/components/testimonials-section';
 import { FinalCTA } from '@/components/final-cta';
 import { Footer } from '@/components/footer';
@@ -15,7 +14,6 @@ export default function Home() {
         <Hero />
         <WhyInvestSection />
         <QuizBanner />
-        <PricingPlans />
         <TestimonialsSection />
         <FinalCTA />
       </main>
