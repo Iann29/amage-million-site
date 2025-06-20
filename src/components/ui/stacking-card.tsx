@@ -153,7 +153,7 @@ const Component = forwardRef<HTMLElement, ComponentRootProps>(({ projects }, ref
             />
           );
         })}
-        <div className="hidden md:block absolute right-8 top-[50vh] h-full pointer-events-none z-40">
+        <div className="hidden md:block absolute right-8 top-[80vh] h-[calc(100%-100vh)] pointer-events-none z-40">
           <div className="sticky top-1/2 -translate-y-1/2">
             <ProgressIndicator total={projects.length} current={currentCard} />
           </div>
