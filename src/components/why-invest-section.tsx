@@ -4,6 +4,12 @@ import Component, { AnimatedCounter } from '@/components/ui/stacking-card';
 
 const investmentProblems = [
   {
+    title: 'Brasil: <span class="underline decoration-red-500 decoration-4 underline-offset-4">Crise Histórica</span>',
+    description: '<div class="space-y-4 md:space-y-6"><p class="text-lg md:text-2xl font-bold">"A economia do Brasil sempre foi caracterizada por instabilidade"</p><p class="text-sm md:text-lg leading-relaxed opacity-90 mt-3 md:mt-4">Desde a independência em 1822, o Brasil já nasceu em crise econômica. São mais de 200 anos alternando entre recessões, altas taxas de inflação, décadas perdidas e crescimento insuficiente. Enquanto isso, o brasileiro vê seu dinheiro sendo corroído.</p><div class="mt-6 md:mt-8 p-4 md:p-6 bg-white/10 rounded-lg"><p class="text-2xl md:text-3xl font-bold text-red-500">82%</p><p class="text-xs md:text-sm uppercase tracking-wide opacity-80 mt-1 md:mt-2">dos países do mundo cresceram mais que o Brasil na última década</p></div></div>',
+    link: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=1000&auto=format&fit=crop',
+    color: '#1a1a1a',
+  },
+  {
     title: 'Educação <span class="underline decoration-red-500 decoration-4 underline-offset-4">zero</span>',
     description: '<div class="space-y-4 md:space-y-6"><p class="text-lg md:text-2xl font-bold">"O governo não ensina você a investir"</p><p class="text-sm md:text-lg leading-relaxed opacity-90 mt-3 md:mt-4">Apenas 21% das crianças brasileiras recebem alguma educação financeira. O sistema foi projetado para formar funcionários obedientes, não investidores independentes. Enquanto isso, a elite financeira passa esse conhecimento de pai para filho.</p><div class="mt-6 md:mt-8 p-4 md:p-6 bg-white/10 rounded-lg"><p class="text-2xl md:text-3xl font-bold text-red-500">21%</p><p class="text-xs md:text-sm uppercase tracking-wide opacity-80 mt-1 md:mt-2">de educação financeira na infância</p></div></div>',
     link: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1000&auto=format&fit=crop',
@@ -32,10 +38,25 @@ const investmentProblems = [
 export function WhyInvestSection() {
   return (
     <div className="relative why-invest-section">
-      <div className="container mx-auto px-4 text-center pt-16 md:pt-20 pb-8 md:pb-12">
+      <div className="container mx-auto px-4 text-center pt-16 md:pt-20 pb-1 md:pb-2">
         <h2 className="text-3xl md:text-5xl font-bold">
-          Conhece quais são os problemas atuais no país?
+          O que realmente <span className="text-red-500">trava</span> o<br />
+          crescimento do{' '}
+          <span className="relative inline-block">
+            <span className="bg-gradient-to-r from-green-600 via-yellow-400 to-blue-600 bg-clip-text text-transparent">
+              Brasil
+            </span>
+            <div 
+              className="absolute inset-0 pointer-events-none mix-blend-multiply opacity-30"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E")`
+              }}
+            />
+          </span>?
         </h2>
+        <p className="text-lg md:text-xl text-muted-foreground mt-4 font-normal">
+          Quem entende o cenário, investe.
+        </p>
       </div>
       <Component projects={investmentProblems} />
     </div>

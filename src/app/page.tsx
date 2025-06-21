@@ -1,5 +1,6 @@
 import { Hero } from '@/components/hero';
 import { WhyInvestSection } from '@/components/why-invest-section';
+import { OpportunitiesSection } from '@/components/opportunities-section';
 import { CalculatorBanner } from '@/components/calculator-banner';
 import { TestimonialsSection } from '@/components/testimonials-section';
 import { FinalCTA } from '@/components/final-cta';
@@ -11,6 +12,7 @@ export default function Home() {
       <main>
         <Hero />
         <WhyInvestSection />
+        <OpportunitiesSection />
         <CalculatorBanner />
         <TestimonialsSection />
         <FinalCTA />
