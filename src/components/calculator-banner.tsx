@@ -10,7 +10,7 @@ export function CalculatorBanner() {
 
   return (
     <>
-      <section className="relative py-8 md:py-12 bg-gradient-to-br from-background via-background to-primary/5 overflow-visible">
+      <section className="relative pt-4 md:pt-6 pb-24 md:pb-36 bg-gradient-to-br from-background via-background to-primary/5 overflow-visible">
         {/* Tourinho Bull */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
@@ -51,7 +51,7 @@ export function CalculatorBanner() {
             >
               <h2 className="text-3xl md:text-5xl font-light mb-4">
                 Descubra o poder dos
-                <span className="block text-primary font-bold">juros compostos</span>
+                <span className="block text-primary font-semibold">juros compostos</span>
               </h2>
               
               <p className="text-lg md:text-xl text-secondary mb-8">
