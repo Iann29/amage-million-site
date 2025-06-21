@@ -101,7 +101,7 @@ export function LeadCaptureModal({ isOpen, onClose }: LeadCaptureModalProps) {
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 bg-background border border-primary/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
                   placeholder="Seu nome completo"
                 />
               </div>
@@ -116,7 +116,7 @@ export function LeadCaptureModal({ isOpen, onClose }: LeadCaptureModalProps) {
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 bg-background border border-primary/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
                   placeholder="seu@email.com"
                 />
               </div>
@@ -131,7 +131,7 @@ export function LeadCaptureModal({ isOpen, onClose }: LeadCaptureModalProps) {
                   required
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: formatPhone(e.target.value) })}
-                  className="w-full px-4 py-3 bg-background border border-primary/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
                   placeholder="(11) 99999-9999"
                   maxLength={15}
                 />

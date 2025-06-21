@@ -43,7 +43,14 @@ export function OpportunitiesSection() {
         <div className="container mx-auto px-4">
           <div className="text-center relative z-10 py-4 md:py-5">
             <div className="text-xl sm:text-2xl md:text-4xl px-4">
-              <BlurredStagger text="Mas calma... a crise esconde oportunidades!" highlightWord="oportunidades" />
+              <span className="md:hidden">
+                <BlurredStagger text="Mas calma..." />
+                <br />
+                <BlurredStagger text="a crise esconde oportunidades!" highlightWord="oportunidades" />
+              </span>
+              <span className="hidden md:inline">
+                <BlurredStagger text="Mas calma... a crise esconde oportunidades!" highlightWord="oportunidades" />
+              </span>
             </div>
           </div>
         </div>
