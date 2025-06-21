@@ -10,7 +10,19 @@ export function CalculatorBanner() {
 
   return (
     <>
-      <section className="relative pt-4 md:pt-6 pb-24 md:pb-36 bg-gradient-to-br from-background via-background to-primary/5 overflow-visible">
+      <section className="relative py-6 md:py-8 bg-gradient-to-br from-background via-background to-primary/5 overflow-visible">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Grid pattern */}
+          <div 
+            className="absolute inset-0 opacity-5"
+            style={{
+              backgroundImage: `linear-gradient(#D4AF37 1px, transparent 1px), linear-gradient(90deg, #D4AF37 1px, transparent 1px)`,
+              backgroundSize: '60px 60px',
+            }}
+          />
+        </div>
+        
         {/* Tourinho Bull */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
@@ -27,17 +39,6 @@ export function CalculatorBanner() {
             priority
           />
         </motion.div>
-          {/* Background decorative elements */}
-          <div className="absolute inset-0 overflow-hidden">
-            {/* Grid pattern */}
-            <div 
-              className="absolute inset-0 opacity-5"
-              style={{
-                backgroundImage: `linear-gradient(#D4AF37 1px, transparent 1px), linear-gradient(90deg, #D4AF37 1px, transparent 1px)`,
-                backgroundSize: '60px 60px',
-              }}
-            />
-          </div>
 
         <div className="container max-w-6xl relative z-10">
           <div className="flex justify-center md:justify-start">
