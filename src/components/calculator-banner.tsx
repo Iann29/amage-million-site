@@ -28,7 +28,7 @@ export function CalculatorBanner() {
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, type: "spring" }}
-          className="absolute bottom-4 md:bottom-0 lg:bottom-0 right-5 md:right-20 lg:right-32 w-56 md:w-80 lg:w-96 z-30"
+          className="hidden md:block absolute bottom-4 md:bottom-0 lg:bottom-0 right-5 md:right-20 lg:right-32 w-56 md:w-80 lg:w-96 z-30"
         >
           <Image
             src="/images/Tourinhocalculator.svg"

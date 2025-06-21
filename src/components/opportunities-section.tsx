@@ -42,7 +42,7 @@ export function OpportunitiesSection() {
         
         <div className="container mx-auto px-4">
           <div className="text-center relative z-10 py-4 md:py-5">
-            <div className="text-2xl md:text-4xl">
+            <div className="text-xl sm:text-2xl md:text-4xl px-4">
               <BlurredStagger text="Mas calma... a crise esconde oportunidades!" highlightWord="oportunidades" />
             </div>
           </div>
@@ -50,7 +50,7 @@ export function OpportunitiesSection() {
       </div>
 
       {/* Golden background section - starts right after the banner */}
-      <div className="bg-primary pb-32 md:pb-48">
+      <div className="bg-primary pb-16 md:pb-20">
         <div className="container mx-auto px-4 pt-16">
           {/* Secondary title */}
           <motion.div
@@ -101,7 +101,7 @@ export function OpportunitiesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             viewport={{ once: true }}
-            className="flex justify-center mt-8"
+            className="flex justify-center mt-6"
           >
             <button className="bg-background text-foreground px-8 py-3 rounded-lg font-semibold hover:bg-background/90 transition-colors shadow-lg">
               Comece sua jornada agora
