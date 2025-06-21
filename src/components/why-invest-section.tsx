@@ -32,6 +32,11 @@ const investmentProblems = [
 export function WhyInvestSection() {
   return (
     <div className="relative why-invest-section">
+      <div className="container mx-auto px-4 text-center pt-16 md:pt-20 pb-8 md:pb-12">
+        <h2 className="text-3xl md:text-5xl font-bold">
+          Conhece quais são os problemas atuais no país?
+        </h2>
+      </div>
       <Component projects={investmentProblems} />
     </div>
   );

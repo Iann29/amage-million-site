@@ -1,7 +1,6 @@
 import { Hero } from '@/components/hero';
 import { WhyInvestSection } from '@/components/why-invest-section';
-import { TransitionAboutSection } from '@/components/transition-about-section';
-import { QuizBanner } from '@/components/quiz-banner';
+import { CalculatorBanner } from '@/components/calculator-banner';
 import { TestimonialsSection } from '@/components/testimonials-section';
 import { FinalCTA } from '@/components/final-cta';
 import { Footer } from '@/components/footer';
@@ -12,8 +11,7 @@ export default function Home() {
       <main>
         <Hero />
         <WhyInvestSection />
-        <TransitionAboutSection />
-        <QuizBanner />
+        <CalculatorBanner />
         <TestimonialsSection />
         <FinalCTA />
       </main>
