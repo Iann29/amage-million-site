@@ -40,17 +40,11 @@ export function OpportunitiesSection() {
       />
       
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, type: "spring", stiffness: 100, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="text-center mb-16 relative z-10 py-4 md:py-5"
-        >
+        <div className="text-center mb-16 relative z-10 py-4 md:py-5">
           <div className="text-2xl md:text-4xl">
             <BlurredStagger text="Mas calma... a crise esconde oportunidades!" highlightWord="oportunidades" />
           </div>
-        </motion.div>
+        </div>
 
         {/* Secondary title */}
         <motion.div

@@ -40,7 +40,10 @@ export const BlurredStagger = ({
       initial="hidden"
       whileInView="show"
       className="inline"
-      viewport={{ once: true }}
+      viewport={{ 
+        once: true,
+        amount: 0.5
+      }}
     >
       {headingText.split("").map((char, index) => {
         const textUpToChar = headingText.slice(0, index);
