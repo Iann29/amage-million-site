@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Lato } from "next/font/google";
 import { LenisProvider } from "@/providers/lenis-provider";
+import { ModernHeader } from "@/components/modern-header";
 import "./globals.css";
 
 const inter = Inter({
@@ -36,7 +37,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${inter.variable} ${lato.variable} font-sans antialiased`}>
-        <LenisProvider>{children}</LenisProvider>
+        <LenisProvider>
+          <ModernHeader />
+          {children}
+        </LenisProvider>
       </body>
     </html>
   );

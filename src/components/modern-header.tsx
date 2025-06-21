@@ -12,7 +12,7 @@ const menuItems = [
   { name: 'Início', href: '#inicio' },
   { name: 'Educação', href: '#educacao' },
   { name: 'Planos', href: '#planos' },
-  { name: 'Sobre', href: '#sobre' },
+  { name: 'Sobre', href: '/sobre' },
 ];
 
 export function ModernHeader() {
