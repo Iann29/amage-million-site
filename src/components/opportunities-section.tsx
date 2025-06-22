@@ -1,29 +1,46 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { TrendingUp, Shield, BookOpen, Users } from 'lucide-react';
+import { TrendingUp, Shield, BookOpen, Users, BarChart3, Building2, Wallet } from 'lucide-react';
 import { BlurredStagger } from '@/components/ui/blurred-stagger-text';
+import { GlareCard } from '@/components/ui/glare-card';
 
 const solutions = [
   {
-    icon: TrendingUp,
-    title: "Facilitamos a sua entrada no mundo dos investimentos",
-    description: "Transformamos conceitos complexos em passos simples e práticos para você começar hoje mesmo."
+    icon: BookOpen,
+    title: "Educação Financeira Completa",
+    description: "Conteúdo educativo sobre renda fixa, ações e fundos imobiliários para você entender cada modalidade.",
+    highlight: "Conhecimento é poder"
+  },
+  {
+    icon: BarChart3,
+    title: "Análise de Mercado",
+    description: "Estudos aprofundados sobre tendências e oportunidades em diferentes classes de ativos do mercado brasileiro.",
+    highlight: "Visão estratégica"
   },
   {
     icon: Shield,
-    title: "Quebramos os mitos do mercado financeiro",
-    description: "Desmistificamos as crenças que impedem você de investir e mostrar a verdade sobre o mercado."
+    title: "Gestão de Riscos",
+    description: "Orientação sobre como diversificar e proteger seu patrimônio através de diferentes instrumentos financeiros.",
+    highlight: "Proteção inteligente"
   },
   {
-    icon: BookOpen,
-    title: "Educação financeira personalizada",
-    description: "Conteúdo adaptado ao seu nível de conhecimento, do básico ao avançado."
+    icon: Building2,
+    title: "Fundos Imobiliários",
+    description: "Educação especializada sobre o mercado de FIIs e como essa classe de ativos funciona no Brasil.",
+    highlight: "Renda passiva"
+  },
+  {
+    icon: Wallet,
+    title: "Renda Fixa e Variável",
+    description: "Compreenda as diferenças e oportunidades em títulos públicos, privados e o mercado de ações.",
+    highlight: "Diversificação"
   },
   {
     icon: Users,
-    title: "Comunidade de investidores",
-    description: "Conecte-se com pessoas que estão na mesma jornada e compartilhe experiências."
+    title: "Acompanhamento Personalizado",
+    description: "Suporte contínuo para esclarecer dúvidas e auxiliar na sua jornada de educação financeira.",
+    highlight: "Sempre presente"
   }
 ];
 
@@ -67,13 +84,13 @@ export function OpportunitiesSection() {
             viewport={{ once: true }}
             className="max-w-6xl mx-auto mb-12 text-center"
           >
-            <h3 className="text-2xl md:text-3xl text-background">
+            <h3 className="text-2xl md:text-3xl text-background font-semibold">
               E como a Million vai te ajudar?
             </h3>
           </motion.div>
 
           {/* Solution cards */}
-          <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto pb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto pb-8 place-items-center">
           {solutions.map((solution, index) => (
             <motion.div
               key={index}
@@ -81,23 +98,23 @@ export function OpportunitiesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-background border border-black/10 rounded-xl p-6 md:p-8 hover:border-black/20 transition-all duration-300 shadow-md"
             >
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 rounded-full bg-black/10 flex items-center justify-center">
-                    <solution.icon className="w-6 h-6 text-foreground" />
-                  </div>
-                </div>
+              <GlareCard className="flex flex-col items-start justify-between p-6">
                 <div>
-                  <h4 className="text-xl md:text-2xl mb-3">
+                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+                    <solution.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <h4 className="text-lg font-bold text-white mb-3">
                     {solution.title}
                   </h4>
-                  <p className="text-muted-foreground">
+                  <p className="text-gray-300 text-sm leading-relaxed mb-4">
                     {solution.description}
                   </p>
                 </div>
-              </div>
+                <span className="text-primary font-semibold text-sm">
+                  {solution.highlight}
+                </span>
+              </GlareCard>
             </motion.div>
           ))}
           </div>
@@ -110,7 +127,7 @@ export function OpportunitiesSection() {
             viewport={{ once: true }}
             className="flex justify-center mt-6"
           >
-            <button className="bg-background text-foreground px-8 py-3 rounded-lg font-semibold hover:bg-background/90 transition-colors shadow-lg">
+            <button className="bg-background text-foreground px-8 py-4 rounded-lg font-semibold hover:bg-background/90 transition-all duration-300 shadow-lg hover:shadow-xl">
               Comece sua jornada agora
             </button>
           </motion.div>

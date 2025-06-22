@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Lato } from "next/font/google";
 import { LenisProvider } from "@/providers/lenis-provider";
 import { ModernHeader } from "@/components/modern-header";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import "./globals.css";
 
 const inter = Inter({
@@ -40,6 +41,7 @@ export default function RootLayout({
         <LenisProvider>
           <ModernHeader />
           {children}
+          <ScrollToTop />
         </LenisProvider>
       </body>
     </html>
