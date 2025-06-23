@@ -108,3 +108,30 @@ body {
     @apply text-lg md:text-xl text-secondary text-center mb-12;
   }
 }
+
+/* Custom scrollbar styles for modals */
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #374151;
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: #4B5563;
+}
+
+/* Ensure modal scroll works properly */
+.overscroll-contain {
+  overscroll-behavior: contain;
+}

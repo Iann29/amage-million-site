@@ -2,8 +2,11 @@
 
 import { useEffect } from 'react';
 import Lenis from 'lenis';
+import { LenisContextProvider, useLenis } from '@/contexts/lenis-context';
 
-export function LenisProvider({ children }: { children: React.ReactNode }) {
+function LenisScroll({ children }: { children: React.ReactNode }) {
+  const { lenisRef } = useLenis();
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -17,6 +20,8 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
       infinite: false,
     });
 
+    lenisRef.current = lenis;
+
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -26,8 +31,17 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
 
     return () => {
       lenis.destroy();
+      lenisRef.current = null;
     };
-  }, []);
+  }, [lenisRef]);
 
   return <>{children}</>;
+}
+
+export function LenisProvider({ children }: { children: React.ReactNode }) {
+  return (
+    <LenisContextProvider>
+      <LenisScroll>{children}</LenisScroll>
+    </LenisContextProvider>
+  );
 }

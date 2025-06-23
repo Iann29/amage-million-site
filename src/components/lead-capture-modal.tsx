@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Calculator, Lock } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { useModalScroll } from '@/hooks/use-modal-scroll';
 
 interface LeadCaptureModalProps {
   isOpen: boolean;
@@ -18,6 +19,9 @@ export function LeadCaptureModal({ isOpen, onClose }: LeadCaptureModalProps) {
     phone: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // Gerencia o scroll do modal
+  useModalScroll(isOpen);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,12 +59,13 @@ export function LeadCaptureModal({ isOpen, onClose }: LeadCaptureModalProps) {
           />
           
           {/* Modal Container */}
-          <div className="fixed inset-0 z-[101] flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-[101] flex items-center justify-center p-4 pointer-events-none">
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-md bg-card border border-primary/20 rounded-2xl shadow-2xl p-6 md:p-8 max-h-[90vh] overflow-y-auto"
+              className="relative w-full max-w-md bg-card border border-primary/20 rounded-2xl shadow-2xl p-6 md:p-8 max-h-[90vh] overflow-y-auto overscroll-contain scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent pointer-events-auto"
+              onClick={(e) => e.stopPropagation()}
             >
             {/* Close button */}
             <button

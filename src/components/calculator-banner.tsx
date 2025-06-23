@@ -23,12 +23,12 @@ export function CalculatorBanner() {
           />
         </div>
         
-        {/* Tourinho Bull */}
+        {/* Tourinho Bull - Posicionado do bottom até o final da seção */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, type: "spring" }}
-          className="hidden md:block absolute bottom-4 md:bottom-8 lg:bottom-12 right-5 md:right-20 lg:right-32 w-56 md:w-80 lg:w-96 z-30"
+          className="hidden md:block absolute -bottom-4 right-5 md:right-20 lg:right-32 w-56 md:w-80 lg:w-96 z-30"
         >
           <Image
             src="/images/Tourinhocalculator.svg"
@@ -40,7 +40,7 @@ export function CalculatorBanner() {
           />
         </motion.div>
 
-        <div className="container max-w-6xl relative z-10">
+        <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <div className="flex justify-center md:justify-start">
             {/* Content */}
             <motion.div
