@@ -25,18 +25,6 @@ const solutions = [
     highlight: "Proteção inteligente"
   },
   {
-    icon: Building2,
-    title: "Fundos Imobiliários",
-    description: "Educação especializada sobre o mercado de FIIs e como essa classe de ativos funciona no Brasil.",
-    highlight: "Renda passiva"
-  },
-  {
-    icon: Wallet,
-    title: "Renda Fixa e Variável",
-    description: "Compreenda as diferenças e oportunidades em títulos públicos, privados e o mercado de ações.",
-    highlight: "Diversificação"
-  },
-  {
     icon: Users,
     title: "Acompanhamento Personalizado",
     description: "Suporte contínuo para esclarecer dúvidas e auxiliar na sua jornada de educação financeira.",
@@ -90,7 +78,7 @@ export function OpportunitiesSection() {
           </motion.div>
 
           {/* Solution cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto pb-8 place-items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto pb-8 place-items-center">
           {solutions.map((solution, index) => (
             <motion.div
               key={index}
@@ -99,7 +87,7 @@ export function OpportunitiesSection() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <GlareCard className="flex flex-col items-start justify-between p-6">
+              <GlareCard className="flex flex-col items-start justify-between p-8">
                 <div>
                   <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
                     <solution.icon className="w-6 h-6 text-primary" />
