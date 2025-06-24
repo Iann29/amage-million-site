@@ -7,6 +7,7 @@ interface User {
   id: string;
   name: string;
   email: string;
+  cpf?: string;
 }
 
 interface AuthContextType {
@@ -55,9 +56,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       localStorage.setItem('user', JSON.stringify(mockUser));
       setUser(mockUser);
       setIsLoading(false);
-      
-      // Redireciona para área do usuário
-      router.push('/minha-area');
     } else {
       setIsLoading(false);
       throw new Error('Credenciais inválidas');
@@ -80,9 +78,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('user', JSON.stringify(mockUser));
     setUser(mockUser);
     setIsLoading(false);
-    
-    // Redireciona para área do usuário
-    router.push('/minha-area');
   };
 
   const logout = () => {

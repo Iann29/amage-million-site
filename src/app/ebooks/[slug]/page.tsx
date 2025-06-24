@@ -9,10 +9,12 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/contexts/auth-context';
 
 export default function EbookSalesPage() {
   const params = useParams();
   const router = useRouter();
+  const { user } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const ebook = getEbookBySlug(params.slug as string);
 
@@ -31,8 +33,17 @@ export default function EbookSalesPage() {
 
   const handlePurchase = async () => {
     setIsLoading(true);
-    // Redireciona para o checkout
-    router.push(`/checkout?ebook=${ebook.id}`);
+    
+    // Verifica se está autenticado
+    if (!user) {
+      // Salva o ebook que estava tentando comprar
+      localStorage.setItem('pendingPurchase', ebook.id);
+      // Redireciona para login
+      router.push('/login?redirect=checkout');
+    } else {
+      // Se já está autenticado, vai direto para o checkout
+      router.push(`/checkout?ebook=${ebook.id}`);
+    }
   };
 
   const discount = ebook.originalPrice 

@@ -28,6 +28,20 @@ export default function LoginPage() {
     }
   }, [searchParams]);
 
+  const handleSuccessfulAuth = () => {
+    const redirect = searchParams.get('redirect');
+    const pendingPurchase = localStorage.getItem('pendingPurchase');
+    
+    if (redirect === 'checkout' && pendingPurchase) {
+      // Se estava tentando comprar, vai para o checkout
+      router.push(`/checkout?ebook=${pendingPurchase}`);
+      localStorage.removeItem('pendingPurchase');
+    } else {
+      // Caso contrário, vai para área do usuário
+      router.push('/minha-area');
+    }
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -49,6 +63,8 @@ export default function LoginPage() {
         }
         await register(formData.name, formData.email, formData.password);
       }
+      // Se chegou aqui, autenticação foi bem sucedida
+      handleSuccessfulAuth();
     } catch (err) {
       setError('Erro ao processar. Tente novamente.');
       setIsLoading(false);
@@ -56,8 +72,10 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center px-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen bg-background relative flex items-center justify-center px-4 pt-24">
+      {/* Gradiente dourado sutil */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5" />
+      <div className="w-full max-w-md relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -65,9 +83,6 @@ export default function LoginPage() {
         >
           {/* Logo */}
           <div className="text-center mb-8">
-            <Link href="/" className="inline-flex items-center justify-center mb-6">
-              <BookOpen className="w-12 h-12 text-primary" />
-            </Link>
             <h1 className="text-2xl font-bold mb-2">
               {isLogin ? 'Bem-vindo de volta!' : 'Crie sua conta'}
             </h1>

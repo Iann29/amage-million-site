@@ -41,8 +41,10 @@ export default function MinhaAreaPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background pt-24">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen bg-background relative pt-24">
+      {/* Gradiente dourado sutil */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5" />
+      <div className="container mx-auto px-4 py-8 relative z-10">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="mb-8">

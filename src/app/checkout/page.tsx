@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Lock, CreditCard, Smartphone, CheckCircle } from 'lucide-react';
 import { getEbookById } from '@/data/ebooks';
+import { useAuth } from '@/contexts/auth-context';
 
 export default function CheckoutPage() {
   const searchParams = useSearchParams();
