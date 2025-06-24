@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Lato } from "next/font/google";
 import { LenisProvider } from "@/providers/lenis-provider";
+import { AuthProvider } from "@/contexts/auth-context";
 import { ModernHeader } from "@/components/modern-header";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import "./globals.css";
@@ -38,11 +39,13 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${inter.variable} ${lato.variable} font-sans antialiased`}>
-        <LenisProvider>
-          <ModernHeader />
-          {children}
-          <ScrollToTop />
-        </LenisProvider>
+        <AuthProvider>
+          <LenisProvider>
+            <ModernHeader />
+            {children}
+            <ScrollToTop />
+          </LenisProvider>
+        </AuthProvider>
       </body>
     </html>
   );

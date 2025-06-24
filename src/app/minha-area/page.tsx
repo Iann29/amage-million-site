@@ -1,17 +1,44 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Book, Download, Clock, User, LogOut, Settings, BookOpen } from 'lucide-react';
 import { ebooks } from '@/data/ebooks';
+import { useAuth } from '@/contexts/auth-context';
 
 export default function MinhaAreaPage() {
   const [activeTab, setActiveTab] = useState('ebooks');
+  const { user, isLoading, logout } = useAuth();
+  const router = useRouter();
   
   // Simulando ebooks comprados pelo usuário
   const purchasedEbooks = ebooks.slice(0, 2); // Pegando os 2 primeiros como exemplo
+
+  useEffect(() => {
+    // Redireciona para login se não estiver autenticado
+    if (!isLoading && !user) {
+      router.push('/login');
+    }
+  }, [user, isLoading, router]);
+
+  // Mostra loading enquanto verifica autenticação
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-pulse">
+          <BookOpen className="w-12 h-12 text-primary" />
+        </div>
+      </div>
+    );
+  }
+
+  // Se não tem usuário, não renderiza nada (será redirecionado)
+  if (!user) {
+    return null;
+  }
 
   return (
     <div className="min-h-screen bg-background pt-24">
@@ -32,8 +59,8 @@ export default function MinhaAreaPage() {
                     <User className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <p className="font-medium">João Silva</p>
-                    <p className="text-sm text-muted-foreground">joao@email.com</p>
+                    <p className="font-medium">{user.name}</p>
+                    <p className="text-sm text-muted-foreground">{user.email}</p>
                   </div>
                 </div>
 
@@ -61,6 +88,7 @@ export default function MinhaAreaPage() {
                     <span>Meu Perfil</span>
                   </button>
                   <button
+                    onClick={logout}
                     className="w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors hover:bg-background text-muted-foreground hover:text-foreground"
                   >
                     <LogOut className="w-5 h-5" />
@@ -160,7 +188,7 @@ export default function MinhaAreaPage() {
                       <label className="block text-sm font-medium mb-2">Nome completo</label>
                       <input
                         type="text"
-                        defaultValue="João Silva"
+                        defaultValue={user.name}
                         className="w-full px-4 py-3 rounded-lg bg-background border border-gray-800 focus:border-primary focus:outline-none transition-colors"
                       />
                     </div>
@@ -168,7 +196,7 @@ export default function MinhaAreaPage() {
                       <label className="block text-sm font-medium mb-2">Email</label>
                       <input
                         type="email"
-                        defaultValue="joao@email.com"
+                        defaultValue={user.email}
                         className="w-full px-4 py-3 rounded-lg bg-background border border-gray-800 focus:border-primary focus:outline-none transition-colors"
                       />
                     </div>

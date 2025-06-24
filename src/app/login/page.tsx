@@ -1,21 +1,32 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Mail, Lock, ArrowRight, BookOpen } from 'lucide-react';
+import { useAuth } from '@/contexts/auth-context';
 
 export default function LoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const { login, register } = useAuth();
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   const [formData, setFormData] = useState({
     email: '',
     password: '',
     name: '',
     confirmPassword: ''
   });
+
+  useEffect(() => {
+    // Verifica se deve abrir em modo registro
+    if (searchParams.get('register') === 'true') {
+      setIsLogin(false);
+    }
+  }, [searchParams]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -25,11 +36,23 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    setError('');
     
-    // Simulação de autenticação
-    setTimeout(() => {
-      router.push('/minha-area');
-    }, 1500);
+    try {
+      if (isLogin) {
+        await login(formData.email, formData.password);
+      } else {
+        if (formData.password !== formData.confirmPassword) {
+          setError('As senhas não coincidem');
+          setIsLoading(false);
+          return;
+        }
+        await register(formData.name, formData.email, formData.password);
+      }
+    } catch (err) {
+      setError('Erro ao processar. Tente novamente.');
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -131,6 +154,12 @@ export default function LoginPage() {
                 <Link href="/recuperar-senha" className="text-sm text-primary hover:underline">
                   Esqueceu a senha?
                 </Link>
+              </div>
+            )}
+
+            {error && (
+              <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-3 text-sm text-red-500">
+                {error}
               </div>
             )}
 

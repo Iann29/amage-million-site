@@ -4,7 +4,7 @@ import { useParams } from 'next/navigation';
 import { getEbookBySlug } from '@/data/ebooks';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { Star, CheckCircle, Clock, BookOpen, Users, Shield, ArrowLeft, ShoppingCart } from 'lucide-react';
+import { Star, CheckCircle, Clock, BookOpen, Users, Shield, ArrowLeft, ShoppingCart, TrendingUp, AlertCircle } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -91,38 +91,34 @@ export default function EbookSalesPage() {
             transition={{ duration: 0.5 }}
             className="lg:sticky lg:top-24"
           >
+            <Link 
+              href="/ebooks" 
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-4"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Voltar para biblioteca
+            </Link>
+            
             <div className="bg-card p-8 rounded-2xl border border-gray-800">
-              <Link 
-                href="/ebooks" 
-                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-4"
-              >
-                <ArrowLeft className="w-4 h-4" />
-                Voltar para biblioteca
-              </Link>
-              
-              <span className="text-primary text-sm font-medium block mt-4">{ebook.category}</span>
-              <h1 className="text-3xl md:text-4xl font-bold mt-2 mb-4">{ebook.title}</h1>
-              <p className="text-xl text-muted-foreground mb-6">{ebook.subtitle}</p>
+              <h1 className="text-3xl md:text-4xl font-bold mb-2">{ebook.title}</h1>
+              <p className="text-lg text-muted-foreground mb-6">{ebook.subtitle}</p>
               
               {/* Preço */}
               <div className="mb-6">
                 {ebook.originalPrice && (
-                  <span className="text-lg text-muted-foreground line-through">
+                  <span className="text-sm text-muted-foreground line-through decoration-red-500 block mb-1">
                     De R$ {ebook.originalPrice.toFixed(2)}
                   </span>
                 )}
-                <div className="flex items-baseline gap-2">
-                  <span className="text-lg">Por apenas</span>
-                  <span className="text-4xl font-bold text-primary">R$ {ebook.price.toFixed(2)}</span>
-                </div>
-                <p className="text-sm text-muted-foreground mt-1">Pagamento único • Acesso vitalício</p>
+                <span className="text-sm text-muted-foreground block mb-1">Por apenas</span>
+                <span className="text-4xl font-bold text-primary">R$ {ebook.price.toFixed(2)}</span>
               </div>
 
               {/* CTA Principal */}
               <button
                 onClick={handlePurchase}
                 disabled={isLoading}
-                className="w-full bg-primary text-background py-4 rounded-lg font-semibold text-lg hover:bg-primary/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed mb-4 flex items-center justify-center gap-2"
+                className="w-full bg-green-600 text-white py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed mb-6 flex items-center justify-center gap-2"
               >
                 {isLoading ? (
                   <span>Processando...</span>
@@ -134,17 +130,11 @@ export default function EbookSalesPage() {
                 )}
               </button>
 
-              {/* Garantia */}
-              <div className="flex items-center gap-2 justify-center text-sm text-muted-foreground">
-                <Shield className="w-4 h-4 text-green-500" />
-                <span>Garantia de 7 dias ou seu dinheiro de volta</span>
-              </div>
-
               {/* Features */}
-              <div className="mt-8 space-y-3">
+              <div className="space-y-2 border-t border-gray-800 pt-6">
                 {ebook.features.slice(0, 4).map((feature, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                  <div key={index} className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
                     <span className="text-sm">{feature}</span>
                   </div>
                 ))}

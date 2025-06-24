@@ -127,7 +127,7 @@ export default function CheckoutPage() {
                       </div>
                       <button
                         type="submit"
-                        className="w-full bg-primary text-background py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
+                        className="w-full bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700 transition-colors"
                       >
                         Continuar para pagamento
                       </button>
@@ -181,7 +181,7 @@ export default function CheckoutPage() {
                         </button>
                         <button
                           type="submit"
-                          className="flex-1 bg-primary text-background py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
+                          className="flex-1 bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700 transition-colors"
                         >
                           Finalizar compra
                         </button>
@@ -197,7 +197,7 @@ export default function CheckoutPage() {
                     <p className="text-muted-foreground mb-6">
                       Você receberá um email com as instruções de acesso.
                     </p>
-                    <button className="bg-primary text-background px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors">
+                    <button className="bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors">
                       Acessar minha área
                     </button>
                   </div>

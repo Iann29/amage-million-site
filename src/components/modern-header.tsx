@@ -7,6 +7,7 @@ import { ArrowRight, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import { UserDropdown } from '@/components/user-dropdown';
 
 const menuItems = [
   { name: 'Início', href: '/' },
@@ -106,7 +107,8 @@ export function ModernHeader() {
                   ))}
                 </ul>
               </div>
-              <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
+              <div className="flex w-full items-center gap-3 sm:w-fit">
+                <UserDropdown />
                 <Button
                   asChild
                   className={cn(
