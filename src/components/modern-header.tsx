@@ -9,8 +9,8 @@ import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 
 const menuItems = [
-  { name: 'Início', href: '#inicio' },
-  { name: 'Educação', href: '#educacao' },
+  { name: 'Início', href: '/' },
+  { name: 'Ebooks', href: '/ebooks' },
   { name: 'Planos', href: '#planos' },
   { name: 'Sobre', href: '/sobre' },
 ];

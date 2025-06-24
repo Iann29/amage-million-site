@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
+import { useModalScroll } from '@/hooks/use-modal-scroll';
 
 interface InvestmentModalProps {
   isOpen: boolean;
@@ -17,18 +18,29 @@ interface InvestmentModalProps {
 }
 
 export function InvestmentModal({ isOpen, onClose, investment }: InvestmentModalProps) {
+  // Usa o hook que gerencia o Lenis e o scroll
+  useModalScroll(isOpen);
+  
+  const scrollContentRef = useRef<HTMLDivElement>(null);
+  
   useEffect(() => {
-    if (isOpen) {
-      // Apenas bloqueia o scroll do body
-      document.body.style.overflow = 'hidden';
-    } else {
-      // Restaura o scroll
-      document.body.style.overflow = '';
+    if (isOpen && scrollContentRef.current) {
+      const handleWheel = (e: WheelEvent) => {
+        e.stopPropagation();
+        e.preventDefault();
+        if (scrollContentRef.current) {
+          // Reduz a sensibilidade do scroll multiplicando por 0.5
+          scrollContentRef.current.scrollTop += e.deltaY * 0.5;
+        }
+      };
+      
+      const element = scrollContentRef.current;
+      element.addEventListener('wheel', handleWheel, { passive: false });
+      
+      return () => {
+        element.removeEventListener('wheel', handleWheel);
+      };
     }
-
-    return () => {
-      document.body.style.overflow = '';
-    };
   }, [isOpen]);
 
   if (!investment) return null;
@@ -46,52 +58,64 @@ export function InvestmentModal({ isOpen, onClose, investment }: InvestmentModal
             className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100]"
           />
 
-          {/* Modal Container - Centralizado */}
-          <div className="fixed inset-0 z-[101] flex items-center justify-center p-4">
+          {/* Modal Container */}
+          <div 
+            className="fixed inset-0 z-[101] flex items-center justify-center p-4"
+            onClick={(e) => {
+              if (e.target === e.currentTarget) {
+                onClose();
+              }
+            }}
+          >
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               className="relative w-full max-w-2xl bg-[#141414] rounded-2xl border border-gray-800 shadow-2xl"
+              style={{ 
+                maxHeight: '90vh',
+                height: '90vh',
+                display: 'flex',
+                flexDirection: 'column',
+                overflow: 'hidden'
+              }}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Modal Content Wrapper com altura máxima */}
-              <div className="flex flex-col max-h-[85vh] rounded-2xl overflow-hidden">
-                {/* Header - Fixo */}
-                <div className="flex-shrink-0 bg-[#141414] border-b border-gray-800 p-6 flex items-center justify-between">
-                  <h3 className="text-2xl font-semibold text-white">{investment.title}</h3>
-                  <button
-                    onClick={onClose}
-                    className="p-2 rounded-lg hover:bg-gray-800 transition-colors"
-                    aria-label="Fechar modal"
-                  >
-                    <X className="w-5 h-5 text-gray-400" />
-                  </button>
-                </div>
+              {/* Header */}
+              <div className="flex-shrink-0 bg-[#141414] border-b border-gray-800 p-4 md:p-6 flex items-center justify-between">
+                <h3 className="text-xl md:text-2xl font-semibold text-white">{investment.title}</h3>
+                <button
+                  onClick={onClose}
+                  className="p-2 rounded-lg hover:bg-gray-800 transition-colors"
+                  aria-label="Fechar modal"
+                >
+                  <X className="w-5 h-5 text-gray-400" />
+                </button>
+              </div>
 
-                {/* Scrollable Content */}
-                <div className="flex-1 overflow-y-auto overscroll-contain">
-                  <div className="p-6 space-y-6">
+              {/* Content */}
+              <div ref={scrollContentRef} className="flex-1 overflow-y-scroll p-4 md:p-6" style={{ overscrollBehavior: 'contain', WebkitOverflowScrolling: 'touch' }}>
+                <div className="space-y-4 md:space-y-6">
                     {/* Full Description */}
                     <div>
-                      <h4 className="text-lg font-medium text-white mb-3">O que é?</h4>
-                      <p className="text-gray-300 leading-relaxed">{investment.fullDescription}</p>
+                      <h4 className="text-base md:text-lg font-medium text-white mb-2 md:mb-3">O que é?</h4>
+                      <p className="text-sm md:text-base text-gray-300 leading-relaxed">{investment.fullDescription}</p>
                     </div>
 
                     {/* Example */}
-                    <div className="bg-primary/10 rounded-lg p-4 border border-primary/20">
-                      <h4 className="text-lg font-medium text-primary mb-3">Exemplo prático</h4>
-                      <p className="text-gray-300 text-sm leading-relaxed">{investment.example}</p>
+                    <div className="bg-primary/10 rounded-lg p-3 md:p-4 border border-primary/20">
+                      <h4 className="text-base md:text-lg font-medium text-primary mb-2 md:mb-3">Exemplo prático</h4>
+                      <p className="text-xs md:text-sm text-gray-300 leading-relaxed">{investment.example}</p>
                     </div>
 
                     {/* Benefits */}
                     <div>
-                      <h4 className="text-lg font-medium text-white mb-3">Principais vantagens</h4>
+                      <h4 className="text-base md:text-lg font-medium text-white mb-2 md:mb-3">Principais vantagens</h4>
                       <ul className="space-y-2">
                         {investment.benefits.map((benefit, index) => (
                           <li key={index} className="flex items-start gap-2">
                             <span className="text-primary mt-1">•</span>
-                            <span className="text-gray-300 text-sm">{benefit}</span>
+                            <span className="text-xs md:text-sm text-gray-300">{benefit}</span>
                           </li>
                         ))}
                       </ul>
@@ -99,20 +123,19 @@ export function InvestmentModal({ isOpen, onClose, investment }: InvestmentModal
 
                     {/* Risks */}
                     <div>
-                      <h4 className="text-lg font-medium text-white mb-3">Pontos de atenção</h4>
-                      <p className="text-gray-300 text-sm leading-relaxed">{investment.risks}</p>
+                      <h4 className="text-base md:text-lg font-medium text-white mb-2 md:mb-3">Pontos de atenção</h4>
+                      <p className="text-xs md:text-sm text-gray-300 leading-relaxed">{investment.risks}</p>
                     </div>
 
                     {/* CTA */}
                     <div className="pt-4">
                       <button
                         onClick={onClose}
-                        className="w-full bg-primary text-background py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
+                        className="w-full bg-primary text-background py-2.5 md:py-3 rounded-lg text-sm md:text-base font-medium hover:bg-primary/90 transition-colors"
                       >
-                        Entendi, quero conhecer mais investimentos
+                        Entendi, quero aprofundar-me mais sobre investimentos
                       </button>
                     </div>
-                  </div>
                 </div>
               </div>
             </motion.div>

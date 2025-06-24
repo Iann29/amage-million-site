@@ -10,7 +10,10 @@ export function CalculatorBanner() {
 
   return (
     <>
-      <section className="relative py-16 md:py-20 mt-8 bg-gradient-to-br from-background via-background to-primary/5 overflow-visible">
+      {/* Espaçamento escuro entre seções */}
+      <div className="h-16 md:h-24 bg-background" />
+      
+      <section className="relative py-6 md:py-8 bg-gradient-to-br from-background via-background to-primary/5 overflow-visible">
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Grid pattern */}
@@ -23,12 +26,12 @@ export function CalculatorBanner() {
           />
         </div>
         
-        {/* Tourinho Bull - Posicionado do bottom até o final da seção */}
+        {/* Tourinho Bull - Alinhado com o final do banner */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, type: "spring" }}
-          className="hidden md:block absolute -bottom-4 right-5 md:right-20 lg:right-32 w-56 md:w-80 lg:w-96 z-30"
+          className="hidden md:block absolute bottom-0 right-5 md:right-20 lg:right-32 w-56 md:w-80 lg:w-96 z-30"
         >
           <Image
             src="/images/Tourinhocalculator.svg"

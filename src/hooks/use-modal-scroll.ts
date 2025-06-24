@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useLenis } from '@/contexts/lenis-context';
 
 /**
@@ -10,49 +10,44 @@ import { useLenis } from '@/contexts/lenis-context';
  */
 export function useModalScroll(isOpen: boolean) {
   const { lenisRef } = useLenis();
+  const scrollPositionRef = useRef(0);
 
   useEffect(() => {
     if (isOpen) {
       // Salva a posição atual do scroll
-      const scrollY = window.scrollY;
-      
-      // Desabilita o scroll do body
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = '100%';
+      scrollPositionRef.current = window.scrollY;
       
       // Para o Lenis
       if (lenisRef.current) {
         lenisRef.current.stop();
       }
-    } else {
-      // Recupera a posição do scroll
-      const scrollY = document.body.style.top;
       
-      // Reabilita o scroll do body
+      // Desabilita o scroll do body sem usar position fixed
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+      
+    } else if (scrollPositionRef.current !== undefined) {
+      // Reabilita o scroll
+      document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
       
       // Restaura a posição do scroll
-      if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
-      }
+      window.scrollTo(0, scrollPositionRef.current);
       
-      // Reinicia o Lenis
+      // Reinicia o Lenis e restaura a posição
       if (lenisRef.current) {
         lenisRef.current.start();
+        // Garante que o Lenis também volte para a posição correta
+        requestAnimationFrame(() => {
+          lenisRef.current?.scrollTo(scrollPositionRef.current, { immediate: true });
+        });
       }
     }
 
     // Cleanup function
     return () => {
+      document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
       
       if (lenisRef.current) {
         lenisRef.current.start();

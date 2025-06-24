@@ -193,7 +193,7 @@ export function PopularInvestmentsSection() {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-[#0a0a0a]">
+    <section className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4">
         {/* Header */}
         <motion.div
@@ -270,7 +270,7 @@ export function PopularInvestmentsSection() {
                       onClick={() => handleSaibaMais(product)}
                       className="inline-flex items-center gap-2 text-primary text-sm font-medium group-hover:gap-3 transition-all duration-300"
                     >
-                      Saiba mais 
+                      Aprofunde-se mais 
                       <ArrowRight className="w-4 h-4" />
                     </button>
                     
