@@ -1,249 +1,301 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Target, TrendingUp, Users, Lightbulb, Map, Zap } from 'lucide-react';
+import { TrendingUp, Users, Shield, Target, Zap, Award, Globe, Heart } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const fadeIn = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 }
-};
-
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
 export default function SobrePage() {
   return (
-    <main className="bg-background">
-      {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div 
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 1px)`,
-              backgroundSize: '40px 40px'
-            }}
-          />
-        </div>
-
-        <div className="container relative z-10">
+    <main className="min-h-screen bg-background">
+      {/* Hero Section - Padrão similar aos ebooks */}
+      <section className="relative pt-32 pb-16">
+        <div className="container mx-auto px-4">
           <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
+            className="max-w-3xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
-              Com <span className="text-primary">você</span>
+            <h1 className="text-4xl md:text-6xl font-light mb-6">
+              Transformando o mercado financeiro
+              <span className="block font-bold text-primary">com você</span>
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
-              A Million constrói valor hoje, gera impacto duradouro e deixa um legado para as próximas gerações.
-              Somos o ponto de virada entre onde você está e tudo o que podemos construir juntos.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* História Section */}
-      <section className="py-20 md:py-32">
-        <div className="container">
-          <motion.div 
-            initial={fadeIn.initial}
-            whileInView={fadeIn.animate}
-            transition={fadeIn.transition}
-            viewport={{ once: true }}
-            className="grid md:grid-cols-2 gap-16 items-center"
-          >
-            <div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-8">
-                Há mais de <span className="text-primary">3 anos</span>
-              </h2>
-              <div className="space-y-6 text-lg text-muted-foreground">
-                <p>
-                  Nossa missão é transformar o mercado financeiro brasileiro com responsabilidade e inovação.
-                </p>
-                <p>
-                  Somos reconhecidos pela transparência em cada relação e por um compromisso genuíno com o sucesso de cada cliente.
-                </p>
-                <p className="text-xl font-semibold text-foreground">
-                  Você faz parte desta história, e sim, você merece estar nessa jornada conosco.
-                </p>
-              </div>
-            </div>
             
-            <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-7xl md:text-8xl font-bold text-primary mb-4">3+</div>
-                  <p className="text-xl text-muted-foreground">anos transformando vidas</p>
-                </div>
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl">
+              Há mais de 3 anos democratizando o acesso a investimentos inteligentes 
+              e construindo um futuro próspero para cada brasileiro.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Nossa História */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="text-primary text-sm font-medium">NOSSA HISTÓRIA</span>
+            <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6">
+              Nascemos com um propósito claro
+            </h2>
+            <div className="space-y-4 text-lg text-muted-foreground">
+              <p>
+                A Million nasceu em Tapejara com a missão de quebrar as barreiras 
+                que separam pessoas comuns de investimentos inteligentes. Somos os 
+                pioneiros em democratizar o mercado financeiro em nossa região.
+              </p>
+              <p>
+                Acreditamos que todo brasileiro merece acesso a oportunidades de 
+                crescimento financeiro, independente de onde mora ou quanto tem 
+                para começar.
+              </p>
+              <p className="text-foreground font-semibold">
+                Você não é apenas um cliente. Você faz parte desta revolução.
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative"
+          >
+            <div className="aspect-square bg-gradient-to-br from-primary/20 via-primary/10 to-transparent rounded-3xl flex items-center justify-center relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
+              <div className="text-center z-10">
+                <motion.div 
+                  className="text-8xl font-bold text-primary mb-4"
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
+                >
+                  3+
+                </motion.div>
+                <p className="text-xl text-muted-foreground">anos transformando</p>
+                <p className="text-2xl font-semibold">vidas financeiras</p>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Valores Section */}
-      <section className="py-20 md:py-32 bg-muted/30">
-        <div className="container">
+      {/* Números que Importam */}
+      <section className="bg-card/50 py-16">
+        <div className="container mx-auto px-4">
           <motion.div
-            initial={fadeIn.initial}
-            whileInView={fadeIn.animate}
-            transition={fadeIn.transition}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Nossos <span className="text-primary">valores</span>
+            <h2 className="text-3xl md:text-4xl font-bold">
+              Números que contam nossa história
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Desafiamos o tradicional para tornar o investimento acessível e descomplicado
-            </p>
           </motion.div>
 
-          <motion.div 
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-3 gap-8"
-          >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             {[
-              {
-                icon: Map,
-                title: "Pioneiros em Tapejara",
-                description: "Temos orgulho em ser os primeiros a democratizar investimentos em nossa região, sempre respeitando os objetivos individuais e oferecendo soluções personalizadas."
-              },
-              {
-                icon: Lightbulb,
-                title: "Inovação constante",
-                description: "Nosso time trabalha incansavelmente para tornar o investimento acessível a todos. É exatamente por isso que a Million existe."
-              },
-              {
-                icon: Target,
-                title: "Foco em resultados",
-                description: "O que impede muitos não é a falta de vontade, mas a ausência de orientação adequada. Facilitamos escolhas e caminhamos ao lado de quem decide crescer."
-              }
-            ].map((item, index) => (
+              { number: "500+", label: "Famílias atendidas", icon: Users },
+              { number: "R$ 10M+", label: "Sob gestão", icon: TrendingUp },
+              { number: "98%", label: "Satisfação", icon: Heart },
+              { number: "24/7", label: "Suporte dedicado", icon: Shield }
+            ].map((stat, index) => (
               <motion.div
                 key={index}
-                variants={fadeIn}
-                className="bg-card p-8 rounded-2xl border border-border hover:border-primary/50 transition-colors"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="text-center"
               >
-                <item.icon className="w-12 h-12 text-primary mb-6" />
-                <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
-                <p className="text-muted-foreground">{item.description}</p>
+                <stat.icon className="w-8 h-8 text-primary mx-auto mb-3" />
+                <div className="text-3xl font-bold text-primary">{stat.number}</div>
+                <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Diferenciais Section */}
-      <section className="py-20 md:py-32">
-        <div className="container">
-          <motion.div
-            initial={fadeIn.initial}
-            whileInView={fadeIn.animate}
-            transition={fadeIn.transition}
-            viewport={{ once: true }}
-            className="max-w-5xl mx-auto"
-          >
-            <h2 className="text-3xl md:text-5xl font-bold mb-16 text-center">
-              Por que somos <span className="text-primary">diferentes</span>?
-            </h2>
+      {/* Nossos Valores */}
+      <section className="container mx-auto px-4 py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <span className="text-primary text-sm font-medium">NOSSOS VALORES</span>
+          <h2 className="text-3xl md:text-4xl font-bold mt-2">
+            O que nos move todos os dias
+          </h2>
+        </motion.div>
 
-            <div className="space-y-16">
-              {[
-                {
-                  title: "Serviços personalizados",
-                  description: "Nossos serviços são pensados para quem escolhe ser diferente. Afinal, você não é convencional e suas escolhas também não devem ser.",
-                  highlight: "Cada cliente é único"
-                },
-                {
-                  title: "Resultados comprovados",
-                  description: "Há um longo caminho pela frente, mas ele já está traçado. Construímos com força e incentivamos a postura de quem escolhe se desafiar para vencer.",
-                  highlight: "Crescimento consistente"
-                },
-                {
-                  title: "Direção clara",
-                  description: "Agora é a hora de facilitar escolhas inteligentes e caminhar ao lado de quem está decidido a construir um futuro próspero.",
-                  highlight: "Orientação especializada"
-                }
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className={`flex flex-col md:flex-row items-center gap-8 ${
-                    index % 2 === 1 ? 'md:flex-row-reverse' : ''
-                  }`}
-                >
-                  <div className="flex-1">
-                    <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-                      {item.highlight}
-                    </span>
-                    <h3 className="text-2xl md:text-3xl font-bold mt-2 mb-4">
-                      {item.title}
-                    </h3>
-                    <p className="text-lg text-muted-foreground">
-                      {item.description}
-                    </p>
-                  </div>
-                  <div className="flex-1">
-                    <div className="aspect-video bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl" />
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {[
+            {
+              icon: Shield,
+              title: "Transparência Total",
+              description: "Cada decisão, cada movimento, cada resultado. Você tem acesso a tudo, porque confiança se constrói com clareza."
+            },
+            {
+              icon: Target,
+              title: "Foco no Cliente",
+              description: "Seus objetivos são nossos objetivos. Personalizamos cada estratégia porque entendemos que cada sonho é único."
+            },
+            {
+              icon: Zap,
+              title: "Inovação Constante",
+              description: "O mercado evolui, e nós evoluímos junto. Sempre buscando as melhores oportunidades para seu patrimônio."
+            }
+          ].map((value, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-card p-6 rounded-2xl border border-gray-800 hover:border-primary/50 transition-all"
+            >
+              <value.icon className="w-10 h-10 text-primary mb-4" />
+              <h3 className="text-xl font-bold mb-3">{value.title}</h3>
+              <p className="text-muted-foreground">{value.description}</p>
+            </motion.div>
+          ))}
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 md:py-32 bg-primary/5">
-        <div className="container">
+      {/* Nossa Equipe */}
+      <section className="bg-gradient-to-br from-primary/5 via-transparent to-primary/5 py-16">
+        <div className="container mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto"
+            className="max-w-3xl mx-auto text-center mb-12"
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Pronto para fazer parte desta <span className="text-primary">história</span>?
+            <span className="text-primary text-sm font-medium">NOSSA EQUIPE</span>
+            <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6">
+              Especialistas comprometidos com seu sucesso
             </h2>
-            <p className="text-xl text-muted-foreground mb-8">
-              Junte-se a centenas de investidores que já transformaram seu futuro com a Million
+            <p className="text-lg text-muted-foreground">
+              Um time de profissionais certificados e apaixonados por transformar 
+              vidas através de investimentos inteligentes.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/#iniciar-jornada"
-                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary/90 transition-all hover:scale-105"
-              >
-                Começar agora
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link
-                href="/"
-                className="inline-flex items-center gap-2 bg-background text-foreground border-2 border-border px-8 py-4 rounded-lg font-semibold text-lg hover:border-primary/50 transition-all"
-              >
-                Voltar ao início
-              </Link>
-            </div>
           </motion.div>
+
+          <div className="grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            {[
+              { name: "Carlos Silva", role: "CEO & Fundador", expertise: "20+ anos no mercado" },
+              { name: "Ana Costa", role: "Head de Investimentos", expertise: "Especialista em renda variável" },
+              { name: "Roberto Lima", role: "Diretor de Operações", expertise: "Gestão de portfólios" },
+              { name: "Mariana Santos", role: "Head de Cliente", expertise: "Experiência do cliente" }
+            ].map((member, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div className="w-32 h-32 bg-gradient-to-br from-primary/20 to-primary/10 rounded-full mx-auto mb-4" />
+                <h3 className="font-bold">{member.name}</h3>
+                <p className="text-sm text-primary">{member.role}</p>
+                <p className="text-xs text-muted-foreground mt-1">{member.expertise}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
+      </section>
+
+      {/* Diferenciais */}
+      <section className="container mx-auto px-4 py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <span className="text-primary text-sm font-medium">POR QUE A MILLION?</span>
+          <h2 className="text-3xl md:text-4xl font-bold mt-2">
+            O que nos torna únicos
+          </h2>
+        </motion.div>
+
+        <div className="max-w-4xl mx-auto space-y-8">
+          {[
+            {
+              title: "Pioneirismo Regional",
+              description: "Fomos os primeiros a democratizar investimentos em Tapejara e região. Conhecemos sua realidade porque vivemos ela.",
+              icon: Award
+            },
+            {
+              title: "Educação Financeira",
+              description: "Não apenas investimos seu dinheiro. Ensinamos você a entender cada movimento, porque conhecimento é o melhor investimento.",
+              icon: Globe
+            },
+            {
+              title: "Resultados Comprovados",
+              description: "Nossos números falam por si. Mas o que mais nos orgulha são as histórias de transformação de cada cliente.",
+              icon: TrendingUp
+            }
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="flex flex-col md:flex-row items-center gap-6 p-6 bg-card rounded-2xl border border-gray-800"
+            >
+              <div className="p-4 bg-primary/10 rounded-2xl">
+                <item.icon className="w-8 h-8 text-primary" />
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                <p className="text-muted-foreground">{item.description}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA Final */}
+      <section className="container mx-auto px-4 py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-gradient-to-br from-primary/20 to-primary/10 rounded-3xl p-8 md:p-12 text-center"
+        >
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">
+            Pronto para fazer parte desta história?
+          </h2>
+          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Junte-se a centenas de famílias que já transformaram seu futuro financeiro com a Million.
+          </p>
+          <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+            <Link
+              href="/#iniciar-jornada"
+              className="bg-primary text-background px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+            >
+              Quero começar agora
+            </Link>
+            <Link
+              href="/ebooks"
+              className="text-primary hover:underline"
+            >
+              Conhecer nossos materiais educativos
+            </Link>
+          </div>
+        </motion.div>
       </section>
     </main>
   );
