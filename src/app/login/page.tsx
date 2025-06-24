@@ -87,9 +87,11 @@ export default function LoginPage() {
               {isLogin ? 'Bem-vindo de volta!' : 'Crie sua conta'}
             </h1>
             <p className="text-muted-foreground">
-              {isLogin 
-                ? 'Acesse sua área exclusiva de ebooks' 
-                : 'Comece sua jornada de conhecimento'}
+              {searchParams.get('redirect') === 'checkout' 
+                ? 'Faça login ou crie uma conta para continuar com sua compra'
+                : isLogin 
+                  ? 'Acesse sua área exclusiva de ebooks' 
+                  : 'Comece sua jornada de conhecimento'}
             </p>
           </div>
 

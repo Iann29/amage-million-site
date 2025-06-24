@@ -10,6 +10,8 @@ import { useAuth } from '@/contexts/auth-context';
 
 export default function CheckoutPage() {
   const searchParams = useSearchParams();
+  const router = useRouter();
+  const { user, isLoading: authLoading } = useAuth();
   const ebookId = searchParams.get('ebook');
   const ebook = ebookId ? getEbookById(ebookId) : null;
 
@@ -21,7 +23,25 @@ export default function CheckoutPage() {
   });
 
   const [step, setStep] = useState(1); // 1: dados, 2: pagamento, 3: confirmação
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Simulação de autenticação
+
+  // Preenche os dados do usuário automaticamente
+  useEffect(() => {
+    if (user) {
+      setFormData(prev => ({
+        ...prev,
+        name: user.name,
+        email: user.email,
+        cpf: user.cpf || ''
+      }));
+    }
+  }, [user]);
+
+  // Redireciona se não estiver autenticado
+  useEffect(() => {
+    if (!authLoading && !user) {
+      router.push('/login?redirect=checkout');
+    }
+  }, [user, authLoading, router]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -37,6 +57,22 @@ export default function CheckoutPage() {
       setStep(3);
     }
   };
+
+  // Loading enquanto verifica autenticação
+  if (authLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-pulse">
+          <ShoppingCart className="w-12 h-12 text-primary" />
+        </div>
+      </div>
+    );
+  }
+
+  // Se não tem usuário, não renderiza (será redirecionado)
+  if (!user) {
+    return null;
+  }
 
   if (!ebook) {
     return (
@@ -98,7 +134,8 @@ export default function CheckoutPage() {
                           value={formData.name}
                           onChange={handleInputChange}
                           required
-                          className="w-full px-4 py-3 rounded-lg bg-background border border-gray-800 focus:border-primary focus:outline-none transition-colors"
+                          readOnly
+                          className="w-full px-4 py-3 rounded-lg bg-background/50 border border-gray-800 cursor-not-allowed transition-colors"
                           placeholder="Seu nome completo"
                         />
                       </div>
@@ -110,7 +147,8 @@ export default function CheckoutPage() {
                           value={formData.email}
                           onChange={handleInputChange}
                           required
-                          className="w-full px-4 py-3 rounded-lg bg-background border border-gray-800 focus:border-primary focus:outline-none transition-colors"
+                          readOnly
+                          className="w-full px-4 py-3 rounded-lg bg-background/50 border border-gray-800 cursor-not-allowed transition-colors"
                           placeholder="seu@email.com"
                         />
                       </div>
@@ -198,7 +236,10 @@ export default function CheckoutPage() {
                     <p className="text-muted-foreground mb-6">
                       Você receberá um email com as instruções de acesso.
                     </p>
-                    <button className="bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors">
+                    <button 
+                      onClick={() => router.push('/minha-area')}
+                      className="bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors"
+                    >
                       Acessar minha área
                     </button>
                   </div>
