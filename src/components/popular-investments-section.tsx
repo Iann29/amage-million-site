@@ -259,7 +259,7 @@ export function PopularInvestmentsSection() {
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                   className="group"
                 >
-                  <div className="h-full bg-[#141414] rounded-2xl border border-gray-800 p-8 hover:border-gray-700 transition-all duration-300 relative">
+                  <div className="h-full backdrop-blur-xl bg-gradient-to-br from-white/[0.08] to-white/[0.03] rounded-2xl border border-white/10 p-8 hover:border-primary/50 hover:from-white/[0.12] hover:to-white/[0.05] transition-all duration-300 relative overflow-hidden shadow-xl hover:shadow-[0_20px_70px_-15px_rgba(0,255,136,0.3)]">
                     <h4 className="text-xl font-semibold text-white mb-3">
                       {product.title}
                     </h4>
@@ -274,8 +274,14 @@ export function PopularInvestmentsSection() {
                       <ArrowRight className="w-4 h-4" />
                     </button>
                     
+                    {/* Efeito de brilho no hover */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                      <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-transparent to-primary/20 blur-xl" />
+                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                    </div>
+                    
                     {/* Info icon on hover */}
-                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity z-10">
                       <InfoIcon className="w-5 h-5 text-gray-500" />
                     </div>
                   </div>

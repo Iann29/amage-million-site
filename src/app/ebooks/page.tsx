@@ -104,22 +104,15 @@ export default function EbooksPage() {
               onMouseLeave={() => setHoveredCard(null)}
             >
               <Link href={`/ebooks/${ebook.slug}`}>
-                <motion.div 
-                  className="group relative cursor-pointer"
-                  whileHover={{ y: -5 }}
-                  transition={{ duration: 0.2 }}
-                >
+                <div className="group relative cursor-pointer">
                   {/* Imagem do Ebook */}
                   <div className="relative aspect-[3/4] mb-4 rounded-lg overflow-hidden bg-card">
                     <Image
                       src={ebook.coverImage}
                       alt={ebook.title}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                    
-                    {/* Overlay no hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     
                     {/* Badge de desconto */}
                     {ebook.originalPrice && (
@@ -165,7 +158,7 @@ export default function EbooksPage() {
                       </span>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               </Link>
             </motion.div>
           ))}
@@ -236,14 +229,14 @@ export default function EbooksPage() {
               Processo simples e rápido. Do pagamento ao acesso completo em poucos minutos.
             </p>
 
-            <div className="grid md:grid-cols-4 gap-8">
+            <div className="grid md:grid-cols-4 gap-8 relative">              
               {/* Passo 1 */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
                 viewport={{ once: true }}
-                className="text-center"
+                className="text-center relative z-10"
               >
                 <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold text-primary">1</span>
@@ -260,7 +253,7 @@ export default function EbooksPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
                 viewport={{ once: true }}
-                className="text-center"
+                className="text-center relative z-10"
               >
                 <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold text-primary">2</span>
@@ -277,7 +270,7 @@ export default function EbooksPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
                 viewport={{ once: true }}
-                className="text-center"
+                className="text-center relative z-10"
               >
                 <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold text-primary">3</span>
@@ -294,7 +287,7 @@ export default function EbooksPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
                 viewport={{ once: true }}
-                className="text-center"
+                className="text-center relative z-10"
               >
                 <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold text-primary">4</span>
