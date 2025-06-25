@@ -4,6 +4,7 @@ import React, { useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useModalScroll } from '@/hooks/use-modal-scroll';
+import { useRouter } from 'next/navigation';
 
 interface InvestmentModalProps {
   isOpen: boolean;
@@ -18,6 +19,7 @@ interface InvestmentModalProps {
 }
 
 export function InvestmentModal({ isOpen, onClose, investment }: InvestmentModalProps) {
+  const router = useRouter();
   // Usa o hook que gerencia o Lenis e o scroll
   useModalScroll(isOpen);
   
@@ -130,10 +132,13 @@ export function InvestmentModal({ isOpen, onClose, investment }: InvestmentModal
                     {/* CTA */}
                     <div className="pt-4">
                       <button
-                        onClick={onClose}
+                        onClick={() => {
+                          onClose();
+                          router.push('/ebooks');
+                        }}
                         className="w-full bg-primary text-background py-2.5 md:py-3 rounded-lg text-sm md:text-base font-medium hover:bg-primary/90 transition-colors"
                       >
-                        Entendi, quero aprofundar-me mais sobre investimentos
+                        Quero aprender mais
                       </button>
                     </div>
                 </div>

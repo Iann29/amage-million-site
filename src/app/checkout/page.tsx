@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Lock, CreditCard, Smartphone, CheckCircle } from 'lucide-react';
+import { ShieldCheck, Lock, CreditCard, Smartphone, CheckCircle, ShoppingCart } from 'lucide-react';
 import { getEbookById } from '@/data/ebooks';
 import { useAuth } from '@/contexts/auth-context';
 
