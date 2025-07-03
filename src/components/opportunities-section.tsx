@@ -34,34 +34,37 @@ const solutions = [
 
 export function OpportunitiesSection() {
   return (
-    <section className="relative pt-2 md:pt-3 overflow-hidden bg-background">
-      {/* Main title with banner */}
-      <div className="relative">
+    <section className="relative overflow-hidden bg-background">
+      {/* Glassmorphism card with "Mas calma..." */}
+      <div className="container mx-auto px-4 pt-4 md:pt-6 pb-8 md:pb-12">
         <motion.div
-          initial={{ opacity: 0, scaleX: 0 }}
-          whileInView={{ opacity: 1, scaleX: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="absolute left-0 right-0 h-16 md:h-20 bg-primary/5 backdrop-blur-sm border-y border-primary/20"
-        />
-        
-        <div className="container mx-auto px-4">
-          <div className="text-center relative z-10 py-4 md:py-5">
-            <div className="text-xl sm:text-2xl md:text-4xl px-4">
-              <span className="md:hidden">
-                <BlurredStagger text="Mas calma..." />
-                <br />
-                <BlurredStagger text="a crise esconde oportunidades!" highlightWord="oportunidades" />
-              </span>
-              <span className="hidden md:inline">
-                <BlurredStagger text="Mas calma... a crise esconde oportunidades!" highlightWord="oportunidades" />
-              </span>
+          className="max-w-4xl mx-auto"
+        >
+          <div className="relative backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-8 md:p-12">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl" />
+            <div className="relative z-10 text-center">
+              <div className="text-2xl sm:text-3xl md:text-5xl font-bold">
+                <span className="md:hidden">
+                  <span className="text-white/90">Mas calma...</span>
+                  <br />
+                  <span className="text-white/90">a crise esconde </span>
+                  <span className="text-primary">oportunidades!</span>
+                </span>
+                <span className="hidden md:inline">
+                  <span className="text-white/90">Mas calma... a crise esconde </span>
+                  <span className="text-primary">oportunidades!</span>
+                </span>
+              </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Golden background section - starts right after the banner */}
+      {/* Golden background section */}
       <div className="bg-primary pb-16 md:pb-20">
         <div className="container mx-auto px-4 pt-16">
           {/* Secondary title */}

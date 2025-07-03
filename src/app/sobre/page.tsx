@@ -23,7 +23,7 @@ export default function SobrePage() {
             </h1>
             
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl">
-              Há mais de 3 anos democratizando o acesso a investimentos inteligentes 
+              Há mais de 3 anos facilitando o acesso a investimentos inteligentes 
               e construindo um futuro próspero para cada brasileiro.
             </p>
           </motion.div>
@@ -47,7 +47,7 @@ export default function SobrePage() {
               <p>
                 A Million nasceu em Tapejara com a missão de quebrar as barreiras 
                 que separam pessoas comuns de investimentos inteligentes. Somos os 
-                pioneiros em democratizar o mercado financeiro em nossa região.
+                pioneiros em facilitar o acesso ao mercado financeiro em nossa região.
               </p>
               <p>
                 Acreditamos que todo brasileiro merece acesso a oportunidades de 
@@ -234,7 +234,7 @@ export default function SobrePage() {
           {[
             {
               title: "Pioneirismo Regional",
-              description: "Fomos os primeiros a democratizar investimentos em Tapejara e região. Conhecemos sua realidade porque vivemos ela.",
+              description: "Fomos os primeiros a facilitar o acesso a investimentos em Tapejara e região. Conhecemos sua realidade porque vivemos ela.",
               icon: Award
             },
             {

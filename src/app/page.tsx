@@ -3,6 +3,10 @@ import { WhyInvestSection } from '@/components/why-invest-section';
 import { OpportunitiesSection } from '@/components/opportunities-section';
 import { PopularInvestmentsSection } from '@/components/popular-investments-section';
 import { CalculatorBanner } from '@/components/calculator-banner';
+import { AboutCTASection } from '@/components/about-cta-section';
+import { EbooksSection } from '@/components/ebooks-section';
+import { TestimonialsSection } from '@/components/testimonials-section';
+import { FAQSection } from '@/components/faq-section';
 import { Footer } from '@/components/footer';
 
 export default function Home() {
@@ -14,6 +18,10 @@ export default function Home() {
         <OpportunitiesSection />
         <PopularInvestmentsSection />
         <CalculatorBanner />
+        <AboutCTASection />
+        <EbooksSection />
+        <TestimonialsSection />
+        <FAQSection />
       </main>
       <Footer />
     </>
