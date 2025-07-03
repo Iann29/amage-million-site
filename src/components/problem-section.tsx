@@ -39,8 +39,8 @@ export function ProblemSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            A dura realidade: <span className="text-destructive">o Brasil não investe</span>
+          <h2 className="text-4xl md:text-5xl font-semibold mb-6">
+            O que realmente trava o crescimento do Brasil? <span className="text-destructive">A falta de investimento</span>
           </h2>
         </motion.div>
 
