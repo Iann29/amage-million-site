@@ -13,35 +13,41 @@ export function useModalScroll(isOpen: boolean) {
   const scrollPositionRef = useRef(0);
 
   useEffect(() => {
-    if (isOpen) {
-      // Salva a posição atual do scroll
-      scrollPositionRef.current = window.scrollY;
-      
-      // Para o Lenis
-      if (lenisRef.current) {
-        lenisRef.current.stop();
+    try {
+      if (isOpen) {
+        // Salva a posição atual do scroll
+        scrollPositionRef.current = window.scrollY;
+        
+        // Para o Lenis
+        if (lenisRef?.current) {
+          lenisRef.current.stop();
+        }
+        
+        // Desabilita o scroll do body sem usar position fixed
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+        
+      } else if (scrollPositionRef.current !== undefined) {
+        // Reabilita o scroll
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+        
+        // Restaura a posição do scroll
+        window.scrollTo(0, scrollPositionRef.current);
+        
+        // Reinicia o Lenis e restaura a posição
+        if (lenisRef?.current) {
+          lenisRef.current.start();
+          // Garante que o Lenis também volte para a posição correta
+          requestAnimationFrame(() => {
+            if (lenisRef?.current) {
+              lenisRef.current.scrollTo(scrollPositionRef.current, { immediate: true });
+            }
+          });
+        }
       }
-      
-      // Desabilita o scroll do body sem usar position fixed
-      document.documentElement.style.overflow = 'hidden';
-      document.body.style.overflow = 'hidden';
-      
-    } else if (scrollPositionRef.current !== undefined) {
-      // Reabilita o scroll
-      document.documentElement.style.overflow = '';
-      document.body.style.overflow = '';
-      
-      // Restaura a posição do scroll
-      window.scrollTo(0, scrollPositionRef.current);
-      
-      // Reinicia o Lenis e restaura a posição
-      if (lenisRef.current) {
-        lenisRef.current.start();
-        // Garante que o Lenis também volte para a posição correta
-        requestAnimationFrame(() => {
-          lenisRef.current?.scrollTo(scrollPositionRef.current, { immediate: true });
-        });
-      }
+    } catch (error) {
+      console.error('Error in useModalScroll:', error);
     }
 
     // Cleanup function
@@ -49,7 +55,7 @@ export function useModalScroll(isOpen: boolean) {
       document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
       
-      if (lenisRef.current) {
+      if (lenisRef?.current) {
         lenisRef.current.start();
       }
     };

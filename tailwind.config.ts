@@ -11,6 +11,10 @@ const config: Config = {
       colors: {
         background: "#151515",
         foreground: "#FFFFFF",
+        card: {
+          DEFAULT: "#1A1A1A",
+          foreground: "#FFFFFF",
+        },
         primary: {
           DEFAULT: "#D8AE63",
           foreground: "#151515",
