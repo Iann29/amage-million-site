@@ -3,8 +3,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { ArrowRight, InfoIcon } from 'lucide-react';
+import { ArrowRight, InfoIcon, BookOpen } from 'lucide-react';
 import { InvestmentModal } from './investment-modal';
+import Link from 'next/link';
 
 const investmentCategories = [
   {
@@ -284,6 +285,24 @@ export function PopularInvestmentsSection() {
             </div>
           </motion.div>
         )}
+        
+        {/* CTA para E-books */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="max-w-7xl mx-auto mt-16 mb-8"
+        >
+          <div className="text-left">
+            <p className="text-lg text-gray-400 mb-2">
+              Quer aprofundar ainda mais seu conhecimento?
+            </p>
+            <Link href="/ebooks" className="text-primary underline hover:text-primary/80 transition-colors duration-300">
+              Explore nossos e-books gratuitos
+            </Link>
+          </div>
+        </motion.div>
       </div>
 
       {/* Modal */}

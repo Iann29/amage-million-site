@@ -10,10 +10,8 @@ export function CalculatorBanner() {
 
   return (
     <>
-      {/* Espaçamento escuro entre seções */}
-      <div className="h-16 md:h-24 bg-background" />
       
-      <section className="relative py-6 md:py-8 bg-gradient-to-br from-background via-background to-primary/5 overflow-visible">
+      <section className="relative py-6 md:py-8 -mt-8 md:-mt-16 bg-gradient-to-br from-background via-background to-primary/5 overflow-visible">
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Grid pattern */}
@@ -22,6 +20,8 @@ export function CalculatorBanner() {
             style={{
               backgroundImage: `linear-gradient(#D4AF37 1px, transparent 1px), linear-gradient(90deg, #D4AF37 1px, transparent 1px)`,
               backgroundSize: '60px 60px',
+              maskImage: 'linear-gradient(to bottom, transparent 0%, black 40%, black 100%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 40%, black 100%)',
             }}
           />
         </div>

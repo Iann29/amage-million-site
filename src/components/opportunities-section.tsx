@@ -34,7 +34,7 @@ const solutions = [
 
 export function OpportunitiesSection() {
   return (
-    <section className="relative pt-2 md:pt-3 overflow-hidden">
+    <section className="relative pt-2 md:pt-3 overflow-hidden bg-background">
       {/* Main title with banner */}
       <div className="relative">
         <motion.div

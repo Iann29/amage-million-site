@@ -37,7 +37,7 @@ const investmentProblems = [
 
 export function WhyInvestSection() {
   return (
-    <div className="relative why-invest-section">
+    <div className="relative why-invest-section bg-background rounded-t-3xl">
       <div className="container mx-auto px-4 text-center pt-16 md:pt-20">
         <h2 className="text-3xl md:text-5xl">
           O que realmente <span className="text-red-500">trava</span> o<br />
