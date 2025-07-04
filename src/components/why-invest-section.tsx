@@ -39,11 +39,11 @@ export function WhyInvestSection() {
   return (
     <div className="relative why-invest-section bg-background rounded-t-3xl pb-24">
       <div className="container mx-auto px-4 text-center pt-16 md:pt-20">
-        <h2 className="text-3xl md:text-5xl">
-          O que realmente <span className="text-red-500">trava</span> o<br />
+        <h2 className="text-4xl md:text-5xl font-bold mb-2">
+          O que realmente <span className="text-red-500 font-black">trava</span> o<br />
           crescimento do{' '}
           <span className="relative inline-block">
-            <span className="bg-gradient-to-r from-green-600 via-yellow-400 to-blue-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-green-600 via-yellow-400 to-blue-600 bg-clip-text text-transparent font-black">
               Brasil
             </span>
             <div 
@@ -54,9 +54,6 @@ export function WhyInvestSection() {
             />
           </span>?
         </h2>
-        <p className="text-lg md:text-xl text-muted-foreground mt-4 mb-2 font-normal">
-          Quem entende o cenário, investe.
-        </p>
       </div>
       <Component projects={investmentProblems} />
     </div>
