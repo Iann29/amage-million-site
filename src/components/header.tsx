@@ -36,7 +36,7 @@ export function Header() {
         }`}
         style={{
           backgroundColor: isScrolled ? 'rgba(21, 21, 21, 0.8)' : 'transparent',
-          padding: isScrolled ? '16px 0' : '24px 0',
+          padding: isScrolled ? '12px 0' : '16px 0',
         }}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -45,8 +45,8 @@ export function Header() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center">
-              <span className="text-2xl font-bold text-primary">Million</span>
-              <span className="text-2xl font-light text-white ml-1">Street</span>
+              <span className="text-xl font-bold text-primary">Million</span>
+              <span className="text-xl font-light text-white ml-1">Street</span>
             </Link>
 
             <nav className="hidden md:flex items-center space-x-8">
@@ -64,7 +64,7 @@ export function Header() {
             <div className="hidden md:block">
               <Link
                 href="#iniciar-jornada"
-                className="bg-primary text-background px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-white hover:text-background hover:shadow-lg"
+                className="bg-primary text-background px-5 py-2.5 rounded-lg font-semibold transition-all duration-300 hover:bg-white hover:text-background hover:shadow-lg text-sm"
               >
                 Iniciar Jornada
               </Link>

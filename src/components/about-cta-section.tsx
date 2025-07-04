@@ -7,7 +7,7 @@ import { InstagramGrid } from './instagram-grid';
 
 export function AboutCTASection() {
   return (
-    <section className="relative py-12 md:py-16 bg-white overflow-hidden rounded-t-2xl md:rounded-t-3xl rounded-b-2xl md:rounded-b-3xl shadow-[0_-20px_60px_rgba(0,0,0,0.06)]">
+    <section className="relative py-10 md:py-12 bg-white overflow-hidden rounded-t-2xl md:rounded-t-3xl rounded-b-2xl md:rounded-b-3xl shadow-[0_-20px_60px_rgba(0,0,0,0.06)]">
       {/* Background effects */}
       <div className="absolute inset-0">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl" />
@@ -43,14 +43,14 @@ export function AboutCTASection() {
               className="text-center lg:text-left"
             >
               {/* Title */}
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-10 leading-tight">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 leading-tight">
                 <span className="block" style={{ color: '#341C13' }}>
                   Conheça a Million
                 </span>
               </h2>
 
               {/* Subtitle */}
-              <p className="text-lg text-gray-600 mb-20 max-w-md mx-auto lg:mx-0 leading-relaxed">
+              <p className="text-base text-gray-600 mb-16 max-w-md mx-auto lg:mx-0 leading-relaxed">
                 Saiba quem são os fundadores do projeto, se dedicando e facilitando o acesso ao 
                 mundo dos investimentos, tornando a educação financeira simples e acessível 
                 para qualquer um. <br /><span className="text-gray-400">(que se importa com o seu futuro financeiro)</span>

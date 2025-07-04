@@ -203,7 +203,7 @@ export function PopularInvestmentsSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-semibold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Conheça os <span className="text-primary">investimentos</span><br className="md:hidden" /> mais populares do mercado
           </h2>
         </motion.div>

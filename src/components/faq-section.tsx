@@ -35,8 +35,8 @@ export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <div className="relative mt-20">
-      <section className="relative py-20 md:py-28 bg-white overflow-hidden rounded-t-2xl md:rounded-t-3xl rounded-b-2xl md:rounded-b-3xl shadow-[0_-20px_60px_rgba(0,0,0,0.06)]">
+    <div className="relative mt-16">
+      <section className="relative py-12 md:py-16 bg-white overflow-hidden rounded-t-2xl md:rounded-t-3xl rounded-b-2xl md:rounded-b-3xl shadow-[0_-20px_60px_rgba(0,0,0,0.06)]">
       {/* Background effects */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl" />
@@ -51,7 +51,7 @@ export function FAQSection() {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 items-start">
             {/* Left Side - Title */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -60,11 +60,11 @@ export function FAQSection() {
               viewport={{ once: true }}
               className="sticky top-20"
             >
-              <h2 className="text-5xl md:text-6xl font-light text-gray-900 mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
                 Dúvidas
-                <span className="block text-primary font-bold">frequentes</span>
+                <span className="block text-primary">frequentes</span>
               </h2>
-              <p className="text-gray-600 text-lg max-w-md">
+              <p className="text-gray-600 text-sm max-w-md">
                 Aqui estão as respostas para as principais questões de quem está começando sua jornada de investimentos.
               </p>
             </motion.div>
@@ -82,16 +82,16 @@ export function FAQSection() {
                 >
                   <button
                     onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                    className="w-full py-6 flex items-start justify-between text-left group"
+                    className="w-full py-4 flex items-start justify-between text-left group"
                   >
-                    <h3 className="text-lg font-medium text-gray-900 pr-8 group-hover:text-primary transition-colors">
+                    <h3 className="text-base font-medium text-gray-900 pr-8 group-hover:text-primary transition-colors">
                       {faq.question}
                     </h3>
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
                       {openIndex === index ? (
-                        <Minus className="w-4 h-4 text-primary" />
+                        <Minus className="w-3 h-3 text-primary" />
                       ) : (
-                        <Plus className="w-4 h-4 text-gray-600 group-hover:text-primary transition-colors" />
+                        <Plus className="w-3 h-3 text-gray-600 group-hover:text-primary transition-colors" />
                       )}
                     </div>
                   </button>
@@ -105,8 +105,8 @@ export function FAQSection() {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
-                    <div className="pb-6">
-                      <p className="text-gray-600 leading-relaxed">
+                    <div className="pb-4">
+                      <p className="text-gray-600 text-sm leading-relaxed">
                         {faq.answer}
                       </p>
                     </div>

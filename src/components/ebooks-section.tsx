@@ -38,7 +38,7 @@ export function EbooksSection() {
   };
 
   return (
-    <section className="relative pt-20 md:pt-24 pb-8 md:pb-10 bg-[#151515]">
+    <section className="relative pt-16 md:pt-20 pb-8 md:pb-10 bg-[#151515]">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -137,12 +137,12 @@ export function EbooksSection() {
               viewport={{ once: true }}
               className="text-left"
             >
-              <h2 className="text-4xl md:text-5xl font-light text-white mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 O conhecimento é o
-                <span className="block font-bold text-primary">melhor investimento</span>
+                <span className="block text-primary">melhor investimento</span>
               </h2>
               
-              <p className="text-gray-400 text-lg mb-8 leading-relaxed">
+              <p className="text-gray-400 text-base mb-6 leading-relaxed">
                 Nossos ebooks foram criados para transformar iniciantes em investidores confiantes. 
                 Com linguagem simples e exemplos práticos, você aprende no seu ritmo, 
                 sem pressa e sem complicação.

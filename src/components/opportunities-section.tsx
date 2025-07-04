@@ -37,16 +37,16 @@ export function OpportunitiesSection() {
     <div className="relative -mt-20">
         {/* Golden Circle Divider */}
         <div className="absolute -top-16 left-1/2 -translate-x-1/2 z-20">
-          <div className="w-36 h-36 bg-primary rounded-full flex items-center justify-center">
+          <div className="w-32 h-32 bg-primary rounded-full flex items-center justify-center">
             <img 
               src="/images/divisória.svg" 
               alt="Million Logo" 
-              className="w-28 h-28 object-contain"
+              className="w-24 h-24 object-contain"
             />
           </div>
         </div>
         
-        <section className="bg-primary pt-20 pb-20 md:pt-24 md:pb-24 rounded-t-2xl md:rounded-t-3xl rounded-b-2xl md:rounded-b-3xl shadow-[0_-20px_60px_rgba(0,0,0,0.06)] relative overflow-hidden">
+        <section className="bg-primary pt-16 pb-16 md:pt-20 md:pb-20 rounded-t-2xl md:rounded-t-3xl rounded-b-2xl md:rounded-b-3xl shadow-[0_-20px_60px_rgba(0,0,0,0.06)] relative overflow-hidden">
         {/* Background effects */}
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/10 rounded-full blur-3xl" />
@@ -68,7 +68,7 @@ export function OpportunitiesSection() {
             viewport={{ once: true }}
             className="max-w-6xl mx-auto mb-12 text-center"
           >
-            <h2 className="text-4xl md:text-5xl text-background font-bold">
+            <h2 className="text-3xl md:text-4xl text-background font-bold">
               E como a <span className="text-background">Million</span> vai te ajudar?
             </h2>
           </motion.div>

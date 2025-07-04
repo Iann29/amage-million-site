@@ -3,7 +3,7 @@ import { Inter, Lato } from "next/font/google";
 import { LenisProvider } from "@/providers/lenis-provider";
 import { AuthProvider } from "@/contexts/auth-context";
 import { ModernHeader } from "@/components/modern-header";
-import { ScrollToTop } from "@/components/scroll-to-top";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 import "./globals.css";
 
 const inter = Inter({
@@ -43,7 +43,7 @@ export default function RootLayout({
           <LenisProvider>
             <ModernHeader />
             {children}
-            <ScrollToTop />
+            <WhatsAppButton />
           </LenisProvider>
         </AuthProvider>
       </body>

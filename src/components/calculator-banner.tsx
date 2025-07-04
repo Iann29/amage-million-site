@@ -53,9 +53,9 @@ export function CalculatorBanner() {
               viewport={{ once: true }}
               className="text-center md:text-left"
             >
-              <h2 className="text-4xl md:text-5xl font-light mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Descubra o poder dos
-                <span className="block text-primary font-bold">juros compostos</span>
+                <span className="block text-primary">juros compostos</span>
               </h2>
               
               <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-lg">

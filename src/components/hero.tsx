@@ -1,13 +1,12 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { GetStartedButton } from '@/components/ui/get-started-button';
 
 export function Hero() {
   return (
-    <section id="inicio" className="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden">
+    <section id="inicio" className="relative min-h-screen flex items-center pt-20 pb-10 overflow-hidden">
       {/* Subtle grain background */}
       <div className="absolute inset-0 z-0">
         {/* Solid background */}
@@ -24,17 +23,13 @@ export function Hero() {
       
       <div className="container relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-white mb-8 leading-tight font-[family-name:var(--font-lato)]">
+          <div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 leading-tight font-[family-name:var(--font-lato)]">
               Seu futuro financeiro{' '}
               <span className="text-primary">depende de você.</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-secondary font-light mb-12 leading-relaxed font-[family-name:var(--font-lato)]">
+            <p className="text-lg md:text-xl text-secondary font-light mb-10 leading-relaxed font-[family-name:var(--font-lato)]">
               Investir é simples. 
               Nós mostramos o caminho certo para você.
             </p>
@@ -42,13 +37,10 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row gap-4">
               <GetStartedButton href="#iniciar-jornada" />
             </div>
-          </motion.div>
+          </div>
 
           {/* Right side image */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+          <div
             className="relative hidden lg:flex lg:items-center lg:justify-center"
           >
             <Image
@@ -59,7 +51,7 @@ export function Hero() {
               className="w-full max-w-md h-auto"
               priority
             />
-          </motion.div>
+          </div>
         </div>
       </div>
       
