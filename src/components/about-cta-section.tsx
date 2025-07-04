@@ -18,6 +18,17 @@ export function AboutCTASection() {
           backgroundImage: `radial-gradient(circle, #D8AE63 1px, transparent 1px)`,
           backgroundSize: '50px 50px'
         }} />
+        
+        {/* Watermark background */}
+        <div 
+          className="absolute -bottom-72 -left-96 w-[1500px] h-[1200px] opacity-[0.04]"
+          style={{
+            backgroundImage: `url('/images/conhecafundo.svg')`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            backgroundSize: 'contain'
+          }}
+        />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">

@@ -31,13 +31,13 @@ export function EbooksSection() {
   const router = useRouter();
 
   return (
-    <section className="relative py-20 md:py-28 bg-[#151515]">
+    <section className="relative py-12 md:py-16 bg-[#151515]">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left Side - Ebooks */}
             <motion.div
-              className="relative h-[550px] flex items-center justify-center cursor-pointer"
+              className="relative h-[450px] flex items-center justify-center cursor-pointer"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
