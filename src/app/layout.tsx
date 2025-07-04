@@ -18,7 +18,7 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "Million - Consultoria de Investimentos",
+  title: "Million Capital | Finanças sem complicação",
   description: "Democratizando o acesso a investimentos inteligentes. Educação financeira descomplicada para construir o futuro que você merece.",
   keywords: "investimentos, consultoria financeira, educação financeira, Million",
   openGraph: {
@@ -38,6 +38,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
+      <head>
+        <meta name="apple-mobile-web-app-title" content="Million" />
+      </head>
       <body className={`${inter.variable} ${lato.variable} font-sans antialiased`}>
         <AuthProvider>
           <LenisProvider>
