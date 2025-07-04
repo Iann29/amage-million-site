@@ -10,8 +10,8 @@ const faqs = [
     answer: "Não! Você pode começar com valores a partir de R$ 30. O importante é criar o hábito e ir aumentando os aportes conforme sua renda permitir."
   },
   {
-    question: "E se eu perder todo meu dinheiro?",
-    answer: "Com educação adequada e diversificação, o risco é minimizado. Ensinamos você a investir de forma segura, começando por renda fixa (baixo risco) e evoluindo gradualmente."
+    question: "Tenho que mandar meu dinheiro para vocês?",
+    answer: "Não! Seu dinheiro fica sempre sob seu controle. Nós oferecemos educação financeira para que você aprenda a investir por conta própria, com autonomia e segurança."
   },
   {
     question: "Não entendo nada de economia, consigo aprender?",

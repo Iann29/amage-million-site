@@ -112,7 +112,7 @@ export function ModernHeader() {
                 <Button
                   asChild
                   className={cn(
-                    'bg-primary text-gray-800 hover:bg-primary/90',
+                    'bg-primary text-background hover:bg-primary/90',
                     isScrolled ? 'lg:inline-flex' : 'lg:hidden'
                   )}
                 >
@@ -123,7 +123,7 @@ export function ModernHeader() {
                 <Button
                   asChild
                   className={cn(
-                    'bg-primary text-gray-800 hover:bg-primary/90',
+                    'bg-primary text-background hover:bg-primary/90',
                     isScrolled && 'lg:hidden'
                   )}
                 >
