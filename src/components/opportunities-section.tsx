@@ -37,7 +37,7 @@ export function OpportunitiesSection() {
     <div className="relative mt-8">
         {/* Golden Circle Divider */}
         <div className="absolute -top-16 left-1/2 -translate-x-1/2 z-20">
-          <div className="w-32 h-32 bg-primary rounded-full flex items-center justify-center">
+          <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center">
             <img 
               src="/images/divisória.svg" 
               alt="Million Logo" 
@@ -46,15 +46,15 @@ export function OpportunitiesSection() {
           </div>
         </div>
         
-        <section className="bg-primary pt-16 pb-16 md:pt-20 md:pb-20 rounded-t-2xl md:rounded-t-3xl rounded-b-2xl md:rounded-b-3xl shadow-[0_-20px_60px_rgba(0,0,0,0.06)] relative overflow-hidden">
+        <section className="bg-white pt-16 pb-16 md:pt-20 md:pb-20 rounded-t-2xl md:rounded-t-3xl rounded-b-2xl md:rounded-b-3xl shadow-[0_-20px_60px_rgba(0,0,0,0.06)] relative overflow-hidden">
         {/* Background effects */}
         <div className="absolute inset-0">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full blur-3xl" />
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl" />
           
           {/* Dots pattern */}
           <div className="absolute inset-0 opacity-[0.03]" style={{
-            backgroundImage: `radial-gradient(circle, white 1px, transparent 1px)`,
+            backgroundImage: `radial-gradient(circle, #000 1px, transparent 1px)`,
             backgroundSize: '50px 50px'
           }} />
         </div>
@@ -68,8 +68,8 @@ export function OpportunitiesSection() {
             viewport={{ once: true }}
             className="max-w-6xl mx-auto mb-12 text-center"
           >
-            <h2 className="text-3xl md:text-4xl text-background font-bold">
-              E como a <span className="text-background">Million</span> vai te ajudar?
+            <h2 className="text-3xl md:text-4xl text-[#151515] font-bold">
+              E como a <span className="text-[#341C13]">Million</span> vai te ajudar?
             </h2>
           </motion.div>
 
@@ -111,7 +111,7 @@ export function OpportunitiesSection() {
             viewport={{ once: true }}
             className="flex justify-center mt-6"
           >
-            <button className="bg-background text-foreground px-8 py-4 rounded-lg font-semibold hover:bg-background/90 transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center gap-2 group">
+            <button className="bg-[#341C13] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#341C13]/90 transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center gap-2 group">
               Comece sua jornada agora
               <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
