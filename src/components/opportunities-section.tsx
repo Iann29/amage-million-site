@@ -34,8 +34,19 @@ const solutions = [
 
 export function OpportunitiesSection() {
   return (
-    <div className="relative mt-20">
-        <section className="bg-primary py-20 md:py-24 rounded-t-2xl md:rounded-t-3xl rounded-b-2xl md:rounded-b-3xl shadow-[0_-20px_60px_rgba(0,0,0,0.06)] relative overflow-hidden">
+    <div className="relative -mt-20">
+        {/* Golden Circle Divider */}
+        <div className="absolute -top-16 left-1/2 -translate-x-1/2 z-20">
+          <div className="w-36 h-36 bg-primary rounded-full flex items-center justify-center">
+            <img 
+              src="/images/divisória.svg" 
+              alt="Million Logo" 
+              className="w-28 h-28 object-contain"
+            />
+          </div>
+        </div>
+        
+        <section className="bg-primary pt-28 pb-20 md:pt-32 md:pb-24 rounded-t-2xl md:rounded-t-3xl rounded-b-2xl md:rounded-b-3xl shadow-[0_-20px_60px_rgba(0,0,0,0.06)] relative overflow-hidden">
         {/* Background effects */}
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/10 rounded-full blur-3xl" />
