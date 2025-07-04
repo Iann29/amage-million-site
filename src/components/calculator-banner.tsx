@@ -11,7 +11,7 @@ export function CalculatorBanner() {
   return (
     <>
       
-      <section className="relative py-6 md:py-8 -mt-8 md:-mt-16 bg-gradient-to-br from-background via-background to-primary/5 overflow-visible">
+      <section className="relative py-16 md:py-20 -mt-8 md:-mt-16 bg-gradient-to-br from-background via-background to-primary/5 overflow-visible">
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Grid pattern */}
@@ -26,39 +26,39 @@ export function CalculatorBanner() {
           />
         </div>
         
-        {/* Tourinho Bull - Alinhado com o final do banner */}
+        {/* Tourinho Bull - Na divisória das seções */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, type: "spring" }}
-          className="hidden md:block absolute bottom-0 right-5 md:right-20 lg:right-32 w-56 md:w-80 lg:w-96 z-30"
+          className="hidden md:block absolute bottom-0 right-5 md:right-20 lg:right-32 w-64 md:w-80 lg:w-[450px] z-30"
         >
           <Image
             src="/images/Tourinhocalculator.svg"
             alt="Tourinho Bull"
-            width={480}
-            height={480}
+            width={600}
+            height={600}
             className="w-full h-auto"
             priority
           />
         </motion.div>
 
-        <div className="container mx-auto px-4 max-w-6xl relative z-10">
-          <div className="flex justify-center md:justify-start">
+        <div className="container mx-auto px-4 max-w-7xl relative z-10">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
             {/* Content */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-center md:text-left max-w-2xl"
+              className="text-center md:text-left"
             >
-              <h2 className="text-3xl md:text-5xl font-light mb-4">
+              <h2 className="text-4xl md:text-5xl font-light mb-6">
                 Descubra o poder dos
-                <span className="block text-primary font-semibold">juros compostos</span>
+                <span className="block text-primary font-bold">juros compostos</span>
               </h2>
               
-              <p className="text-lg md:text-xl text-secondary mb-8">
+              <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-lg">
                 Pequenos aportes mensais podem se transformar em uma fortuna
               </p>
 
@@ -66,11 +66,14 @@ export function CalculatorBanner() {
                 onClick={() => setIsModalOpen(true)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-primary text-background px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+                className="bg-primary text-background px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 Simular rendimentos
               </motion.button>
             </motion.div>
+            
+            {/* Spacer for tourinho */}
+            <div className="hidden md:block" />
           </div>
         </div>
       </section>
