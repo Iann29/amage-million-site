@@ -32,17 +32,17 @@ export function AboutCTASection() {
               className="text-center lg:text-left"
             >
               {/* Title */}
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                Conheça quem está
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-10 leading-tight">
                 <span className="block" style={{ color: '#341C13' }}>
-                  transformando sua jornada
+                  Conheça a Million
                 </span>
               </h2>
 
               {/* Subtitle */}
-              <p className="text-lg text-gray-600 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                Unimos conhecimento e tecnologia para facilitar seu acesso ao mundo dos 
-                investimentos. Educação financeira de verdade, sem complicação.
+              <p className="text-lg text-gray-600 mb-20 max-w-md mx-auto lg:mx-0 leading-relaxed">
+                Saiba quem são os fundadores do projeto, se dedicando e facilitando o acesso ao 
+                mundo dos investimentos, tornando a educação financeira simples e acessível 
+                para qualquer um. <br /><span className="text-gray-400">(que se importa com o seu futuro financeiro)</span>
               </p>
 
               {/* CTA Button */}

@@ -5,7 +5,6 @@ import { PopularInvestmentsSection } from '@/components/popular-investments-sect
 import { CalculatorBanner } from '@/components/calculator-banner';
 import { AboutCTASection } from '@/components/about-cta-section';
 import { EbooksSection } from '@/components/ebooks-section';
-import { TestimonialsSection } from '@/components/testimonials-section';
 import { FAQSection } from '@/components/faq-section';
 import { Footer } from '@/components/footer';
 
@@ -20,7 +19,6 @@ export default function Home() {
         <CalculatorBanner />
         <AboutCTASection />
         <EbooksSection />
-        <TestimonialsSection />
         <FAQSection />
       </main>
       <Footer />

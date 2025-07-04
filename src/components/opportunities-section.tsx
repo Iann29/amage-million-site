@@ -34,50 +34,35 @@ const solutions = [
 
 export function OpportunitiesSection() {
   return (
-    <section className="relative overflow-hidden bg-background">
-      {/* Glassmorphism card with "Mas calma..." */}
-      <div className="container mx-auto px-4 pt-4 md:pt-6 pb-8 md:pb-12">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto"
-        >
-          <div className="relative backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-8 md:p-12">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl" />
-            <div className="relative z-10 text-center">
-              <div className="text-2xl sm:text-3xl md:text-5xl font-bold">
-                <span className="md:hidden">
-                  <span className="text-white/90">Mas calma...</span>
-                  <br />
-                  <span className="text-white/90">a crise esconde </span>
-                  <span className="text-primary">oportunidades!</span>
-                </span>
-                <span className="hidden md:inline">
-                  <span className="text-white/90">Mas calma... a crise esconde </span>
-                  <span className="text-primary">oportunidades!</span>
-                </span>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Golden background section */}
-      <div className="bg-primary pb-16 md:pb-20">
-        <div className="container mx-auto px-4 pt-16">
-          {/* Secondary title */}
+    <div className="relative mt-20">
+        <section className="bg-primary py-20 md:py-24 rounded-t-2xl md:rounded-t-3xl rounded-b-2xl md:rounded-b-3xl shadow-[0_-20px_60px_rgba(0,0,0,0.06)] relative overflow-hidden">
+        {/* Background effects */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full blur-3xl" />
+          
+          {/* Dots pattern */}
+          <div className="absolute inset-0 opacity-[0.03]" style={{
+            backgroundImage: `radial-gradient(circle, white 1px, transparent 1px)`,
+            backgroundSize: '50px 50px'
+          }} />
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          {/* Title */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
             className="max-w-6xl mx-auto mb-12 text-center"
           >
-            <h3 className="text-2xl md:text-3xl text-background font-semibold">
-              E como a Million vai te ajudar?
-            </h3>
+            <h2 className="text-4xl md:text-5xl text-background font-bold mb-6">
+              E como a <span className="text-background">Million</span> vai te ajudar?
+            </h2>
+            <p className="text-background/80 text-lg max-w-2xl mx-auto">
+              Transformamos conhecimento em oportunidades reais de crescimento
+            </p>
           </motion.div>
 
           {/* Solution cards */}
@@ -124,7 +109,7 @@ export function OpportunitiesSection() {
             </button>
           </motion.div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }

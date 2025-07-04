@@ -1,110 +1,123 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ChevronDown, HelpCircle } from 'lucide-react';
+import { Plus, Minus } from 'lucide-react';
 import { useState } from 'react';
 
 const faqs = [
   {
     question: "Preciso de muito dinheiro para começar a investir?",
-    answer: "Não! Você pode começar com valores a partir de R$ 30. O importante é criar o hábito e ir aumentando os aportes conforme sua renda permitir. Muitos grandes investidores começaram com pouco."
+    answer: "Não! Você pode começar com valores a partir de R$ 30. O importante é criar o hábito e ir aumentando os aportes conforme sua renda permitir."
   },
   {
     question: "E se eu perder todo meu dinheiro?",
-    answer: "Com educação adequada e diversificação, o risco é minimizado. Ensinamos você a investir de forma segura, começando por renda fixa (baixo risco) e evoluindo gradualmente. Nunca coloque todos os ovos na mesma cesta."
+    answer: "Com educação adequada e diversificação, o risco é minimizado. Ensinamos você a investir de forma segura, começando por renda fixa (baixo risco) e evoluindo gradualmente."
   },
   {
     question: "Não entendo nada de economia, consigo aprender?",
-    answer: "Com certeza! Nosso conteúdo é feito para iniciantes. Explicamos tudo em linguagem simples, sem jargões complicados. Se você sabe fazer contas básicas, consegue aprender a investir."
+    answer: "Com certeza! Nosso conteúdo é feito para iniciantes. Explicamos tudo em linguagem simples, sem jargões complicados."
   },
   {
     question: "Quanto tempo leva para ver resultados?",
-    answer: "Investimento é uma maratona, não uma corrida de 100m. Com disciplina e aportes regulares, você pode ver resultados significativos em 2-3 anos. O poder dos juros compostos trabalha a seu favor no longo prazo."
+    answer: "Investimento é uma maratona, não uma corrida de 100m. Com disciplina e aportes regulares, você pode ver resultados significativos em 2-3 anos."
   },
   {
-    question: "É seguro investir no Brasil com a situação econômica atual?",
-    answer: "Crises geram oportunidades! Os maiores patrimônios foram construídos em momentos de incerteza. O importante é ter conhecimento para identificar as oportunidades e se proteger dos riscos."
+    question: "É seguro investir no Brasil?",
+    answer: "Crises geram oportunidades! Os maiores patrimônios foram construídos em momentos de incerteza. O importante é ter conhecimento para identificar as oportunidades."
   },
   {
-    question: "Preciso de tempo para acompanhar o mercado todo dia?",
+    question: "Preciso acompanhar o mercado todo dia?",
     answer: "Não necessariamente. Existem estratégias de longo prazo que exigem apenas algumas horas por mês. Ensinamos você a criar uma carteira que trabalha no piloto automático."
   }
 ];
 
 export function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="relative py-20 md:py-28 bg-background">
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-            <HelpCircle className="w-8 h-8 text-primary" />
-          </div>
-          <h2 className="text-4xl md:text-5xl font-light text-white mb-4">
-            Ainda tem <span className="font-bold text-primary">dúvidas</span>?
-          </h2>
-          <p className="text-gray-400 text-lg">
-            Respondemos as principais objeções de quem está começando
-          </p>
-        </motion.div>
-
-        <div className="max-w-3xl mx-auto space-y-4">
-          {faqs.map((faq, index) => (
+    <div className="relative mt-20">
+      <section className="relative py-20 md:py-28 bg-white overflow-hidden rounded-t-2xl md:rounded-t-3xl rounded-b-2xl md:rounded-b-3xl shadow-[0_-20px_60px_rgba(0,0,0,0.06)]">
+      {/* Background effects */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl" />
+        
+        {/* Dots pattern */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: `radial-gradient(circle, #D8AE63 1px, transparent 1px)`,
+          backgroundSize: '50px 50px'
+        }} />
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Left Side - Title */}
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
+              className="sticky top-20"
             >
-              <div
-                className={`border rounded-xl overflow-hidden transition-all duration-300 ${
-                  openIndex === index 
-                    ? 'border-primary/50 bg-primary/5' 
-                    : 'border-gray-800 bg-muted/30'
-                }`}
-              >
-                <button
-                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                  className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-primary/5 transition-colors"
-                >
-                  <h3 className="text-lg font-semibold text-white pr-4">
-                    {faq.question}
-                  </h3>
-                  <ChevronDown 
-                    className={`w-5 h-5 text-primary flex-shrink-0 transition-transform duration-300 ${
-                      openIndex === index ? 'rotate-180' : ''
-                    }`}
-                  />
-                </button>
-                
-                <motion.div
-                  initial={false}
-                  animate={{
-                    height: openIndex === index ? 'auto' : 0,
-                    opacity: openIndex === index ? 1 : 0
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className="overflow-hidden"
-                >
-                  <div className="px-6 pb-5">
-                    <p className="text-gray-300 leading-relaxed">
-                      {faq.answer}
-                    </p>
-                  </div>
-                </motion.div>
-              </div>
+              <h2 className="text-5xl md:text-6xl font-light text-gray-900 mb-6">
+                Dúvidas
+                <span className="block text-primary font-bold">frequentes</span>
+              </h2>
+              <p className="text-gray-600 text-lg max-w-md">
+                Aqui estão as respostas para as principais questões de quem está começando sua jornada de investimentos.
+              </p>
             </motion.div>
-          ))}
+
+            {/* Right Side - Questions */}
+            <div className="space-y-0">
+              {faqs.map((faq, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  viewport={{ once: true }}
+                  className="border-b border-gray-200 last:border-0"
+                >
+                  <button
+                    onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                    className="w-full py-6 flex items-start justify-between text-left group"
+                  >
+                    <h3 className="text-lg font-medium text-gray-900 pr-8 group-hover:text-primary transition-colors">
+                      {faq.question}
+                    </h3>
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                      {openIndex === index ? (
+                        <Minus className="w-4 h-4 text-primary" />
+                      ) : (
+                        <Plus className="w-4 h-4 text-gray-600 group-hover:text-primary transition-colors" />
+                      )}
+                    </div>
+                  </button>
+                  
+                  <motion.div
+                    initial={false}
+                    animate={{
+                      height: openIndex === index ? 'auto' : 0,
+                      opacity: openIndex === index ? 1 : 0
+                    }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="overflow-hidden"
+                  >
+                    <div className="pb-6">
+                      <p className="text-gray-600 leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
+    </div>
   );
 }
