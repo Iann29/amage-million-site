@@ -5,18 +5,18 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const ebooks = [
   {
     id: 1,
-    coverImage: '/images/Ebook-2.png',
-    slug: 'entenda-termos-mercado-financeiro'
+    coverImage: '/images/Ebook-1.png',
+    slug: 'economia-sem-complicacao'
   },
   {
     id: 2,
-    coverImage: '/images/Ebook-1.png',
-    slug: 'economia-sem-complicacao'
+    coverImage: '/images/Ebook-2.png',
+    slug: 'entenda-termos-mercado-financeiro'
   },
   {
     id: 3,
@@ -26,60 +26,108 @@ const ebooks = [
 ];
 
 export function EbooksSection() {
-  const [isHovered, setIsHovered] = useState(false);
-  const [hoveredEbook, setHoveredEbook] = useState<number | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const router = useRouter();
 
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % ebooks.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + ebooks.length) % ebooks.length);
+  };
+
   return (
-    <section className="relative py-12 md:py-16 bg-[#151515]">
+    <section className="relative pt-20 md:pt-24 pb-8 md:pb-10 bg-[#151515]">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left Side - Ebooks */}
-            <motion.div
-              className="relative h-[450px] flex items-center justify-center cursor-pointer"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
-              {ebooks.map((ebook, index) => (
-                <motion.div
-                  key={ebook.id}
-                  className="absolute cursor-pointer"
-                  style={{
-                    width: '320px',
-                    height: '420px',
-                  }}
-                  initial={false}
-                  animate={{
-                    x: isHovered ? (index - 1) * 340 - 170 : (index - 1) * 150 - 75,
-                    y: isHovered ? 0 : index === 1 ? -40 : 5,
-                    z: isHovered ? 0 : index === 1 ? 50 : -50,
-                    rotateY: isHovered ? 0 : index === 0 ? 15 : index === 2 ? -15 : 0,
-                    rotateZ: isHovered ? 0 : index === 0 ? -8 : index === 2 ? 8 : 0,
-                    scale: isHovered && hoveredEbook === ebook.id ? 1.05 : isHovered ? 1 : index === 1 ? 1.1 : 0.95,
-                    opacity: isHovered ? 1 : index === 1 ? 1 : 0.9,
-                    filter: isHovered ? 'brightness(1)' : index === 1 ? 'brightness(1)' : 'brightness(0.9)',
-                    zIndex: index === 1 ? 10 : hoveredEbook === ebook.id ? 15 : 1,
-                  }}
-                  transition={{
-                    duration: 0.8,
-                    ease: [0.32, 0.72, 0, 1]
-                  }}
-                  onMouseEnter={() => isHovered && setHoveredEbook(ebook.id)}
-                  onMouseLeave={() => setHoveredEbook(null)}
-                  onClick={() => isHovered && router.push(`/ebooks/${ebook.slug}`)}
-                >
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={ebook.coverImage}
-                      alt={`Ebook ${ebook.id}`}
-                      fill
-                      className="object-contain rounded-lg"
+            {/* Left Side - Ebooks Carousel */}
+            <div className="relative">
+              <div className="flex items-center justify-center">
+                <div className="relative w-[450px] h-[380px]">
+                  {ebooks.map((ebook, index) => {
+                    const position = (index - currentIndex + ebooks.length) % ebooks.length;
+                    return (
+                      <motion.div
+                        key={ebook.id}
+                        className="absolute cursor-pointer"
+                        style={{
+                          width: '260px',
+                          height: '340px',
+                          left: '50%',
+                          top: '50%',
+                        }}
+                        initial={false}
+                        animate={{
+                          x: position === 0 ? '-50%' : position === 1 ? '5%' : '-105%',
+                          y: position === 0 ? '-50%' : '-40%',
+                          scale: position === 0 ? 1 : 0.8,
+                          opacity: position === 0 ? 1 : 0.7,
+                          zIndex: position === 0 ? 10 : 1,
+                          filter: position === 0 ? 'brightness(1)' : 'brightness(0.7)',
+                          rotateZ: position === 0 ? 0 : position === 1 ? 15 : -15,
+                        }}
+                        transition={{
+                          duration: 0.5,
+                          ease: [0.32, 0.72, 0, 1]
+                        }}
+                        onClick={() => {
+                          if (position === 0) {
+                            router.push(`/ebooks/${ebook.slug}`);
+                          } else {
+                            setCurrentIndex(index);
+                          }
+                        }}
+                      >
+                        <div className="relative w-full h-full">
+                          <Image
+                            src={ebook.coverImage}
+                            alt={`Ebook ${ebook.id}`}
+                            fill
+                            className="object-contain rounded-lg"
+                          />
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Navigation */}
+              <div className="mt-8">
+                {/* Indicators */}
+                <div className="flex justify-center gap-3">
+                  {ebooks.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentIndex(index)}
+                      className={`h-1 rounded-full transition-all duration-300 ${
+                        index === currentIndex 
+                          ? 'bg-primary w-12' 
+                          : 'bg-white/20 w-6 hover:bg-white/40'
+                      }`}
                     />
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
+                  ))}
+                </div>
+                
+                {/* Arrow Navigation */}
+                <div className="flex justify-center gap-6 mt-6">
+                  <button
+                    onClick={prevSlide}
+                    className="text-white/40 hover:text-white/60 transition-colors p-1"
+                  >
+                    <ChevronLeft className="w-5 h-5" strokeWidth={1} />
+                  </button>
+                  <button
+                    onClick={nextSlide}
+                    className="text-white/40 hover:text-white/60 transition-colors p-1"
+                  >
+                    <ChevronRight className="w-5 h-5" strokeWidth={1} />
+                  </button>
+                </div>
+              </div>
+            </div>
 
             {/* Right Side - Content */}
             <motion.div
@@ -104,19 +152,19 @@ export function EbooksSection() {
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
                   <p className="text-gray-300">
-                    Por apenas <span className="text-primary font-semibold">R$ 19,90</span> cada
+                    Do básico ao avançado
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
                   <p className="text-gray-300">
-                    Escrito por especialistas do mercado
+                    Linguagem simplificada
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
                   <p className="text-gray-300">
-                    Do básico ao avançado, passo a passo
+                    Mais barato que um combo do McDonald's
                   </p>
                 </div>
               </div>
