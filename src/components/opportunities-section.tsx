@@ -34,7 +34,7 @@ const solutions = [
 
 export function OpportunitiesSection() {
   return (
-    <div className="relative -mt-20">
+    <div className="relative mt-8">
         {/* Golden Circle Divider */}
         <div className="absolute -top-16 left-1/2 -translate-x-1/2 z-20">
           <div className="w-32 h-32 bg-primary rounded-full flex items-center justify-center">

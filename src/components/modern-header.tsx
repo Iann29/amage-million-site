@@ -107,12 +107,12 @@ export function ModernHeader() {
                   ))}
                 </ul>
               </div>
-              <div className="flex w-full items-center gap-3 sm:w-fit">
+              <div className="flex w-full items-center gap-6 sm:w-fit">
                 <UserDropdown />
                 <Button
                   asChild
                   className={cn(
-                    'bg-primary text-background hover:bg-primary/90',
+                    'bg-primary text-gray-800 hover:bg-primary/90',
                     isScrolled ? 'lg:inline-flex' : 'lg:hidden'
                   )}
                 >
@@ -123,7 +123,7 @@ export function ModernHeader() {
                 <Button
                   asChild
                   className={cn(
-                    'bg-primary text-background hover:bg-primary/90',
+                    'bg-primary text-gray-800 hover:bg-primary/90',
                     isScrolled && 'lg:hidden'
                   )}
                 >
