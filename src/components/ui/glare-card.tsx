@@ -70,7 +70,7 @@ export const GlareCard = ({
       className="relative isolate [contain:layout_style] [perspective:600px] transition-transform duration-[var(--duration)] ease-[var(--easing)] delay-[var(--delay)] will-change-transform w-full [aspect-ratio:1.6/1]"
       ref={refElement}
       onPointerMove={(event) => {
-        const rotateFactor = 0.4;
+        const rotateFactor = 0.2;
         const rect = event.currentTarget.getBoundingClientRect();
         const position = {
           x: event.clientX - rect.left,
@@ -88,8 +88,8 @@ export const GlareCard = ({
         const { background, rotate, glare } = state.current;
         background.x = 50 + percentage.x / 4 - 12.5;
         background.y = 50 + percentage.y / 3 - 16.67;
-        rotate.x = -(delta.x / 3.5);
-        rotate.y = delta.y / 2;
+        rotate.x = -(delta.x / 5);
+        rotate.y = delta.y / 3;
         rotate.x *= rotateFactor;
         rotate.y *= rotateFactor;
         glare.x = percentage.x;
@@ -100,15 +100,15 @@ export const GlareCard = ({
       onPointerEnter={() => {
         isPointerInside.current = true;
         if (refElement.current) {
-          refElement.current?.style.setProperty("--duration", "200ms");
-          refElement.current?.style.setProperty("--easing", "cubic-bezier(0.4, 0, 0.2, 1)");
+          refElement.current?.style.setProperty("--duration", "300ms");
+          refElement.current?.style.setProperty("--easing", "cubic-bezier(0.25, 0.46, 0.45, 0.94)");
         }
       }}
       onPointerLeave={() => {
         isPointerInside.current = false;
         if (refElement.current) {
-          refElement.current?.style.setProperty("--duration", "600ms");
-          refElement.current?.style.setProperty("--easing", "cubic-bezier(0.4, 0, 0.2, 1)");
+          refElement.current?.style.setProperty("--duration", "500ms");
+          refElement.current?.style.setProperty("--easing", "cubic-bezier(0.25, 0.1, 0.25, 1)");
           refElement.current?.style.setProperty("--r-x", `0deg`);
           refElement.current?.style.setProperty("--r-y", `0deg`);
         }

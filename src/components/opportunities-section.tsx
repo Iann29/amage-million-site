@@ -46,7 +46,7 @@ export function OpportunitiesSection() {
           </div>
         </div>
         
-        <section className="bg-primary pt-28 pb-20 md:pt-32 md:pb-24 rounded-t-2xl md:rounded-t-3xl rounded-b-2xl md:rounded-b-3xl shadow-[0_-20px_60px_rgba(0,0,0,0.06)] relative overflow-hidden">
+        <section className="bg-primary pt-20 pb-20 md:pt-24 md:pb-24 rounded-t-2xl md:rounded-t-3xl rounded-b-2xl md:rounded-b-3xl shadow-[0_-20px_60px_rgba(0,0,0,0.06)] relative overflow-hidden">
         {/* Background effects */}
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/10 rounded-full blur-3xl" />
@@ -68,12 +68,9 @@ export function OpportunitiesSection() {
             viewport={{ once: true }}
             className="max-w-6xl mx-auto mb-12 text-center"
           >
-            <h2 className="text-4xl md:text-5xl text-background font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl text-background font-bold">
               E como a <span className="text-background">Million</span> vai te ajudar?
             </h2>
-            <p className="text-background/80 text-lg max-w-2xl mx-auto">
-              Transformamos conhecimento em oportunidades reais de crescimento
-            </p>
           </motion.div>
 
           {/* Solution cards */}
