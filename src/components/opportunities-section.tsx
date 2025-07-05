@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { TrendingUp, Shield, BookOpen, Users, BarChart3, Building2, Wallet, ArrowRight } from 'lucide-react';
 import { BlurredStagger } from '@/components/ui/blurred-stagger-text';
 import { GlareCard } from '@/components/ui/glare-card';
+import Link from 'next/link';
 
 const solutions = [
   {
@@ -111,10 +112,12 @@ export function OpportunitiesSection() {
             viewport={{ once: true }}
             className="flex justify-center mt-6"
           >
-            <button className="bg-[#341C13] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#341C13]/90 transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center gap-2 group">
-              Comece sua jornada agora
-              <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-            </button>
+            <Link href="#contato">
+              <button className="bg-[#341C13] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#341C13]/90 transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center gap-2 group">
+                Comece sua jornada agora
+                <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+              </button>
+            </Link>
           </motion.div>
         </div>
       </section>

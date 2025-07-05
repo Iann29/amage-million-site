@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { GetStartedButton } from '@/components/ui/get-started-button';
 import { motion } from 'framer-motion';
+import { MarketData } from '@/components/market-data';
 
 export function Hero() {
   return (
@@ -26,6 +27,9 @@ export function Hero() {
           }}
         />
       </div>
+      
+      {/* Market Data Sidebar */}
+      <MarketData />
       
       <div className="container relative z-10 flex items-center min-h-screen">
         <motion.div 
@@ -67,7 +71,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <GetStartedButton href="#iniciar-jornada" />
+            <GetStartedButton href="#contato" />
           </motion.div>
         </motion.div>
       </div>
