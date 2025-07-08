@@ -58,6 +58,17 @@ export function OpportunitiesSection() {
             backgroundImage: `radial-gradient(circle, #000 1px, transparent 1px)`,
             backgroundSize: '50px 50px'
           }} />
+
+          {/* Watermark background */}
+          <div 
+            className="absolute -bottom-72 -left-96 w-[2000px] h-[1600px] opacity-[0.04]"
+            style={{
+              backgroundImage: `url('/images/conhecafundo.svg')`,
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center',
+              backgroundSize: 'contain'
+            }}
+          />
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
@@ -70,7 +81,7 @@ export function OpportunitiesSection() {
             className="max-w-6xl mx-auto mb-12 text-center"
           >
             <h2 className="text-3xl md:text-4xl text-[#151515] font-bold">
-              E como a <span className="text-[#341C13]">Million</span> vai te ajudar?
+              E como a <span className="text-primary">Million</span> vai te ajudar?
             </h2>
           </motion.div>
 
@@ -86,8 +97,8 @@ export function OpportunitiesSection() {
             >
               <GlareCard className="flex flex-col items-start justify-between p-8">
                 <div>
-                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
-                    <solution.icon className="w-6 h-6 text-primary" />
+                  <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center mb-4">
+                    <solution.icon className="w-6 h-6 text-[#151515]" />
                   </div>
                   <h4 className="text-lg font-bold text-white mb-3">
                     {solution.title}
@@ -113,7 +124,7 @@ export function OpportunitiesSection() {
             className="flex justify-center mt-6"
           >
             <Link href="#contato">
-              <button className="bg-[#341C13] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#341C13]/90 transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center gap-2 group">
+              <button className="bg-[#151515] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#151515]/90 transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center gap-2 group">
                 Comece sua jornada agora
                 <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
               </button>

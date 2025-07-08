@@ -43,10 +43,9 @@ export function AboutCTASection() {
               className="text-center lg:text-left"
             >
               {/* Title */}
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 leading-tight">
-                <span className="block" style={{ color: '#341C13' }}>
-                  Conheça a Million
-                </span>
+              <h2 className="text-3xl md:text-4xl font-bold mb-8 leading-tight">
+                <span className="text-[#151515]">Conheça a </span>
+                <span className="text-primary">Million</span>
               </h2>
 
               {/* Subtitle */}
@@ -61,13 +60,7 @@ export function AboutCTASection() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 rounded-lg font-semibold transition-all duration-300 inline-flex items-center gap-3 group text-white"
-                  style={{ 
-                    backgroundColor: '#341C13',
-                    ':hover': { backgroundColor: '#2a1710' }
-                  }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#2a1710'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#341C13'}
+                  className="px-8 py-4 bg-[#151515] rounded-lg font-semibold transition-all duration-300 inline-flex items-center gap-3 group text-white hover:bg-[#151515]/90"
                 >
                   Conhecer nossa história
                   <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />

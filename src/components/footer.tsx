@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Instagram, Youtube, Linkedin, Mail, Phone, Clock } from 'lucide-react';
+import { Instagram, Youtube, Linkedin } from 'lucide-react';
 
 const socialLinks = [
   { icon: Instagram, href: 'https://instagram.com/millionstreet', label: 'Instagram' },
@@ -9,28 +9,37 @@ const socialLinks = [
   { icon: Linkedin, href: 'https://linkedin.com/company/millionstreet', label: 'LinkedIn' },
 ];
 
-const quickLinks = [
-  { label: 'Início', href: '#inicio' },
-  { label: 'Como Funciona', href: '#como-funciona' },
-  { label: 'Educação', href: '#educacao' },
-  { label: 'Planos', href: '#planos' },
-  { label: 'FAQ', href: '#faq' },
-];
-
 export function Footer() {
   return (
-    <footer className="bg-muted border-t border-primary/10">
+    <footer id="contato" className="bg-[#151515] border-t border-primary/10">
       <div className="container py-12">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
-          {/* Logo and Description */}
-          <div>
-            <div className="flex items-center mb-4">
-              <span className="text-2xl font-bold text-primary">Million</span>
-            </div>
-            <p className="text-secondary text-sm">
-              Democratizando o acesso a investimentos inteligentes
-            </p>
-            <div className="flex gap-4 mt-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          {/* Left side - Logo */}
+          <Link href="/">
+            <img 
+              src="/images/logo-million.svg" 
+              alt="Million" 
+              className="h-12"
+            />
+          </Link>
+
+          {/* Center - Contact & CNPJ */}
+          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-xs text-gray-500">
+            <p>CNPJ: 12.345.678/0001-90</p>
+            <span className="hidden md:inline">•</span>
+            <a href="mailto:contato@million.com.br" className="hover:text-primary transition-colors">
+              contato@million.com.br
+            </a>
+            <span className="hidden md:inline">•</span>
+            <a href="https://wa.me/5511999999999" className="hover:text-primary transition-colors">
+              (11) 99999-9999
+            </a>
+          </div>
+
+          {/* Right side - Social & Credits */}
+          <div className="flex items-center gap-6">
+            {/* Social Icons */}
+            <div className="flex gap-3">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
                 return (
@@ -39,97 +48,45 @@ export function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 bg-background rounded-lg flex items-center justify-center hover:bg-primary hover:text-background transition-all duration-300"
+                    className="w-8 h-8 bg-background/50 rounded-full flex items-center justify-center hover:bg-primary hover:text-background transition-all duration-300"
                     aria-label={social.label}
                   >
-                    <Icon className="w-5 h-5" />
+                    <Icon className="w-3 h-3" />
                   </a>
                 );
               })}
             </div>
-          </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="font-semibold mb-4">Links Rápidos</h3>
-            <ul className="space-y-2">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-secondary hover:text-primary transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+            {/* Divider */}
+            <div className="hidden md:block w-px h-4 bg-gray-700"></div>
 
-          {/* Contact */}
-          <div>
-            <h3 className="font-semibold mb-4">Contato</h3>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-2 text-secondary">
-                <Phone className="w-4 h-4" />
-                <a
-                  href="https://wa.me/5511999999999"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-primary transition-colors"
-                >
-                  (11) 99999-9999
-                </a>
-              </li>
-              <li className="flex items-center gap-2 text-secondary">
-                <Mail className="w-4 h-4" />
-                <a
-                  href="mailto:contato@millionstreet.com.br"
-                  className="hover:text-primary transition-colors"
-                >
-                  contato@millionstreet.com.br
-                </a>
-              </li>
-              <li className="flex items-center gap-2 text-secondary">
-                <Clock className="w-4 h-4" />
-                <span>Seg-Sex: 9h às 18h</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Newsletter */}
-          <div>
-            <h3 className="font-semibold mb-4">Newsletter</h3>
-            <p className="text-secondary text-sm mb-4">
-              Receba conteúdo exclusivo sobre investimentos
-            </p>
-            <form className="space-y-3">
-              <input
-                type="email"
-                placeholder="Seu melhor e-mail"
-                className="w-full bg-background border border-primary/20 rounded-lg px-4 py-2 text-white placeholder:text-secondary focus:outline-none focus:border-primary transition-colors"
-              />
-              <button
-                type="submit"
-                className="w-full bg-primary text-background py-2 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+            {/* Agency Credit */}
+            <p className="hidden md:block text-xs text-gray-500">
+              Desenvolvido por{' '}
+              <a 
+                href="https://amage.com.br" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
               >
-                Inscrever
-              </button>
-            </form>
+                amage
+              </a>
+            </p>
           </div>
         </div>
 
-        {/* Disclaimer and Copyright */}
-        <div className="border-t border-primary/10 pt-8">
-          <p className="text-xs text-secondary text-center mb-4">
-            <strong>Importante:</strong> A Million é uma empresa de educação e consultoria financeira. 
-            Não somos uma instituição financeira e não realizamos a custódia de valores. 
-            Toda orientação visa educação e planejamento.
-          </p>
-          <p className="text-xs text-secondary text-center">
-            © 2024 Million. Todos os direitos reservados.
-          </p>
-        </div>
+        {/* Mobile only - Agency credit */}
+        <p className="md:hidden text-center mt-4 text-xs text-gray-500">
+          Desenvolvido por{' '}
+          <a 
+            href="https://amage.com.br" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            amage
+          </a>
+        </p>
       </div>
     </footer>
   );

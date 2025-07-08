@@ -29,7 +29,7 @@ export default function EbooksPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section Minimalista - Mantendo o título que você gostou */}
-      <section className="relative pt-32 pb-16">
+      <section className="relative pt-28 pb-12">
         <div className="container mx-auto px-4">
           <motion.div 
             className="max-w-3xl"
@@ -37,12 +37,12 @@ export default function EbooksPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-6xl font-light mb-6">
+            <h1 className="text-3xl md:text-5xl font-light mb-4">
               Conhecimento é o melhor
               <span className="block font-bold text-primary">investimento</span>
             </h1>
             
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl">
+            <p className="text-lg text-muted-foreground mb-6 max-w-2xl">
               Ebooks práticos e diretos ao ponto, escritos por quem entende do assunto.
             </p>
           </motion.div>
@@ -50,7 +50,7 @@ export default function EbooksPage() {
       </section>
 
       {/* Filtros */}
-      <section className="container mx-auto px-4 pb-8">
+      <section className="container mx-auto px-4 pb-6">
         <div className="flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
           {/* Filtros principais */}
           <div className="flex flex-wrap gap-2">
@@ -91,8 +91,8 @@ export default function EbooksPage() {
       </section>
 
       {/* Grid de Ebooks - Cards Pequenos */}
-      <section className="container mx-auto px-4 pb-16">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+      <section className="container mx-auto px-4 pb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
           {ebooks.map((ebook, index) => (
             <motion.div
               key={ebook.id}
@@ -106,7 +106,7 @@ export default function EbooksPage() {
               <Link href={`/ebooks/${ebook.slug}`}>
                 <div className="group relative cursor-pointer">
                   {/* Imagem do Ebook */}
-                  <div className="relative aspect-[3/4] mb-4 rounded-lg overflow-hidden bg-card">
+                  <div className="relative aspect-[3/4] mb-2 rounded-lg overflow-hidden bg-card">
                     <Image
                       src={ebook.coverImage}
                       alt={ebook.title}
@@ -116,47 +116,40 @@ export default function EbooksPage() {
                     
                     {/* Badge de desconto */}
                     {ebook.originalPrice && (
-                      <div className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">
+                      <div className="absolute top-1 right-1 bg-red-500 text-white px-1.5 py-0.5 rounded text-[10px] font-bold">
                         -{Math.round(((ebook.originalPrice - ebook.price) / ebook.originalPrice) * 100)}%
                       </div>
                     )}
-
-                    {/* Preço no hover */}
-                    <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="text-white">
-                        {ebook.originalPrice && (
-                          <span className="text-sm line-through opacity-75">
-                            R$ {ebook.originalPrice.toFixed(2)}
-                          </span>
-                        )}
-                        <p className="text-2xl font-bold">
-                          R$ {ebook.price.toFixed(2)}
-                        </p>
-                      </div>
-                    </div>
                   </div>
 
                   {/* Informações do Ebook */}
-                  <div>
-                    <h3 className="font-semibold text-sm mb-1 group-hover:text-primary transition-colors line-clamp-2">
+                  <div className="px-2 pb-2">
+                    {/* Preços sempre visíveis */}
+                    <div className="mb-2">
+                      {ebook.originalPrice && (
+                        <span className="text-xs line-through text-gray-500">
+                          R$ {ebook.originalPrice.toFixed(2)}
+                        </span>
+                      )}
+                      <p className="text-lg font-bold text-white">
+                        R$ {ebook.price.toFixed(2)}
+                      </p>
+                    </div>
+
+                    <h3 className="font-semibold text-xs mb-1 group-hover:text-primary transition-colors line-clamp-2">
                       {ebook.title}
                     </h3>
-                    
-                    <p className="text-xs text-muted-foreground line-clamp-2 mb-2">
-                      {ebook.subtitle}
-                    </p>
 
-                    {/* Rating e info */}
-                    <div className="flex items-center justify-between text-xs">
-                      <div className="flex items-center gap-1">
-                        <Star className="w-3 h-3 fill-yellow-500 text-yellow-500" />
-                        <span className="text-muted-foreground">{ebook.rating}</span>
-                      </div>
-                      
-                      <span className="text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                        Saiba mais →
-                      </span>
+                    {/* Rating */}
+                    <div className="flex items-center gap-1 mb-2">
+                      <Star className="w-3 h-3 fill-yellow-500 text-yellow-500" />
+                      <span className="text-xs text-muted-foreground">{ebook.rating}</span>
                     </div>
+
+                    {/* Botão de compra sempre visível */}
+                    <button className="w-full bg-green-600 text-white py-1.5 px-3 rounded text-xs font-semibold hover:bg-green-700 transition-all duration-300">
+                      Comprar agora
+                    </button>
                   </div>
                 </div>
               </Link>

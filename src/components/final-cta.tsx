@@ -1,51 +1,82 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
 export function FinalCTA() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="iniciar-jornada" ref={ref} className="py-24 bg-[#1a1a1a]">
-      <div className="container max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center"
-        >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 text-white">
-            Pronto para <span className="font-bold text-primary">começar</span>?
-          </h2>
-          
-          <p className="text-lg md:text-xl text-gray-400 mb-16 max-w-3xl mx-auto leading-relaxed">
-            Agende uma conversa sem compromisso e descubra como podemos ajudar
-            <br />
-            você a alcançar seus objetivos financeiros
-          </p>
+    <section className="py-20 bg-gray-50">
+      <div className="container mx-auto px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            {/* Left side - Form */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-[#151515] mb-4">
+                Pronto para transformar seu futuro?
+              </h2>
+              <p className="text-gray-600 mb-8">
+                O primeiro passo é sempre o mais importante. Comece sua jornada para a liberdade financeira agora.
+              </p>
 
-          <a
-            href="https://wa.me/5511999999999?text=Olá! Vi o site da Million e quero agendar uma conversa."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block text-primary text-lg md:text-xl font-medium hover:underline transition-all hover:text-primary/80"
-          >
-            Agendar conversa →
-          </a>
+              <button
+                onClick={() => window.location.href = '#contato'}
+                className="px-8 py-4 bg-[#151515] text-white rounded-lg font-medium hover:bg-[#151515]/90 transition-all duration-300 flex items-center gap-2 group"
+              >
+                Começar agora
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </button>
+            </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.4 }}
-            className="mt-20"
-          >
-            <p className="text-sm text-gray-500">
-              Garantia de 7 dias ou seu dinheiro de volta
-            </p>
-          </motion.div>
-        </motion.div>
+            {/* Right side - Benefits */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl border border-gray-100 p-8"
+            >
+              <h3 className="text-xl font-bold text-[#151515] mb-6">
+                Por que começar hoje?
+              </h3>
+              
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <span className="text-primary font-semibold text-sm">1</span>
+                  <p className="text-gray-700 text-sm">
+                    Cada dia perdido é dinheiro que deixa de render
+                  </p>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <span className="text-primary font-semibold text-sm">2</span>
+                  <p className="text-gray-700 text-sm">
+                    A inflação não espera você se preparar
+                  </p>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <span className="text-primary font-semibold text-sm">3</span>
+                  <p className="text-gray-700 text-sm">
+                    Quanto antes começar, maior será seu patrimônio
+                  </p>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <span className="text-primary font-semibold text-sm">4</span>
+                  <p className="text-gray-700 text-sm">
+                    Sua aposentadoria depende das decisões de hoje
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
