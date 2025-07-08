@@ -79,25 +79,27 @@ export function MarketData() {
 
   const formatValue = (value: number, type: string) => {
     if (type === 'USD') return `${value.toFixed(2)}`;
-    if (type === 'BTC') return `R$ ${value.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    if (type === 'BTC') return `${Math.floor(value / 1000)}k`;
     if (type === 'IBOV') return `${Math.floor(value / 1000)}k`;
     if (type === 'IFIX') return `R$ ${value.toFixed(2)}`;
     return value.toString();
   };
 
   return (
-    <div 
-      className="absolute z-50 hidden xl:block"
-      style={{
-        left: '20px',
-        top: '50%',
-        transform: 'translateY(1190%) rotate(-90deg)',
-        transformOrigin: 'left center',
-        width: '450px',
-        marginLeft: '-4px'
-      }}
-    >
-      <div className="flex items-center justify-center gap-6 text-white/60 text-xs font-light whitespace-nowrap">
+    <>
+      {/* Desktop - Vertical Left */}
+      <div 
+        className="absolute z-50 hidden xl:block"
+        style={{
+          left: '20px',
+          top: '50%',
+          transform: 'translateY(1190%) rotate(-90deg)',
+          transformOrigin: 'left center',
+          width: '450px',
+          marginLeft: '-4px'
+        }}
+      >
+        <div className="flex items-center justify-center gap-6 text-white/60 text-xs font-light whitespace-nowrap">
         {marketItems.map((item, index) => (
           <motion.div
             key={item.name}
@@ -113,7 +115,29 @@ export function MarketData() {
             </span>
           </motion.div>
         ))}
+        </div>
       </div>
-    </div>
+      
+      {/* Mobile - Horizontal Bottom */}
+      <div className="xl:hidden absolute bottom-0 left-0 right-0 z-50 backdrop-blur-md bg-white/5 border-t border-white/10">
+        <div className="flex items-center justify-between px-4 py-3 text-white/60 text-xs font-light">
+          {marketItems.map((item, index) => (
+            <motion.div
+              key={item.name}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 1.5 + index * 0.1 }}
+              className="flex flex-col items-center"
+            >
+              <span className="text-primary opacity-80 text-[10px]">{item.name}</span>
+              <span className="text-white/80 text-sm font-medium">{formatValue(item.value, item.name)}</span>
+              <span className={`text-[10px] ${item.changePercent >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
+                {item.changePercent >= 0 ? '+' : ''}{item.changePercent.toFixed(1)}%
+              </span>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }

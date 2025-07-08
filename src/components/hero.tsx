@@ -7,15 +7,16 @@ import { MarketData } from '@/components/market-data';
 
 export function Hero() {
   return (
-    <section id="inicio" className="relative min-h-screen overflow-hidden rounded-t-2xl md:rounded-t-3xl">
+    <section id="inicio" className="relative h-[100svh] md:min-h-screen overflow-hidden rounded-t-none md:rounded-t-3xl">
       {/* Background image */}
-      <div className="absolute inset-0 z-0 rounded-t-2xl md:rounded-t-3xl">
+      <div className="absolute inset-0 z-0 rounded-t-none md:rounded-t-3xl">
         {/* Solid background */}
-        <div className="absolute inset-0 bg-background rounded-t-2xl md:rounded-t-3xl" />
+        <div className="absolute inset-0 bg-background rounded-t-none md:rounded-t-3xl" />
         
         {/* Hero background image */}
+        {/* Desktop background */}
         <motion.div 
-          className="absolute inset-0 rounded-t-2xl md:rounded-t-3xl"
+          className="hidden md:block absolute inset-0 rounded-t-none md:rounded-t-3xl"
           initial={{ opacity: 0, scale: 1.1 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
@@ -26,14 +27,27 @@ export function Hero() {
             backgroundSize: 'cover'
           }}
         />
+        {/* Mobile background */}
+        <motion.div 
+          className="md:hidden absolute inset-0"
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          style={{
+            backgroundImage: `url('/images/hero-background-mobile.svg')`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            backgroundSize: 'cover'
+          }}
+        />
       </div>
       
       {/* Market Data Sidebar */}
       <MarketData />
       
-      <div className="container relative z-10 flex items-center min-h-screen">
+      <div className="container relative z-10 flex items-center justify-center md:justify-start h-full md:min-h-screen">
         <motion.div 
-          className="max-w-2xl"
+          className="max-w-2xl text-center md:text-left"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
@@ -66,7 +80,7 @@ export function Hero() {
           </motion.p>
 
           <motion.div 
-            className="flex flex-col sm:flex-row gap-4"
+            className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
