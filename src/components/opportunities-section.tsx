@@ -95,19 +95,19 @@ export function OpportunitiesSection() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <GlareCard className="flex flex-col items-start justify-between p-8">
+              <GlareCard className="flex flex-col items-start justify-between p-6">
                 <div>
-                  <div className="mb-4">
-                    <solution.icon className="w-12 h-12 text-[#151515]" />
+                  <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center mb-4">
+                    <solution.icon className="w-6 h-6 text-[#151515]" />
                   </div>
-                  <h4 className="text-lg font-bold text-white mb-3">
+                  <h4 className="text-lg font-bold text-white mb-2">
                     {solution.title}
                   </h4>
-                  <p className="text-gray-300 text-sm leading-relaxed mb-4">
+                  <p className="text-gray-300 text-sm leading-relaxed mb-3">
                     {solution.description}
                   </p>
                 </div>
-                <span className="text-primary font-semibold text-sm">
+                <span className="text-primary font-semibold text-sm lg:hidden">
                   {solution.highlight}
                 </span>
               </GlareCard>
