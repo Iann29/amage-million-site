@@ -31,8 +31,8 @@ export function Footer() {
               contato@million.com.br
             </a>
             <span className="hidden md:inline">•</span>
-            <a href="https://wa.me/5511999999999" className="hover:text-primary transition-colors">
-              (11) 99999-9999
+            <a href="https://wa.me/5554965778874" className="hover:text-primary transition-colors">
+              (54) 9657-8874
             </a>
           </div>
 

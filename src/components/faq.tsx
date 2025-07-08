@@ -118,7 +118,7 @@ export function FAQ() {
         >
           <p className="text-secondary mb-4">Ainda tem dúvidas?</p>
           <a
-            href="https://wa.me/5511999999999?text=Olá! Tenho uma dúvida sobre a consultoria da Million Street."
+            href="https://wa.me/5554965778874?text=Olá! Tenho uma dúvida sobre a consultoria da Million Street."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-primary text-background px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"

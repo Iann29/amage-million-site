@@ -53,7 +53,7 @@ export function PricingPlans() {
 
   const sendWhatsAppMessage = (planName: string) => {
     const message = `Olá! Vi o site da Million e tenho interesse no plano ${planName}. Gostaria de saber mais detalhes.`;
-    const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/5554965778874?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 

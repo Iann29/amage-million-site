@@ -97,8 +97,8 @@ export function OpportunitiesSection() {
             >
               <GlareCard className="flex flex-col items-start justify-between p-8">
                 <div>
-                  <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center mb-4">
-                    <solution.icon className="w-6 h-6 text-[#151515]" />
+                  <div className="mb-4">
+                    <solution.icon className="w-12 h-12 text-[#151515]" />
                   </div>
                   <h4 className="text-lg font-bold text-white mb-3">
                     {solution.title}

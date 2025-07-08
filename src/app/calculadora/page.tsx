@@ -27,6 +27,37 @@ export default function CalculadoraPage() {
     periodType: 'years' as 'years' | 'months',
   });
   
+  const [displayValues, setDisplayValues] = useState({
+    initialAmount: '',
+    monthlyDeposit: '',
+  });
+  
+  // Função para formatar valor monetário para exibição
+  const formatCurrencyDisplay = (value: string): string => {
+    // Remove tudo que não é número
+    const onlyNumbers = value.replace(/\D/g, '');
+    if (!onlyNumbers) return '';
+    
+    // Converte para número (em centavos)
+    const numberValue = parseInt(onlyNumbers);
+    
+    // Formata o valor
+    const reais = Math.floor(numberValue / 100);
+    const centavos = (numberValue % 100).toString().padStart(2, '0');
+    
+    // Adiciona separadores de milhares
+    const formattedReais = reais.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    
+    return `R$ ${formattedReais},${centavos}`;
+  };
+  
+  // Função para extrair apenas o valor numérico
+  const extractNumericValue = (formattedValue: string): string => {
+    const numbers = formattedValue.replace(/\D/g, '');
+    if (!numbers) return '';
+    return (parseInt(numbers) / 100).toString();
+  };
+  
   const [result, setResult] = useState<CalculationResult | null>(null);
   const [userData, setUserData] = useState<any>(null);
 
@@ -133,11 +164,15 @@ export default function CalculadoraPage() {
                   Valor inicial
                 </label>
                 <input
-                  type="number"
-                  value={values.initialAmount}
-                  onChange={(e) => setValues({ ...values, initialAmount: e.target.value })}
+                  type="text"
+                  value={displayValues.initialAmount}
+                  onChange={(e) => {
+                    const formatted = formatCurrencyDisplay(e.target.value);
+                    setDisplayValues({ ...displayValues, initialAmount: formatted });
+                    setValues({ ...values, initialAmount: extractNumericValue(formatted) });
+                  }}
                   className="w-full px-4 py-3 bg-background border border-primary/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50"
-                  placeholder="R$ 1.000"
+                  placeholder="R$ 0,00"
                 />
               </div>
 
@@ -148,11 +183,15 @@ export default function CalculadoraPage() {
                   Aporte mensal
                 </label>
                 <input
-                  type="number"
-                  value={values.monthlyDeposit}
-                  onChange={(e) => setValues({ ...values, monthlyDeposit: e.target.value })}
+                  type="text"
+                  value={displayValues.monthlyDeposit}
+                  onChange={(e) => {
+                    const formatted = formatCurrencyDisplay(e.target.value);
+                    setDisplayValues({ ...displayValues, monthlyDeposit: formatted });
+                    setValues({ ...values, monthlyDeposit: extractNumericValue(formatted) });
+                  }}
                   className="w-full px-4 py-3 bg-background border border-primary/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50"
-                  placeholder="R$ 500"
+                  placeholder="R$ 0,00"
                 />
               </div>
 
@@ -189,7 +228,12 @@ export default function CalculadoraPage() {
                   <select
                     value={values.periodType}
                     onChange={(e) => setValues({ ...values, periodType: e.target.value as 'years' | 'months' })}
-                    className="px-4 py-3 bg-background border border-primary/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50"
+                    className="px-4 py-3 bg-background border border-primary/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 appearance-none cursor-pointer pr-10 bg-no-repeat"
+                    style={{
+                      backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
+                      backgroundPosition: 'right 0.7rem center',
+                      backgroundSize: '1.5em 1.5em'
+                    }}
                   >
                     <option value="years">Anos</option>
                     <option value="months">Meses</option>
@@ -219,6 +263,10 @@ export default function CalculadoraPage() {
                       period: '',
                       periodType: 'years',
                     });
+                    setDisplayValues({
+                      initialAmount: '',
+                      monthlyDeposit: '',
+                    });
                   }}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -245,17 +293,20 @@ export default function CalculadoraPage() {
                 <div className="grid grid-cols-1 gap-4">
                   <div className="bg-primary/10 rounded-lg p-4">
                     <p className="text-sm text-secondary mb-1">Valor total acumulado</p>
-                    <p className="text-2xl font-bold text-primary">{formatCurrency(result.totalAmount)}</p>
+                    <p className="text-2xl font-bold text-primary mb-2">{formatCurrency(result.totalAmount)}</p>
+                    <p className="text-xs text-gray-500/40 leading-tight">Esse foi o valor que você acumulou entre juros e aportes/investimento inicial</p>
                   </div>
                   
                   <div className="bg-background rounded-lg p-4 border border-primary/20">
                     <p className="text-sm text-secondary mb-1">Total investido</p>
-                    <p className="text-xl font-semibold">{formatCurrency(result.totalInvested)}</p>
+                    <p className="text-xl font-semibold mb-2">{formatCurrency(result.totalInvested)}</p>
+                    <p className="text-xs text-gray-500/40 leading-tight">Soma do valor inicial mais todos os aportes mensais realizados</p>
                   </div>
                   
                   <div className="bg-background rounded-lg p-4 border border-primary/20">
                     <p className="text-sm text-secondary mb-1">Juros ganhos</p>
-                    <p className="text-xl font-semibold text-green-500">{formatCurrency(result.totalInterest)}</p>
+                    <p className="text-xl font-semibold text-green-500 mb-2">{formatCurrency(result.totalInterest)}</p>
+                    <p className="text-xs text-gray-500/40 leading-tight">Lucro gerado pelos juros compostos sobre seus investimentos</p>
                   </div>
                 </div>
 
@@ -444,15 +495,15 @@ export default function CalculadoraPage() {
           </div>
 
           {/* Real Example */}
-          <div className="bg-primary/5 border border-primary/20 rounded-2xl p-6 md:p-8">
-            <h3 className="text-lg md:text-xl font-semibold mb-4 text-center">
+          <div className="bg-primary border border-primary/20 rounded-2xl p-6 md:p-8">
+            <h3 className="text-lg md:text-xl font-semibold mb-4 text-center text-background">
               Exemplo: O poder de começar cedo
             </h3>
             
             <div className="grid md:grid-cols-2 gap-6">
               <div className="text-center space-y-3">
-                <h4 className="font-medium">João (começou aos 25 anos)</h4>
-                <div className="bg-background rounded-lg p-4 space-y-2">
+                <h4 className="font-medium text-background">João (começou aos 25 anos)</h4>
+                <div className="bg-background/90 rounded-lg p-4 space-y-2 border border-background/20">
                   <p className="text-sm">Investiu R$ 300/mês por 35 anos</p>
                   <p className="text-xs text-secondary">Total investido: R$ 126.000</p>
                   <p className="text-2xl font-semibold text-primary mt-3">R$ 649.527</p>
@@ -461,8 +512,8 @@ export default function CalculadoraPage() {
               </div>
 
               <div className="text-center space-y-3">
-                <h4 className="font-medium">Maria (começou aos 35 anos)</h4>
-                <div className="bg-background rounded-lg p-4 space-y-2">
+                <h4 className="font-medium text-background">Maria (começou aos 35 anos)</h4>
+                <div className="bg-background/90 rounded-lg p-4 space-y-2 border border-background/20">
                   <p className="text-sm">Investiu R$ 600/mês por 25 anos</p>
                   <p className="text-xs text-secondary">Total investido: R$ 180.000</p>
                   <p className="text-2xl font-semibold text-muted-foreground mt-3">R$ 405.681</p>
@@ -471,9 +522,9 @@ export default function CalculadoraPage() {
               </div>
             </div>
 
-            <p className="text-center mt-6 text-sm">
-              <span className="text-primary font-semibold">João investiu menos</span> e 
-              <span className="text-primary font-semibold"> ganhou mais</span>, 
+            <p className="text-center mt-6 text-sm text-background">
+              <span className="text-background font-semibold">João investiu menos</span> e 
+              <span className="text-background font-semibold"> ganhou mais</span>, 
               apenas por começar 10 anos antes!
             </p>
           </div>
