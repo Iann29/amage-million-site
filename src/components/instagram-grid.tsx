@@ -50,11 +50,12 @@ export function InstagramGrid() {
               <p className="text-xs text-gray-400">Economia e investimentos de fácil acesso</p>
             </div>
           </div>
+          {/* Desktop: Text Link */}
           <a
             href="https://instagram.com/millioncapital_"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-semibold text-white hover:text-white inline-flex items-center gap-2 group transition-all duration-300"
+            className="hidden md:inline-flex text-sm font-semibold text-white hover:text-white items-center gap-2 group transition-all duration-300"
           >
             Abrir Instagram
             <div className="relative w-4 h-4 overflow-visible">
@@ -78,6 +79,34 @@ export function InstagramGrid() {
               </svg>
             </div>
           </a>
+          
+          {/* Mobile: Big Instagram Button */}
+          <div className="md:hidden">
+            <a 
+              href="https://instagram.com/millioncapital_" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group"
+            >
+              <div className="relative w-10 h-10 overflow-visible">
+                <Instagram 
+                  className="w-10 h-10 transition-all duration-300 group-hover:rotate-45 fill-none stroke-[2px]"
+                  style={{
+                    stroke: 'url(#instagram-gradient-mobile)',
+                  }}
+                />
+                <svg width="0" height="0" style={{ position: 'absolute' }}>
+                  <defs>
+                    <linearGradient id="instagram-gradient-mobile" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#833AB4" />
+                      <stop offset="50%" stopColor="#FD1D1D" />
+                      <stop offset="100%" stopColor="#FCB045" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
 

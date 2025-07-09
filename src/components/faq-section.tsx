@@ -47,13 +47,13 @@ export function FAQSection() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="sticky top-20"
+              className="lg:sticky lg:top-20 mb-8 lg:mb-0 text-center lg:text-left"
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
                 Dúvidas
                 <span className="block text-primary">frequentes</span>
               </h2>
-              <p className="text-gray-400 text-sm max-w-md">
+              <p className="text-gray-400 text-sm max-w-md mx-auto lg:mx-0">
                 Aqui estão as respostas para as principais questões de quem está começando sua jornada de investimentos.
               </p>
             </motion.div>
@@ -71,9 +71,9 @@ export function FAQSection() {
                 >
                   <button
                     onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                    className="w-full py-4 flex items-start justify-between text-left group"
+                    className="w-full py-5 md:py-4 flex items-start justify-between text-left group"
                   >
-                    <h3 className="text-base font-medium text-white pr-8 group-hover:text-primary transition-colors">
+                    <h3 className="text-sm md:text-base font-medium text-white pr-6 md:pr-8 group-hover:text-primary transition-colors">
                       {faq.question}
                     </h3>
                     <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
@@ -94,7 +94,7 @@ export function FAQSection() {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
-                    <div className="pb-4">
+                    <div className="pb-5 md:pb-4 pt-2">
                       <p className="text-gray-400 text-sm leading-relaxed">
                         {faq.answer}
                       </p>

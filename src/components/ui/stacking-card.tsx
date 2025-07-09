@@ -88,8 +88,8 @@ export const Card = ({
         className={`relative -top-[25%] h-[450px] md:h-[500px] w-[90%] md:w-[75%] lg:w-[65%] rounded-2xl overflow-hidden origin-top`}
       >
         <div className={`flex h-full md:pr-[35%]`}>
-          <div className='flex flex-col p-6 md:p-8 lg:p-10 flex-1'>
-            <h2 className='text-2xl md:text-3xl lg:text-4xl text-left font-bold font-[family-name:var(--font-lato)] mb-4 md:mb-6' style={{ color: color === '#2a2a2a' || color === '#1a1a1a' ? '#ffffff' : color === '#D8AE63' ? '#151515' : '#ffffff' }} dangerouslySetInnerHTML={{ __html: title }} />
+          <div className='flex flex-col p-6 md:p-8 lg:p-10 flex-1 text-center md:text-left'>
+            <h2 className='text-2xl md:text-3xl lg:text-4xl font-bold font-[family-name:var(--font-lato)] mb-4 md:mb-6' style={{ color: color === '#2a2a2a' || color === '#1a1a1a' ? '#ffffff' : color === '#D8AE63' ? '#151515' : '#ffffff' }} dangerouslySetInnerHTML={{ __html: title }} />
             <div className='text-sm md:text-base lg:text-lg font-[family-name:var(--font-lato)] leading-relaxed flex-1' style={{ color: color === '#2a2a2a' || color === '#1a1a1a' ? '#ffffff' : color === '#D8AE63' ? '#151515' : '#ffffff' }} dangerouslySetInnerHTML={{ __html: description }} />
           </div>
           

@@ -47,7 +47,7 @@ export function OpportunitiesSection() {
           </div>
         </div>
         
-        <section className="bg-white pt-16 pb-16 md:pt-20 md:pb-20 rounded-t-2xl md:rounded-t-3xl rounded-b-2xl md:rounded-b-3xl shadow-[0_-20px_60px_rgba(0,0,0,0.06)] relative overflow-hidden">
+        <section className="bg-white pt-16 pb-32 md:pt-20 md:pb-20 rounded-t-2xl md:rounded-t-3xl rounded-b-2xl md:rounded-b-3xl shadow-[0_-20px_60px_rgba(0,0,0,0.06)] relative">
         {/* Background effects */}
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl" />
@@ -86,7 +86,7 @@ export function OpportunitiesSection() {
           </motion.div>
 
           {/* Solution cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto pb-8 place-items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 max-w-5xl mx-auto">
           {solutions.map((solution, index) => (
             <motion.div
               key={index}
@@ -95,21 +95,23 @@ export function OpportunitiesSection() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <GlareCard className="flex flex-col items-start justify-between p-6">
-                <div>
-                  <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center mb-4">
+              <GlareCard className="p-10 md:p-6">
+                <div className="flex flex-col min-h-full">
+                  <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center mb-6">
                     <solution.icon className="w-6 h-6 text-[#151515]" />
                   </div>
-                  <h4 className="text-lg font-bold text-white mb-2">
+                  <h4 className="text-base md:text-lg font-bold text-white mb-4">
                     {solution.title}
                   </h4>
-                  <p className="text-gray-300 text-sm leading-relaxed mb-3">
+                  <p className="text-gray-300 text-xs md:text-sm leading-loose mb-8">
                     {solution.description}
                   </p>
+                  <div className="mt-auto">
+                    <span className="text-primary font-semibold text-xs md:text-sm lg:hidden block">
+                      {solution.highlight}
+                    </span>
+                  </div>
                 </div>
-                <span className="text-primary font-semibold text-sm lg:hidden">
-                  {solution.highlight}
-                </span>
               </GlareCard>
             </motion.div>
           ))}
@@ -121,7 +123,7 @@ export function OpportunitiesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             viewport={{ once: true }}
-            className="flex justify-center mt-6"
+            className="flex justify-center mt-12"
           >
             <Link href="#contato">
               <button className="bg-[#151515] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#151515]/90 transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center gap-2 group">

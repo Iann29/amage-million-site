@@ -240,11 +240,11 @@ export function PopularInvestmentsSection() {
             className="max-w-7xl mx-auto"
           >
             {/* Category Header */}
-            <div className="mb-12">
+            <div className="mb-12 text-center md:text-left">
               <h3 className="text-2xl md:text-3xl font-semibold mb-4 text-white">
                 {activeCategory.name}
               </h3>
-              <p className="text-gray-300 text-lg leading-relaxed max-w-4xl">
+              <p className="text-gray-300 text-base md:text-lg leading-relaxed max-w-4xl mx-auto md:mx-0">
                 {activeCategory.description}
               </p>
             </div>
@@ -259,20 +259,22 @@ export function PopularInvestmentsSection() {
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                   className="group"
                 >
-                  <div className="h-full backdrop-blur-xl bg-gradient-to-br from-white/[0.08] to-white/[0.03] rounded-2xl border border-white/10 p-8 hover:border-primary/50 hover:from-white/[0.12] hover:to-white/[0.05] transition-all duration-300 relative overflow-hidden">
+                  <div className="h-full backdrop-blur-xl bg-gradient-to-br from-white/[0.08] to-white/[0.03] rounded-2xl border border-white/10 p-6 md:p-8 hover:border-primary/50 hover:from-white/[0.12] hover:to-white/[0.05] transition-all duration-300 relative overflow-hidden text-center md:text-left">
                     <h4 className="text-xl font-semibold text-white mb-3">
                       {product.title}
                     </h4>
                     <p className="text-gray-400 mb-6 text-sm leading-relaxed">
                       {product.description}
                     </p>
-                    <button 
-                      onClick={() => handleSaibaMais(product)}
-                      className="inline-flex items-center gap-2 text-primary text-sm font-medium group-hover:gap-3 transition-all duration-300"
-                    >
-                      Aprofunde-se mais 
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
+                    <div className="flex justify-center md:justify-start">
+                      <button 
+                        onClick={() => handleSaibaMais(product)}
+                        className="inline-flex items-center gap-2 text-primary text-sm font-medium group-hover:gap-3 transition-all duration-300"
+                      >
+                        Aprofunde-se mais 
+                        <ArrowRight className="w-4 h-4" />
+                      </button>
+                    </div>
                     
                     {/* Info icon on hover */}
                     <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity z-10">

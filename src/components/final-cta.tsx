@@ -16,21 +16,24 @@ export function FinalCTA() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
+              className="text-center md:text-left"
             >
               <h2 className="text-3xl md:text-4xl font-bold text-[#151515] mb-4">
                 Pronto para transformar seu futuro?
               </h2>
-              <p className="text-gray-600 mb-8">
+              <p className="text-gray-600 mb-8 max-w-md mx-auto md:mx-0">
                 O primeiro passo é sempre o mais importante. Comece sua jornada para a liberdade financeira agora.
               </p>
 
-              <button
-                onClick={() => window.location.href = '#contato'}
-                className="px-8 py-4 bg-[#151515] text-white rounded-lg font-medium hover:bg-[#151515]/90 transition-all duration-300 flex items-center gap-2 group"
-              >
-                Começar agora
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </button>
+              <div className="flex justify-center md:justify-start">
+                <button
+                  onClick={() => window.location.href = '#contato'}
+                  className="px-8 py-4 bg-[#151515] text-white rounded-lg font-medium hover:bg-[#151515]/90 transition-all duration-300 flex items-center gap-2 group"
+                >
+                  Começar agora
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </button>
+              </div>
             </motion.div>
 
             {/* Right side - Benefits */}
@@ -39,13 +42,13 @@ export function FinalCTA() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="bg-white rounded-2xl border border-gray-100 p-8"
+              className="bg-white rounded-2xl border border-gray-100 p-6 md:p-8"
             >
-              <h3 className="text-xl font-bold text-[#151515] mb-6">
+              <h3 className="text-xl font-bold text-[#151515] mb-6 text-center md:text-left">
                 Por que começar hoje?
               </h3>
               
-              <div className="space-y-3">
+              <div className="space-y-3 max-w-sm md:mx-0 text-left">
                 <div className="flex items-start gap-3">
                   <span className="text-primary font-semibold text-sm">1</span>
                   <p className="text-gray-700 text-sm">

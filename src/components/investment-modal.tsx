@@ -75,8 +75,8 @@ export function InvestmentModal({ isOpen, onClose, investment }: InvestmentModal
               exit={{ opacity: 0, scale: 0.95 }}
               className="relative w-full max-w-2xl bg-[#141414] rounded-2xl border border-gray-800 shadow-2xl"
               style={{ 
-                maxHeight: '90vh',
-                height: '90vh',
+                maxHeight: '85vh',
+                height: 'auto',
                 display: 'flex',
                 flexDirection: 'column',
                 overflow: 'hidden'
@@ -96,8 +96,16 @@ export function InvestmentModal({ isOpen, onClose, investment }: InvestmentModal
               </div>
 
               {/* Content */}
-              <div ref={scrollContentRef} className="flex-1 overflow-y-scroll p-4 md:p-6" style={{ overscrollBehavior: 'contain', WebkitOverflowScrolling: 'touch' }}>
-                <div className="space-y-4 md:space-y-6">
+              <div 
+                ref={scrollContentRef} 
+                className="flex-1 overflow-y-auto p-4 md:p-6 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent" 
+                style={{ 
+                  overscrollBehavior: 'contain', 
+                  WebkitOverflowScrolling: 'touch',
+                  scrollbarWidth: 'thin'
+                }}
+              >
+                <div className="space-y-4 md:space-y-6 pb-6">
                     {/* Full Description */}
                     <div>
                       <h4 className="text-base md:text-lg font-medium text-white mb-2 md:mb-3">O que é?</h4>

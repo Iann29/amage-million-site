@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -27,7 +27,19 @@ const ebooks = [
 
 export function EbooksSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % ebooks.length);
@@ -45,7 +57,7 @@ export function EbooksSection() {
             {/* Left Side - Ebooks Carousel */}
             <div className="relative">
               <div className="flex items-center justify-center">
-                <div className="relative w-[450px] h-[380px]">
+                <div className="relative w-[300px] h-[300px] md:w-[450px] md:h-[380px]">
                   {ebooks.map((ebook, index) => {
                     const position = (index - currentIndex + ebooks.length) % ebooks.length;
                     return (
@@ -53,20 +65,20 @@ export function EbooksSection() {
                         key={ebook.id}
                         className="absolute cursor-pointer"
                         style={{
-                          width: '260px',
-                          height: '340px',
+                          width: isMobile ? '200px' : '260px',
+                          height: isMobile ? '260px' : '340px',
                           left: '50%',
                           top: '50%',
                         }}
                         initial={false}
                         animate={{
-                          x: position === 0 ? '-50%' : position === 1 ? '5%' : '-105%',
+                          x: position === 0 ? '-50%' : position === 1 ? (isMobile ? '-20%' : '5%') : (isMobile ? '-80%' : '-105%'),
                           y: position === 0 ? '-50%' : '-40%',
-                          scale: position === 0 ? 1 : 0.8,
-                          opacity: position === 0 ? 1 : 0.7,
+                          scale: position === 0 ? 1 : (isMobile ? 0.75 : 0.8),
+                          opacity: position === 0 ? 1 : (isMobile ? 0.6 : 0.7),
                           zIndex: position === 0 ? 10 : 1,
                           filter: position === 0 ? 'brightness(1)' : 'brightness(0.7)',
-                          rotateZ: position === 0 ? 0 : position === 1 ? 15 : -15,
+                          rotateZ: position === 0 ? 0 : position === 1 ? (isMobile ? 10 : 15) : (isMobile ? -10 : -15),
                         }}
                         transition={{
                           duration: 0.5,
@@ -135,20 +147,20 @@ export function EbooksSection() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="text-left"
+              className="text-center lg:text-left"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 mx-auto lg:mx-0">
                 O conhecimento é o
                 <span className="block text-primary">melhor investimento</span>
               </h2>
               
-              <p className="text-gray-400 text-base mb-6 leading-relaxed">
+              <p className="text-gray-400 text-base mb-6 leading-relaxed max-w-md mx-auto lg:mx-0">
                 Nossos ebooks foram criados para transformar iniciantes em investidores confiantes. 
                 Com linguagem simples e exemplos práticos, você aprende no seu ritmo, 
                 sem pressa e sem complicação.
               </p>
 
-              <div className="space-y-4 mb-10">
+              <div className="space-y-4 mb-10 flex flex-col items-center lg:items-start">
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
                   <p className="text-gray-300">
@@ -169,16 +181,18 @@ export function EbooksSection() {
                 </div>
               </div>
 
-              <Link href="/ebooks">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-primary text-background px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 inline-flex items-center gap-3 group"
-                >
-                  Ver todos os ebooks
-                  <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-                </motion.button>
-              </Link>
+              <div className="flex justify-center lg:justify-start">
+                <Link href="/ebooks">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-primary text-background px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 inline-flex items-center gap-3 group"
+                  >
+                    Ver todos os ebooks
+                    <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                  </motion.button>
+                </Link>
+              </div>
             </motion.div>
           </div>
         </div>
