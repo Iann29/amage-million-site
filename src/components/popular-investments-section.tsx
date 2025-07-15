@@ -193,8 +193,8 @@ export function PopularInvestmentsSection() {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto px-4">
+    <section className="py-16 md:py-24 bg-background relative isolate">
+      <div className="container mx-auto px-4 relative">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -209,15 +209,16 @@ export function PopularInvestmentsSection() {
         </motion.div>
 
         {/* Tab Navigation */}
-        <div className="mb-12">
+        <div className="mb-12 relative z-10">
           <div className="flex flex-wrap justify-center gap-2 md:gap-4 border-b border-gray-800">
             {investmentCategories.map((category) => (
               <button
                 key={category.id}
+                type="button"
                 onClick={() => setActiveTab(category.id)}
                 className={`
                   px-4 md:px-6 py-3 text-sm md:text-base font-medium transition-all duration-300
-                  border-b-2 -mb-[2px]
+                  border-b-2 -mb-[2px] relative z-20 cursor-pointer
                   ${activeTab === category.id 
                     ? 'text-white border-primary' 
                     : 'text-gray-400 border-transparent hover:text-gray-200'

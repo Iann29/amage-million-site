@@ -9,7 +9,7 @@ export function PricingSection() {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <section className="py-20 bg-[#151515] relative overflow-hidden">
+    <section className="pb-20 bg-[#151515] relative overflow-hidden">
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Header com persuasão */}
