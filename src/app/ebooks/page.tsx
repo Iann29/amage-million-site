@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { ebooks } from '@/data/ebooks';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Star, TrendingUp, Clock, Filter, BookOpen, Smartphone, Shield, CheckCircle, Zap, Globe } from 'lucide-react';
+import { Star, TrendingUp, Clock, Filter, BookOpen, Smartphone, Shield, CheckCircle, Zap, Globe, ShoppingCart } from 'lucide-react';
 import { useState } from 'react';
 
 export default function EbooksPage() {
@@ -104,9 +104,9 @@ export default function EbooksPage() {
               onMouseLeave={() => setHoveredCard(null)}
             >
               <Link href={`/ebooks/${ebook.slug}`}>
-                <div className="group relative cursor-pointer">
+                <div className="group relative cursor-pointer h-full flex flex-col">
                   {/* Imagem do Ebook */}
-                  <div className="relative aspect-[3/4] mb-2 rounded-lg overflow-hidden bg-card">
+                  <div className="relative aspect-[3/4] mb-2 rounded-lg overflow-hidden bg-card border border-gray-800 group-hover:border-primary/50 transition-colors">
                     <Image
                       src={ebook.coverImage}
                       alt={ebook.title}
@@ -116,40 +116,60 @@ export default function EbooksPage() {
                     
                     {/* Badge de desconto */}
                     {ebook.originalPrice && (
-                      <div className="absolute top-1 right-1 bg-red-500 text-white px-1.5 py-0.5 rounded text-[10px] font-bold">
+                      <div className="absolute top-2 right-2 bg-red-500 text-white px-3 py-1.5 rounded-lg text-sm font-bold shadow-lg animate-pulse">
                         -{Math.round(((ebook.originalPrice - ebook.price) / ebook.originalPrice) * 100)}%
                       </div>
                     )}
                   </div>
 
                   {/* Informações do Ebook */}
-                  <div className="px-2 pb-2">
-                    {/* Preços sempre visíveis */}
-                    <div className="mb-2">
-                      {ebook.originalPrice && (
-                        <span className="text-xs line-through text-gray-500">
-                          R$ {ebook.originalPrice.toFixed(2)}
-                        </span>
-                      )}
-                      <p className="text-lg font-bold text-white">
-                        R$ {ebook.price.toFixed(2)}
-                      </p>
-                    </div>
-
-                    <h3 className="font-semibold text-xs mb-1 group-hover:text-primary transition-colors line-clamp-2">
+                  <div className="px-2 pb-2 flex-1 flex flex-col">
+                    {/* Título primeiro */}
+                    <h3 className="font-bold text-sm mb-2 group-hover:text-primary transition-colors line-clamp-2 text-white">
                       {ebook.title}
                     </h3>
 
                     {/* Rating */}
-                    <div className="flex items-center gap-1 mb-2">
+                    <div className="flex items-center gap-1 mb-3">
                       <Star className="w-3 h-3 fill-yellow-500 text-yellow-500" />
                       <span className="text-xs text-muted-foreground">{ebook.rating}</span>
                     </div>
 
-                    {/* Botão de compra sempre visível */}
-                    <button className="w-full bg-green-600 text-white py-1.5 px-3 rounded text-xs font-semibold hover:bg-green-700 transition-all duration-300">
-                      Comprar agora
+                    {/* Espacer para empurrar preço para baixo */}
+                    <div className="flex-1" />
+                    
+                    {/* Preços com destaque */}
+                    <div className="mb-3">
+                      {ebook.originalPrice && (
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-xs line-through text-gray-500">
+                            R$ {ebook.originalPrice.toFixed(2)}
+                          </span>
+                          <span className="text-[10px] bg-primary/20 text-primary px-1.5 py-0.5 rounded font-medium">
+                            Economize R$ {(ebook.originalPrice - ebook.price).toFixed(2)}
+                          </span>
+                        </div>
+                      )}
+                      <p className="text-xl font-bold text-white">
+                        R$ {ebook.price.toFixed(2)}
+                        <span className="text-xs text-gray-400 font-normal ml-1">à vista</span>
+                      </p>
+                    </div>
+
+                    {/* Botão de compra aprimorado */}
+                    <button className="w-full bg-gradient-to-r from-primary to-primary/80 text-background py-2.5 px-3 rounded-lg text-xs font-bold hover:from-primary/90 hover:to-primary/70 transition-all duration-300 transform hover:scale-[1.02] group">
+                      <span className="flex items-center justify-center gap-1">
+                        Comprar agora
+                        <svg className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </span>
                     </button>
+                    
+                    {/* Garantias */}
+                    <div className="mt-2 text-[9px] text-center text-gray-500">
+                      🔒 Compra segura • 📱 Acesso imediato
+                    </div>
                   </div>
                 </div>
               </Link>
@@ -164,47 +184,47 @@ export default function EbooksPage() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-r from-primary/10 to-primary/5 rounded-3xl p-8 md:p-12 relative overflow-hidden"
+          className="bg-primary rounded-3xl p-8 md:p-12 relative overflow-hidden"
         >
           <div className="max-w-3xl">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-background">
               Por que conhecimento financeiro é o investimento mais seguro?
             </h2>
-            <p className="text-lg text-muted-foreground mb-6">
+            <p className="text-lg text-background/80 mb-6">
               Enquanto ações podem cair e imóveis desvalorizar, o conhecimento que você adquire 
               permanece com você para sempre. É o único ativo que ninguém pode tirar de você.
             </p>
             <div className="grid md:grid-cols-3 gap-4">
               <div className="flex items-start gap-3">
-                <TrendingUp className="w-5 h-5 text-primary mt-1" />
+                <TrendingUp className="w-5 h-5 text-background mt-1" />
                 <div>
-                  <h3 className="font-semibold mb-1">Retorno garantido</h3>
-                  <p className="text-sm text-muted-foreground">
+                  <h3 className="font-semibold mb-1 text-background">Retorno garantido</h3>
+                  <p className="text-sm text-background/70">
                     Aplique o que aprender e veja resultados reais
                   </p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Shield className="w-5 h-5 text-primary mt-1" />
+                <Shield className="w-5 h-5 text-background mt-1" />
                 <div>
-                  <h3 className="font-semibold mb-1">Sem riscos</h3>
-                  <p className="text-sm text-muted-foreground">
+                  <h3 className="font-semibold mb-1 text-background">Sem riscos</h3>
+                  <p className="text-sm text-background/70">
                     Conhecimento não desvaloriza com o tempo
                   </p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Globe className="w-5 h-5 text-primary mt-1" />
+                <Globe className="w-5 h-5 text-background mt-1" />
                 <div>
-                  <h3 className="font-semibold mb-1">Acesso vitalício</h3>
-                  <p className="text-sm text-muted-foreground">
+                  <h3 className="font-semibold mb-1 text-background">Acesso vitalício</h3>
+                  <p className="text-sm text-background/70">
                     Estude no seu ritmo, quando quiser
                   </p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+          <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-background/10 rounded-full blur-3xl" />
         </motion.div>
       </section>
 
@@ -231,8 +251,8 @@ export default function EbooksPage() {
                 viewport={{ once: true }}
                 className="text-center relative z-10"
               >
-                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-primary">1</span>
+                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-bold text-background">1</span>
                 </div>
                 <h3 className="font-semibold mb-2">Escolha seu ebook</h3>
                 <p className="text-sm text-muted-foreground">
@@ -248,8 +268,8 @@ export default function EbooksPage() {
                 viewport={{ once: true }}
                 className="text-center relative z-10"
               >
-                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-primary">2</span>
+                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-bold text-background">2</span>
                 </div>
                 <h3 className="font-semibold mb-2">Pagamento seguro</h3>
                 <p className="text-sm text-muted-foreground">
@@ -265,8 +285,8 @@ export default function EbooksPage() {
                 viewport={{ once: true }}
                 className="text-center relative z-10"
               >
-                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-primary">3</span>
+                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-bold text-background">3</span>
                 </div>
                 <h3 className="font-semibold mb-2">Acesso imediato</h3>
                 <p className="text-sm text-muted-foreground">
@@ -282,8 +302,8 @@ export default function EbooksPage() {
                 viewport={{ once: true }}
                 className="text-center relative z-10"
               >
-                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-primary">4</span>
+                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-bold text-background">4</span>
                 </div>
                 <h3 className="font-semibold mb-2">Estude onde quiser</h3>
                 <p className="text-sm text-muted-foreground">
@@ -348,27 +368,27 @@ export default function EbooksPage() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-br from-primary/20 to-primary/10 rounded-3xl p-8 md:p-12 text-center"
+          className="bg-primary rounded-3xl p-8 md:p-12 text-center"
         >
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-background">
             Comece sua jornada de conhecimento hoje
           </h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-background/80 mb-8 max-w-2xl mx-auto">
             Invista em você mesmo. O conhecimento é o único investimento que sempre 
             gera retorno positivo.
           </p>
           <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5 text-green-500" />
-              <span>Garantia de 7 dias</span>
+              <CheckCircle className="w-5 h-5 text-background" />
+              <span className="text-background font-medium">Garantia de 7 dias</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5 text-green-500" />
-              <span>Pagamento seguro</span>
+              <CheckCircle className="w-5 h-5 text-background" />
+              <span className="text-background font-medium">Pagamento seguro</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5 text-green-500" />
-              <span>Acesso imediato</span>
+              <CheckCircle className="w-5 h-5 text-background" />
+              <span className="text-background font-medium">Acesso imediato</span>
             </div>
           </div>
         </motion.div>

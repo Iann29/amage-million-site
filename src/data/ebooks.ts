@@ -25,6 +25,8 @@ export interface Ebook {
   category: string;
   rating: number;
   reviewsCount: number;
+  sales?: number;
+  discount?: number;
 }
 
 export const ebooks: Ebook[] = [
@@ -139,7 +141,9 @@ export const ebooks: Ebook[] = [
     publishedAt: '2024-01-15',
     category: 'Economia',
     rating: 4.8,
-    reviewsCount: 127
+    reviewsCount: 127,
+    sales: 2347,
+    discount: 60
   },
   {
     id: '2',
@@ -190,7 +194,9 @@ export const ebooks: Ebook[] = [
     publishedAt: '2024-02-01',
     category: 'Mercado Financeiro',
     rating: 4.9,
-    reviewsCount: 89
+    reviewsCount: 89,
+    sales: 1823,
+    discount: 50
   }
 ];
 
