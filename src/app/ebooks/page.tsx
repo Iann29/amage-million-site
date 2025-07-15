@@ -38,8 +38,8 @@ export default function EbooksPage() {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-3xl md:text-5xl font-light mb-4">
-              Conhecimento é o melhor
-              <span className="block font-bold text-primary">investimento</span>
+              Invista no seu
+              <span className="text-primary font-bold"> futuro financeiro</span>
             </h1>
             
             <p className="text-lg text-muted-foreground mb-6 max-w-2xl">

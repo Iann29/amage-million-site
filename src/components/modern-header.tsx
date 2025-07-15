@@ -12,7 +12,7 @@ import { UserDropdown } from '@/components/user-dropdown';
 const menuItems = [
   { name: 'Início', href: '/' },
   { name: 'Ebooks', href: '/ebooks' },
-  { name: 'Planos', href: '#planos' },
+  { name: 'Planos', href: '/planos' },
   { name: 'Sobre', href: '/sobre' },
 ];
 
