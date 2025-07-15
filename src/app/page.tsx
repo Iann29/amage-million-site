@@ -1,5 +1,7 @@
 import { Hero } from '@/components/hero';
-import { WhyInvestSection } from '@/components/why-invest-section';
+// import { WhyInvestSection } from '@/components/why-invest-section';
+import { ProblemsTimelineNew } from '@/components/problems-timeline-new';
+import { ProblemsVisualTimeline } from '@/components/problems-visual-timeline';
 import { OpportunitiesSection } from '@/components/opportunities-section';
 import { PopularInvestmentsSection } from '@/components/popular-investments-section';
 import { CalculatorBanner } from '@/components/calculator-banner';
@@ -15,7 +17,7 @@ export default function Home() {
     <>
       <main>
         <Hero />
-        <WhyInvestSection />
+        <ProblemsTimelineNew />
         <OpportunitiesSection />
         <PopularInvestmentsSection />
         <CalculatorBanner />

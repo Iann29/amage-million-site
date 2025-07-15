@@ -39,17 +39,19 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
         <meta name="apple-mobile-web-app-title" content="Million" />
       </head>
       <body className={`${inter.variable} ${lato.variable} font-sans antialiased`}>
-        <AuthProvider>
-          <LenisProvider>
-            <ModernHeader />
-            {children}
-            <WhatsAppButton />
-          </LenisProvider>
-        </AuthProvider>
+        <div style={{ overflowX: 'clip', width: '100%' }}>
+          <AuthProvider>
+            <LenisProvider>
+              <ModernHeader />
+              {children}
+              <WhatsAppButton />
+            </LenisProvider>
+          </AuthProvider>
+        </div>
       </body>
     </html>
   );
