@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Check, Star, TrendingUp, Shield, Users, MessageSquare, BarChart3, Zap, Clock, Award, AlertCircle, BookOpen } from 'lucide-react';
+import { Check, Star, TrendingUp, Shield, Users, MessageSquare, BarChart3, Zap, Clock, Award, BookOpen } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -237,89 +237,55 @@ export function PricingSection() {
           viewport={{ once: true }}
           className="mt-32 max-w-4xl mx-auto text-center"
         >
-          <h3 className="text-2xl font-bold mb-8">
-            Por que o acompanhamento mensal é <span className="text-primary">essencial</span>?
-          </h3>
+          <h2 className="text-3xl md:text-4xl font-light mb-16">
+            Por que o acompanhamento mensal é <span className="text-primary font-bold">essencial</span>?
+          </h2>
           
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <div className="bg-card/30 p-6 rounded-xl border border-gray-800">
-              <Clock className="w-10 h-10 text-primary mb-4 mx-auto" />
-              <h4 className="font-bold text-white mb-2">Mercado em movimento</h4>
-              <p className="text-sm text-gray-400">
-                O cenário econômico muda diariamente. Sem orientação contínua, você perde oportunidades e pode tomar decisões erradas.
-              </p>
-            </div>
-            <div className="bg-card/30 p-6 rounded-xl border border-gray-800">
-              <Shield className="w-10 h-10 text-primary mb-4 mx-auto" />
-              <h4 className="font-bold text-white mb-2">Proteção do patrimônio</h4>
-              <p className="text-sm text-gray-400">
-                Ajustamos sua carteira conforme o mercado, protegendo seus investimentos de crises e maximizando ganhos.
-              </p>
-            </div>
-            <div className="bg-card/30 p-6 rounded-xl border border-gray-800">
-              <MessageSquare className="w-10 h-10 text-primary mb-4 mx-auto" />
-              <h4 className="font-bold text-white mb-2">Suporte quando precisar</h4>
-              <p className="text-sm text-gray-400">
-                Dúvidas surgem a qualquer momento. Com nosso acompanhamento, você tem respostas rápidas e precisas sempre.
-              </p>
-            </div>
+          <div className="grid md:grid-cols-3 gap-8 mb-12 max-w-5xl mx-auto">
+            {[
+              {
+                icon: Clock,
+                title: "Mercado em movimento",
+                description: "O cenário econômico muda diariamente. Sem orientação contínua, você perde oportunidades e pode tomar decisões erradas."
+              },
+              {
+                icon: Shield,
+                title: "Proteção do patrimônio",
+                description: "Ajustamos sua carteira conforme o mercado, protegendo seus investimentos de crises e maximizando ganhos."
+              },
+              {
+                icon: MessageSquare,
+                title: "Suporte quando precisar",
+                description: "Dúvidas surgem a qualquer momento. Com nosso acompanhamento, você tem respostas rápidas e precisas sempre."
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center mx-auto mb-4 transition-all duration-300 hover:scale-105 hover:rotate-[10deg]">
+                  <item.icon className="w-8 h-8 text-[#151515]" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
+                <p className="text-muted-foreground">{item.description}</p>
+              </motion.div>
+            ))}
           </div>
           
-          <div className="bg-primary/10 border border-primary/20 rounded-2xl p-6">
-            <p className="text-lg text-white font-medium mb-2">
+          <div className="bg-white rounded-2xl p-6 shadow-lg">
+            <p className="text-lg text-gray-900 font-medium mb-2">
               💡 Investir sem acompanhamento é como dirigir vendado
             </p>
-            <p className="text-gray-400">
+            <p className="text-gray-600">
               Por apenas R$ 69,90/mês, você tem um time de especialistas cuidando do seu dinheiro 24/7
             </p>
           </div>
         </motion.div>
 
-        {/* Mini FAQ */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="mt-32 max-w-4xl mx-auto"
-        >
-          <h3 className="text-xl font-bold mb-8 flex items-center gap-2">
-            <AlertCircle className="w-5 h-5 text-primary" />
-            Dúvidas frequentes
-          </h3>
-            
-          <div className="space-y-6">
-            <div>
-              <p className="font-semibold text-white mb-2">
-                Preciso ter experiência com investimentos?
-              </p>
-              <p className="text-sm text-gray-400">
-                Não! O Plano Start foi criado especialmente para iniciantes. 
-                Vamos te guiar desde o básico até você se sentir confiante.
-              </p>
-            </div>
-            
-            <div>
-              <p className="font-semibold text-white mb-2">
-                Quanto tempo leva para ver resultados?
-              </p>
-              <p className="text-sm text-gray-400">
-                Com nossa estratégia, muitos alunos relatam os primeiros 
-                retornos positivos já no primeiro mês.
-              </p>
-            </div>
-            
-            <div>
-              <p className="font-semibold text-white mb-2">
-                E se eu não gostar? Posso cancelar?
-              </p>
-              <p className="text-sm text-gray-400">
-                Sim! Oferecemos garantia de 7 dias. Se não ficar satisfeito, 
-                devolvemos 100% do valor investido.
-              </p>
-            </div>
-          </div>
-        </motion.div>
 
         {/* CTA final */}
         <motion.div
