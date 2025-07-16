@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useModal } from '@/contexts/modal-context';
 
 interface MarketItem {
   name: string;
@@ -22,6 +23,7 @@ interface MarketDataResponse {
 }
 
 export function MarketData() {
+  const { isModalOpen } = useModal();
   const [marketItems, setMarketItems] = useState<MarketItem[]>([
     { name: 'USD', value: 5.472, change: 0.023, changePercent: 0.42 },
     { name: 'BTC', value: 540000, change: 5234, changePercent: 1.54 },
@@ -119,7 +121,7 @@ export function MarketData() {
       </div>
       
       {/* Mobile - Horizontal Bottom */}
-      <div className="xl:hidden absolute bottom-0 left-0 right-0 z-50 backdrop-blur-md bg-white/5 border-t border-white/10">
+      <div className={`xl:hidden absolute bottom-0 left-0 right-0 ${isModalOpen ? 'z-10' : 'z-50'} backdrop-blur-md bg-white/5 border-t border-white/10`}>
         <div className="flex items-center justify-between px-4 py-3 text-white/60 text-xs font-light">
           {marketItems.map((item, index) => (
             <motion.div

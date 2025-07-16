@@ -4,6 +4,7 @@ import { LenisProvider } from "@/providers/lenis-provider";
 import { AuthProvider } from "@/contexts/auth-context";
 import { ModernHeader } from "@/components/modern-header";
 import { WhatsAppButton } from "@/components/whatsapp-button";
+import { ModalProvider } from "@/contexts/modal-context";
 import "./globals.css";
 
 const inter = Inter({
@@ -45,11 +46,13 @@ export default function RootLayout({
       <body className={`${inter.variable} ${lato.variable} font-sans antialiased`}>
         <div style={{ overflowX: 'clip', width: '100%' }}>
           <AuthProvider>
-            <LenisProvider>
-              <ModernHeader />
-              {children}
-              <WhatsAppButton />
-            </LenisProvider>
+            <ModalProvider>
+              <LenisProvider>
+                <ModernHeader />
+                {children}
+                <WhatsAppButton />
+              </LenisProvider>
+            </ModalProvider>
           </AuthProvider>
         </div>
       </body>

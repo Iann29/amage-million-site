@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { UserDropdown } from '@/components/user-dropdown';
+import { useModal } from '@/contexts/modal-context';
 
 const menuItems = [
   { name: 'Início', href: '/' },
@@ -19,6 +20,8 @@ const menuItems = [
 export function ModernHeader() {
   const [menuState, setMenuState] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isMobile, setIsMobile] = React.useState(false);
+  const { isModalOpen } = useModal();
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -28,8 +31,17 @@ export function ModernHeader() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
-    <header>
+    <header className={isMobile && isModalOpen ? "hidden" : ""}>
       <nav
         data-state={menuState ? 'active' : 'inactive'}
         className="fixed z-50 w-full px-2"
