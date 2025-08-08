@@ -5,58 +5,40 @@ import { TestimonialsColumn } from '@/components/ui/testimonials-columns';
 
 const testimonials = [
   {
+    text: 'Nesse pouco tempo que estou com a Million, já dei início aos meus investimentos, consegui uma grande clareza do que é o mercado e como as coisas funcionam e olha que eu não sabia nada. Também achei muito top o grupo das notícias, a todo momento estão enviando novas, sobre o cenário atual do mundo.',
+    name: 'Leonardo Santini'
+  },
+  {
+    text: 'Desde que acreditei no projeto, comecei a entender muito mais sobre como funcionam o mundo dos investimentos. As notícias do grupo facilitam bastante, pois o material é apresentado de forma resumida e de fácil entendimento.',
+    name: 'Vitor Girardi'
+  },
+  {
+    text: 'Conteúdo fenomenal! Sempre estão atualizando sobre o cenário econômico e me dando dicas essenciais de como alavancar e crescer, não só financeiramente.',
+    name: 'Lucas Teixeira'
+  },
+  {
+    text: 'Quando soube dos planos que a Million oferecia, entendi que era a minha chance de dar o pontapé inicial com a segurança que o acompanhamento da equipe me oferecia. O espaço para tirar dúvidas me ajuda a tomar decisões com mais embasamento.',
+    name: 'Otávio Carissimi'
+  },
+  {
+    text: 'Desde que iniciei com a Million, tenho notado uma evolução diária. O que antes parecia ser números difíceis ou complicados passou a se tornar rotina! Foi uma evolução incrível e que cresce a cada dia!',
+    name: 'Guilherme Negretti'
+  },
+  {
+    text: 'Como alguém que tinha praticamente zero noção, estou curtindo bastante. Principalmente pela parte de ter um acompanhamento bem de perto, mostrando como investir passo a passo, com segurança. Vocês passam muita confiança!',
+    name: 'Eduardo Favretto'
+  },
+  {
+    text: 'Eles sempre me atendem com atenção, tiram minhas dúvidas com paciência e explicam tudo de forma clara. No começo fiquei com receio por ser minha primeira vez investindo, mas fui acompanhada de perto e me senti segura.',
+    name: 'Suelen Dalpozzo'
+  },
+  {
+    text: 'A Million me ajudou muito no entendimento das maneiras de investir, mostrando que há diversas aplicações e sempre deixando claro os possíveis riscos e retornos. As informações postadas no grupo mantêm a gente sempre atualizado.',
+    name: 'Bernardo Zanatta'
+  },
+  {
     text: 'A Million transformou completamente minha visão sobre investimentos. Hoje tenho uma carteira diversificada e rentável.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop',
-    name: 'Carlos Mendes',
-    role: 'Empresário'
-  },
-  {
-    text: 'Sempre tive medo de investir, mas com a Million aprendi que é possível fazer meu dinheiro trabalhar por mim.',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop',
-    name: 'Ana Silva',
-    role: 'Médica'
-  },
-  {
-    text: 'O que mais me impressionou foi a transparência e o cuidado em explicar cada investimento.',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop',
-    name: 'Roberto Oliveira',
-    role: 'Engenheiro'
-  },
-  {
-    text: 'Excelente assessoria! Em poucos meses já consigo ver meu patrimônio crescendo de forma consistente.',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop',
-    name: 'Mariana Costa',
-    role: 'Advogada'
-  },
-  {
-    text: 'A equipe da Million é extremamente profissional. Me sinto seguro com minhas decisões de investimento.',
-    image: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=150&h=150&fit=crop',
-    name: 'João Paulo Ferreira',
-    role: 'Diretor de TI'
-  },
-  {
-    text: 'Finalmente entendi como fazer meu dinheiro render. A Million simplificou tudo para mim.',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop',
-    name: 'Patrícia Almeida',
-    role: 'Professora'
-  },
-  {
-    text: 'Recomendo para todos! O atendimento personalizado faz toda a diferença nos resultados.',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop',
-    name: 'Ricardo Santos',
-    role: 'Empresário'
-  },
-  {
-    text: 'Meus investimentos nunca renderam tanto. A Million mudou minha vida financeira.',
-    image: 'https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=150&h=150&fit=crop',
-    name: 'Fernanda Lima',
-    role: 'Designer'
-  },
-  {
-    text: 'Transparência e resultados reais. É isso que encontrei na Million Capital.',
-    image: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150&h=150&fit=crop',
-    name: 'Bruno Rodrigues',
-    role: 'Consultor'
+    name: 'Patricia Santos'
   }
 ];
 
@@ -77,7 +59,7 @@ export function TestimonialsSection() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#151515] mb-4">
+            <h2 className="text-3xl md:text-5xl lg:text-5xl font-bold text-[#151515] mb-4 font-[family-name:var(--font-lato)]">
               O que falam da <span className="text-primary">Million</span>?
             </h2>
             <p className="text-gray-600 text-lg max-w-3xl mx-auto">
@@ -87,9 +69,9 @@ export function TestimonialsSection() {
 
           {/* Testimonials Columns with Animation */}
           <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[600px] overflow-hidden">
-            <TestimonialsColumn testimonials={firstColumn} duration={15} />
-            <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
-            <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />
+            <TestimonialsColumn testimonials={firstColumn} duration={30} />
+            <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={35} />
+            <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={32} />
           </div>
 
           {/* Bottom text */}

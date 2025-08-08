@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { GetStartedButton } from '@/components/ui/get-started-button';
 
 export function FinalCTA() {
 
@@ -14,11 +15,11 @@ export function FinalCTA() {
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.3 }}
               viewport={{ once: true }}
               className="text-center md:text-left"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-[#151515] mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#151515] mb-4 font-[family-name:var(--font-lato)]">
                 Pronto para transformar seu futuro?
               </h2>
               <p className="text-gray-600 mb-8 max-w-md mx-auto md:mx-0">
@@ -26,13 +27,13 @@ export function FinalCTA() {
               </p>
 
               <div className="flex justify-center md:justify-start">
-                <button
+                <GetStartedButton 
                   onClick={() => window.location.href = '#contato'}
-                  className="px-8 py-4 bg-[#151515] text-white rounded-lg font-medium hover:bg-[#151515]/90 transition-all duration-300 flex items-center gap-2 group"
+                  className="py-4 bg-[#151515] text-white hover:bg-[#151515]/90 flex items-center gap-2 group"
                 >
                   Começar agora
                   <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </button>
+                </GetStartedButton>
               </div>
             </motion.div>
 
@@ -40,7 +41,7 @@ export function FinalCTA() {
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.3 }}
               viewport={{ once: true }}
               className="bg-white rounded-2xl border border-gray-100 p-6 md:p-8"
             >

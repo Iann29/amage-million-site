@@ -5,6 +5,7 @@ import { TrendingUp, Shield, BookOpen, Users, BarChart3, Building2, Wallet, Arro
 import { BlurredStagger } from '@/components/ui/blurred-stagger-text';
 import { GlareCard } from '@/components/ui/glare-card';
 import Link from 'next/link';
+import { GetStartedButton } from '@/components/ui/get-started-button';
 
 const solutions = [
   {
@@ -80,7 +81,7 @@ export function OpportunitiesSection() {
             viewport={{ once: true }}
             className="max-w-6xl mx-auto mb-12 text-center"
           >
-            <h2 className="text-3xl md:text-4xl text-[#151515] font-bold">
+            <h2 className="text-3xl md:text-5xl lg:text-5xl text-[#151515] font-bold font-[family-name:var(--font-lato)]">
               E como a <span className="text-primary">Million</span> vai te ajudar?
             </h2>
           </motion.div>
@@ -125,12 +126,13 @@ export function OpportunitiesSection() {
             viewport={{ once: true }}
             className="flex justify-center mt-12"
           >
-            <Link href="#contato">
-              <button className="bg-[#151515] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#151515]/90 transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center gap-2 group">
-                Comece sua jornada agora
-                <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </button>
-            </Link>
+            <GetStartedButton 
+              href="#contato"
+              className="bg-[#151515] text-white hover:bg-[#151515]/90 py-4 shadow-lg hover:shadow-xl inline-flex items-center gap-2 group"
+            >
+              Comece sua jornada agora
+              <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+            </GetStartedButton>
           </motion.div>
         </div>
       </section>

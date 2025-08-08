@@ -55,15 +55,20 @@ export function InstagramGrid() {
             href="https://instagram.com/millioncapital_"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:inline-flex text-sm font-semibold text-white hover:text-white items-center gap-2 group transition-all duration-300"
+            className="hidden md:inline-flex text-sm font-semibold text-white items-center gap-2 group transition-all duration-300"
+            style={{
+              '--instagram-gradient': 'linear-gradient(90deg, #833AB4, #FD1D1D, #FCB045)'
+            } as React.CSSProperties}
           >
-            Abrir Instagram
+            <span className="transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-[#833AB4] group-hover:via-[#FD1D1D] group-hover:to-[#FCB045] group-hover:bg-clip-text group-hover:text-transparent">
+              Abrir Instagram
+            </span>
             <div className="relative w-4 h-4 overflow-visible">
               <Instagram 
-                className="w-4 h-4 transition-all duration-300 group-hover:rotate-45 fill-none stroke-white stroke-2" 
+                className="w-4 h-4 transition-all duration-300 group-hover:rotate-[20deg] fill-none stroke-white stroke-2" 
               />
               <Instagram 
-                className="w-4 h-4 absolute inset-0 transition-all duration-300 group-hover:rotate-45 opacity-0 group-hover:opacity-100 fill-none stroke-2"
+                className="w-4 h-4 absolute inset-0 transition-all duration-300 group-hover:rotate-[20deg] opacity-0 group-hover:opacity-100 fill-none stroke-2"
                 style={{
                   stroke: 'url(#instagram-gradient)',
                 }}
@@ -90,7 +95,7 @@ export function InstagramGrid() {
             >
               <div className="relative w-10 h-10 overflow-visible">
                 <Instagram 
-                  className="w-10 h-10 transition-all duration-300 group-hover:rotate-45 fill-none stroke-[2px]"
+                  className="w-10 h-10 transition-all duration-300 group-hover:rotate-[20deg] fill-none stroke-[2px]"
                   style={{
                     stroke: 'url(#instagram-gradient-mobile)',
                   }}

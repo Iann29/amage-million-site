@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Calculator, TrendingUp, DollarSign, Calendar, Percent, Download } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { GetStartedButton } from '@/components/ui/get-started-button';
 
 interface CalculationResult {
   totalAmount: number;
@@ -534,14 +535,12 @@ export default function CalculadoraPage() {
             <p className="text-lg mb-4">
               Agora que você entende o poder dos juros compostos...
             </p>
-            <motion.a
+            <GetStartedButton 
               href="#"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+              className="inline-block hover:scale-105"
             >
               Comece a investir hoje mesmo
-            </motion.a>
+            </GetStartedButton>
           </div>
         </motion.div>
       </main>

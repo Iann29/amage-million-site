@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { GetStartedButton } from '@/components/ui/get-started-button';
 
 const ebooks = [
   {
@@ -145,11 +146,11 @@ export function EbooksSection() {
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.4 }}
               viewport={{ once: true }}
               className="text-center lg:text-left"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 mx-auto lg:mx-0">
+              <h2 className="text-3xl md:text-5xl lg:text-5xl font-bold text-white mb-4 mx-auto lg:mx-0 font-[family-name:var(--font-lato)]">
                 O conhecimento é o
                 <span className="block text-primary">melhor investimento</span>
               </h2>
@@ -182,16 +183,13 @@ export function EbooksSection() {
               </div>
 
               <div className="flex justify-center lg:justify-start">
-                <Link href="/ebooks">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="bg-primary text-background px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 inline-flex items-center gap-3 group"
-                  >
-                    Ver todos os ebooks
-                    <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-                  </motion.button>
-                </Link>
+                <GetStartedButton 
+                  href="/ebooks"
+                  className="py-4 inline-flex items-center gap-3 group"
+                >
+                  Ver todos os ebooks
+                  <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                </GetStartedButton>
               </div>
             </motion.div>
           </div>

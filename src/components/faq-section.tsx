@@ -45,11 +45,11 @@ export function FAQSection() {
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.3 }}
               viewport={{ once: true }}
               className="lg:sticky lg:top-20 mb-8 lg:mb-0 text-center lg:text-left"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+              <h2 className="text-3xl md:text-5xl lg:text-5xl font-bold text-white mb-3 font-[family-name:var(--font-lato)]">
                 Dúvidas
                 <span className="block text-primary">frequentes</span>
               </h2>

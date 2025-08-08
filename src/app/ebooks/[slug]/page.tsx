@@ -10,6 +10,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/auth-context';
+import { GetStartedButton } from '@/components/ui/get-started-button';
 
 export default function EbookSalesPage() {
   const params = useParams();
@@ -232,19 +233,16 @@ export default function EbookSalesPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.7 }}
-          className="max-w-2xl mx-auto text-center bg-gradient-to-r from-primary/20 to-primary/10 p-8 rounded-3xl"
+          className="max-w-2xl mx-auto text-center bg-gradient-to-r from-primary to-primary/90 p-8 rounded-3xl"
         >
-          <h2 className="text-3xl font-bold mb-4">
+          <h2 className="text-3xl font-bold mb-6 text-background">
             Transforme sua vida financeira hoje
           </h2>
-          <p className="text-lg text-muted-foreground mb-6">
-            Junte-se a mais de {ebook.reviewsCount} pessoas que já estão aprendendo com este ebook
-          </p>
           
           <div className="mb-6">
-            <span className="text-5xl font-bold text-primary">R$ {ebook.price.toFixed(2)}</span>
+            <span className="text-5xl font-bold text-white">R$ {ebook.price.toFixed(2)}</span>
             {ebook.originalPrice && (
-              <span className="text-lg text-muted-foreground line-through ml-3">
+              <span className="text-lg text-background/70 line-through ml-3">
                 R$ {ebook.originalPrice.toFixed(2)}
               </span>
             )}
@@ -253,7 +251,7 @@ export default function EbookSalesPage() {
           <button
             onClick={handlePurchase}
             disabled={isLoading}
-            className="bg-primary text-background px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center gap-2"
+            className="bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center gap-2"
           >
             {isLoading ? (
               <span>Processando...</span>
@@ -265,7 +263,7 @@ export default function EbookSalesPage() {
             )}
           </button>
           
-          <div className="mt-4 flex items-center gap-2 justify-center text-sm text-muted-foreground">
+          <div className="mt-4 flex items-center gap-2 justify-center text-sm text-background/80">
             <Shield className="w-4 h-4 text-green-500" />
             <span>Compra 100% segura • Garantia de 7 dias</span>
           </div>

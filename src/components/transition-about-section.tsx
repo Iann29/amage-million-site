@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { GetStartedButton } from '@/components/ui/get-started-button';
 
 export function TransitionAboutSection() {
   return (
@@ -37,13 +38,13 @@ export function TransitionAboutSection() {
               </p>
             </div>
 
-            <Link 
+            <GetStartedButton 
               href="/sobre"
-              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold text-sm md:text-base hover:bg-primary/90 transition-all hover:scale-105 group whitespace-nowrap"
+              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 text-sm md:text-base hover:bg-primary/90 hover:scale-105 group whitespace-nowrap"
             >
               Conheça a Million
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            </GetStartedButton>
           </div>
         </motion.div>
       </div>

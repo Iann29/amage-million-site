@@ -197,13 +197,13 @@ export function PopularInvestmentsSection() {
       <div className="container mx-auto px-4 relative">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.3 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-5xl lg:text-5xl font-bold mb-4 font-[family-name:var(--font-lato)]">
             Conheça os <span className="text-primary">investimentos</span><br className="md:hidden" /> mais populares do mercado
           </h2>
         </motion.div>
@@ -292,7 +292,7 @@ export function PopularInvestmentsSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.3 }}
           viewport={{ once: true }}
           className="max-w-7xl mx-auto mt-24 mb-8"
         >

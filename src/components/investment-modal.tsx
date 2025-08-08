@@ -7,6 +7,7 @@ import { useModalScroll } from '@/hooks/use-modal-scroll';
 import { useRouter } from 'next/navigation';
 import { useModal } from '@/contexts/modal-context';
 import { ModalPortal } from '@/components/modal-portal';
+import { GetStartedButton } from '@/components/ui/get-started-button';
 
 interface InvestmentModalProps {
   isOpen: boolean;
@@ -185,15 +186,15 @@ export function InvestmentModal({ isOpen, onClose, investment }: InvestmentModal
 
                     {/* CTA */}
                     <div className="pt-4">
-                      <button
+                      <GetStartedButton
                         onClick={() => {
                           onClose();
                           router.push('/ebooks');
                         }}
-                        className="w-full bg-primary text-background py-2.5 md:py-3 rounded-lg text-sm md:text-base font-medium hover:bg-primary/90 transition-colors"
+                        className="w-full py-2.5 md:py-3 text-sm md:text-base"
                       >
                         Quero aprender mais
-                      </button>
+                      </GetStartedButton>
                     </div>
                 </div>
               </div>

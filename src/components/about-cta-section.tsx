@@ -43,7 +43,7 @@ export function AboutCTASection() {
               className="text-center lg:text-left"
             >
               {/* Title */}
-              <h2 className="text-3xl md:text-4xl font-bold mb-8 leading-tight">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight font-[family-name:var(--font-lato)]">
                 <span className="text-[#151515]">Conheça a </span>
                 <span className="text-primary">Million</span>
               </h2>

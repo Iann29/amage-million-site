@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Check, Star } from 'lucide-react';
+import { GetStartedButton } from '@/components/ui/get-started-button';
 
 const plans = [
   {
@@ -113,16 +114,16 @@ export function PricingPlans() {
                   ))}
                 </ul>
 
-                <button
+                <GetStartedButton
                   onClick={() => sendWhatsAppMessage(plan.name)}
-                  className={`w-full py-3 text-sm font-medium transition-all duration-300 ${
+                  className={`w-full py-3 text-sm ${
                     plan.highlighted
                       ? 'bg-primary text-background hover:bg-primary/90'
                       : 'bg-transparent text-primary border border-primary hover:bg-primary hover:text-background'
                   }`}
                 >
                   Começar agora
-                </button>
+                </GetStartedButton>
 
                 <p className="text-xs text-center text-secondary mt-4">
                   Cancele quando quiser

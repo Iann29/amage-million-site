@@ -5,6 +5,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { TrendingDown, Users, AlertCircle } from 'lucide-react';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { GetStartedButton } from '@/components/ui/get-started-button';
 
 const inflationData = [
   { year: '2019', poupanca: 4.26, inflacao: 4.31 },
@@ -197,17 +198,12 @@ export function ProblemSection() {
             </div>
           </div>
 
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <GetStartedButton 
+            href="#como-funciona"
+            className="py-4 text-lg hover:shadow-[0_0_30px_rgba(216,174,99,0.5)]"
           >
-            <a
-              href="#como-funciona"
-              className="inline-block bg-primary text-background px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-[0_0_30px_rgba(216,174,99,0.5)]"
-            >
-              Quero mudar minha história
-            </a>
-          </motion.div>
+            Quero mudar minha história
+          </GetStartedButton>
         </motion.div>
       </div>
     </section>

@@ -20,6 +20,7 @@ interface MarketDataResponse {
   ibovespaChange?: number;
   vfix: number;
   vfixChange?: number;
+  error?: string;
 }
 
 export function MarketData() {
@@ -34,39 +35,62 @@ export function MarketData() {
   useEffect(() => {
     const fetchMarketData = async () => {
       try {
-        const response = await fetch('/api/market-data');
-        const data: MarketDataResponse = await response.json();
+        const response = await fetch('/api/market-data').catch(() => null);
+        
+        if (!response) {
+          console.warn('Failed to fetch market data');
+          return;
+        }
+        
+        if (!response.ok) {
+          console.warn('Market data API returned non-ok status:', response.status);
+          return;
+        }
+        
+        const contentType = response.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+          console.warn("Market data API returned non-JSON response");
+          return;
+        }
+        
+        let data: MarketDataResponse;
+        try {
+          data = await response.json();
+        } catch (jsonError) {
+          console.warn('Failed to parse market data JSON:', jsonError);
+          return;
+        }
         
         if (data && !data.error) {
           setMarketItems([
             { 
               name: 'USD', 
-              value: data.dolar, 
+              value: data.dolar || 5.472, 
               change: data.dolarChange || 0.023,
               changePercent: data.dolarChange || 0.42
             },
             { 
               name: 'BTC', 
-              value: data.bitcoin, 
+              value: data.bitcoin || 540000, 
               change: data.bitcoinChange || 5234,
               changePercent: data.bitcoinChange || 1.54
             },
             { 
               name: 'IBOV', 
-              value: data.ibovespa, 
+              value: data.ibovespa || 127543, 
               change: data.ibovespaChange || -234,
               changePercent: data.ibovespaChange || -0.18
             },
             { 
               name: 'IFIX', 
-              value: data.vfix, 
+              value: data.vfix || 12.37, 
               change: data.vfixChange || 0.01,
               changePercent: data.vfixChange || 0.08
             }
           ]);
         }
       } catch (error) {
-        console.error('Erro ao buscar dados do mercado:', error);
+        console.warn('Erro ao buscar dados do mercado:', error);
       }
     };
 

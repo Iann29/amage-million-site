@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Plus, Minus } from 'lucide-react';
+import { GetStartedButton } from '@/components/ui/get-started-button';
 
 const faqs = [
   {
@@ -117,14 +118,11 @@ export function FAQ() {
           className="text-center mt-12"
         >
           <p className="text-secondary mb-4">Ainda tem dúvidas?</p>
-          <a
+          <GetStartedButton
             href="https://wa.me/5554965778874?text=Olá! Tenho uma dúvida sobre a consultoria da Million Street."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-primary text-background px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
           >
             Fale conosco no WhatsApp
-          </a>
+          </GetStartedButton>
         </motion.div>
       </div>
     </section>

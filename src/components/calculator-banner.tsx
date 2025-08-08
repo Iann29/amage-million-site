@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { LeadCaptureModal } from './lead-capture-modal';
+import { GetStartedButton } from './ui/get-started-button';
 import Image from 'next/image';
 
 export function CalculatorBanner() {
@@ -30,7 +31,7 @@ export function CalculatorBanner() {
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.8, type: "spring" }}
+          transition={{ duration: 0.4, type: "spring" }}
           className="hidden md:block absolute bottom-0 right-5 md:right-20 lg:right-5 w-64 md:w-80 lg:w-[450px] z-30"
         >
           <Image
@@ -49,11 +50,11 @@ export function CalculatorBanner() {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.3 }}
               viewport={{ once: true }}
               className="text-center md:text-left"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <h2 className="text-3xl md:text-5xl lg:text-5xl font-bold mb-6 font-[family-name:var(--font-lato)]">
                 Descubra o poder dos
                 <span className="block text-primary">juros compostos</span>
               </h2>
@@ -62,14 +63,9 @@ export function CalculatorBanner() {
                 Pequenos aportes mensais podem se transformar em uma fortuna
               </p>
 
-              <motion.button
-                onClick={() => setIsModalOpen(true)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-primary text-background px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl"
-              >
+              <GetStartedButton onClick={() => setIsModalOpen(true)}>
                 Simular rendimentos
-              </motion.button>
+              </GetStartedButton>
             </motion.div>
             
             {/* Spacer for tourinho */}
