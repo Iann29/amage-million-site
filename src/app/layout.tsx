@@ -5,6 +5,7 @@ import { ModernHeader } from "@/components/modern-header";
 import { WhatsAppButton } from "@/components/whatsapp-button";
 import { Footer } from "@/components/footer";
 import { ModalProvider } from "@/contexts/modal-context";
+import { StructuredData } from "@/components/structured-data";
 import "./globals.css";
 
 const inter = Inter({
@@ -19,13 +20,14 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://capitalmillion.com'),
   title: "Million Capital | Finanças sem complicação",
   description: "Democratizando o acesso a investimentos inteligentes. Educação financeira descomplicada para construir o futuro que você merece.",
   keywords: "investimentos, consultoria financeira, educação financeira, Million",
   openGraph: {
     title: "Million - Consultoria de Investimentos",
     description: "Democratizando o acesso a investimentos inteligentes",
-    url: "https://million.com.br",
+    url: "https://capitalmillion.com",
     siteName: "Million",
     locale: "pt_BR",
     type: "website",
@@ -44,6 +46,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Million" />
       </head>
       <body className={`${inter.variable} ${lato.variable} font-sans antialiased`}>
+        <StructuredData />
         <div style={{ overflowX: 'clip', width: '100%' }}>
           <ModalProvider>
             <LenisProvider>

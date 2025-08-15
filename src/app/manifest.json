@@ -1,21 +1,26 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "Million Capital - Educação Financeira",
+  "short_name": "Million",
+  "description": "Democratizando o acesso a investimentos inteligentes",
   "icons": [
     {
-      "src": "/favicon.ico/web-app-manifest-192x192.png",
+      "src": "/web-app-manifest-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/favicon.ico/web-app-manifest-512x512.png",
+      "src": "/web-app-manifest-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#141414",
-  "background_color": "#141414",
-  "display": "standalone"
+  "theme_color": "#D8AE63",
+  "background_color": "#151515",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/",
+  "lang": "pt-BR",
+  "orientation": "portrait-primary"
 }
