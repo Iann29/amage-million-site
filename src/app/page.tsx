@@ -13,7 +13,7 @@ import { FAQSection } from '@/components/faq-section';
 import { FinalCTA } from '@/components/final-cta';
 
 export const metadata: Metadata = {
-  title: 'Million Capital | Educação Financeira e Investimentos Inteligentes',
+  title: 'Million Capital | Finanças sem complicação',
   description: 'Democratizando o acesso a investimentos inteligentes. Consultoria especializada, educação financeira descomplicada e resultados comprovados. +127% em 2023.',
   keywords: 'educação financeira, investimentos, consultoria financeira, bolsa de valores, renda fixa, fundos imobiliários, million capital, tapejara rs',
   openGraph: {
