@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Users, ArrowRight, Instagram } from 'lucide-react';
+import { ArrowRight, Instagram } from 'lucide-react';
 import Link from 'next/link';
 import { InstagramGrid } from './instagram-grid';
 

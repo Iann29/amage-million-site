@@ -65,10 +65,10 @@ export const Card = ({
   targetScale,
 }: CardProps) => {
   const container = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ['start end', 'start start'],
-  });
+  // const { scrollYProgress } = useScroll({
+  //   target: container,
+  //   offset: ['start end', 'start start'],
+  // });
 
   // const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
   const scale = useTransform(progress, range, [1, targetScale]);

@@ -46,13 +46,13 @@ export const BlurredStagger = ({
       }}
     >
       {headingText.split("").map((char, index) => {
-        const textUpToChar = headingText.slice(0, index);
+        // const textUpToChar = headingText.slice(0, index);
         // const isInHighlightWord = highlightWord && 
-          textUpToChar.includes(highlightWord.split("")[0]) && 
-          headingText.slice(
-            textUpToChar.lastIndexOf(highlightWord.split("")[0]), 
-            textUpToChar.lastIndexOf(highlightWord.split("")[0]) + highlightWord.length
-          ).includes(char);
+        //  textUpToChar.includes(highlightWord.split("")[0]) && 
+        //  headingText.slice(
+        //    textUpToChar.lastIndexOf(highlightWord.split("")[0]), 
+        //    textUpToChar.lastIndexOf(highlightWord.split("")[0]) + highlightWord.length
+        //  ).includes(char);
         
         const simpleCheck = highlightWord && headingText.indexOf(highlightWord) !== -1 &&
           index >= headingText.indexOf(highlightWord) && 

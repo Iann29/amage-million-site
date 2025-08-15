@@ -3,7 +3,6 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
@@ -70,6 +69,8 @@ export function ModernHeader() {
                   width={200}
                   height={50}
                   priority
+                  quality={100}
+                  unoptimized
                   className="h-12 w-auto"
                 />
               </Link>
@@ -77,10 +78,20 @@ export function ModernHeader() {
               <button
                 onClick={() => setMenuState(!menuState)}
                 aria-label={menuState ? 'Close Menu' : 'Open Menu'}
-                className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden"
+                className="relative z-20 flex flex-col justify-center items-center w-8 h-8 cursor-pointer lg:hidden"
               >
-                <Menu className={cn("m-auto size-6 text-white duration-200", menuState && "rotate-180 scale-0 opacity-0")} />
-                <X className={cn("absolute inset-0 m-auto size-6 text-white duration-200", menuState ? "rotate-0 scale-100 opacity-100" : "-rotate-180 scale-0 opacity-0")} />
+                <span className={cn(
+                  "block w-6 h-0.5 bg-white transition-all duration-300 ease-out",
+                  menuState ? "rotate-45 translate-y-1.5" : "-translate-y-1"
+                )} />
+                <span className={cn(
+                  "block w-6 h-0.5 bg-white transition-all duration-300 ease-out my-1",
+                  menuState && "opacity-0"
+                )} />
+                <span className={cn(
+                  "block w-6 h-0.5 bg-white transition-all duration-300 ease-out",
+                  menuState ? "-rotate-45 -translate-y-1.5" : "translate-y-1"
+                )} />
               </button>
             </div>
 
@@ -120,21 +131,7 @@ export function ModernHeader() {
               <div className="flex w-full items-center gap-6 sm:w-fit">
                 <Button
                   asChild
-                  className={cn(
-                    'bg-primary text-background hover:bg-primary/90',
-                    isScrolled ? 'lg:inline-flex' : 'lg:hidden'
-                  )}
-                >
-                  <Link href="#iniciar-jornada">
-                    <span>Fale conosco</span>
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  className={cn(
-                    'bg-primary text-background hover:bg-primary/90',
-                    isScrolled && 'lg:hidden'
-                  )}
+                  className="bg-primary text-background hover:bg-primary/90 w-full lg:w-auto"
                 >
                   <Link href="#iniciar-jornada">
                     <span>Fale conosco</span>

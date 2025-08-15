@@ -72,7 +72,7 @@ export function Testimonials() {
               </div>
 
               <p className="text-lg mb-6 italic relative z-10">
-                "{testimonial.quote}"
+                &quot;{testimonial.quote}&quot;
               </p>
 
               <p className="text-secondary mb-6 text-sm">

@@ -1,0 +1,37 @@
+/* Desabilita hover em dispositivos touch/mobile */
+@media (hover: none) and (pointer: coarse), (max-width: 768px) {
+  /* Remove todos os efeitos hover */
+  * {
+    transition-duration: 0ms !important;
+  }
+  
+  /* Desabilita hover states */
+  *:hover {
+    transform: none !important;
+    scale: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+  }
+  
+  /* Mantém apenas transições essenciais para interações de toque */
+  *:active {
+    transition-duration: 100ms !important;
+  }
+  
+  /* Desabilita animações de hover em botões */
+  button:hover,
+  a:hover,
+  .hover\:scale-105:hover,
+  .hover\:scale-110:hover,
+  .hover\:scale-\[1\.02\]:hover,
+  .hover\:scale-\[1\.05\]:hover {
+    transform: scale(1) !important;
+  }
+  
+  /* Desabilita hover em cards */
+  .group:hover > *,
+  .group:hover {
+    transform: translateY(0) !important;
+    box-shadow: none !important;
+  }
+}

@@ -69,9 +69,9 @@ export function TestimonialsSection() {
 
           {/* Testimonials Columns with Animation */}
           <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[600px] overflow-hidden">
-            <TestimonialsColumn testimonials={firstColumn} duration={30} />
-            <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={35} />
-            <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={32} />
+            <TestimonialsColumn testimonials={firstColumn} duration={15} />
+            <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={18} />
+            <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={16} />
           </div>
 
           {/* Bottom text */}

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Brain, Target, Rocket, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 

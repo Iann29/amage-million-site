@@ -109,7 +109,7 @@ export function ProblemsVisualTimeline() {
           </div>
           
           <blockquote className="border-l-4 border-yellow-500 pl-4 text-gray-300 italic">
-            "Vou aproveitar agora" - A frase que destrói o futuro de milhões
+            &quot;Vou aproveitar agora&quot; - A frase que destrói o futuro de milhões
           </blockquote>
         </div>
       ),
@@ -130,7 +130,7 @@ export function ProblemsVisualTimeline() {
               90% sabem que precisam aprender sobre dinheiro...
             </p>
             <p className="text-2xl font-bold text-purple-400">
-              Mas o medo de "perder tudo" paralisa a ação
+              Mas o medo de &quot;perder tudo&quot; paralisa a ação
             </p>
           </div>
           

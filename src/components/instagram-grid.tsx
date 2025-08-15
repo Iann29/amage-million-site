@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Camera, Instagram } from 'lucide-react';
+import { Instagram } from 'lucide-react';
 import Image from 'next/image';
 
 interface InstagramPost {

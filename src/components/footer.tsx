@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Instagram, Youtube, Linkedin } from 'lucide-react';
 
 const socialLinks = [
@@ -16,10 +17,15 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Left side - Logo */}
           <Link href="/">
-            <img 
+            <Image 
               src="/images/logo-million.svg" 
               alt="Million" 
-              className="h-12"
+              width={200}
+              height={50}
+              quality={100}
+              unoptimized
+              priority
+              className="h-12 w-auto"
             />
           </Link>
 

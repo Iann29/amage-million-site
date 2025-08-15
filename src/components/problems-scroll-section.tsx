@@ -55,7 +55,7 @@ const problems = [
   }
 ];
 
-function ProblemCard({ problem, index }: { problem: typeof problems[0], index: number }) {
+function ProblemCard({ problem }: { problem: typeof problems[0] }) {
   const cardRef = useRef<HTMLDivElement>(null);
   
   const { scrollYProgress } = useScroll({
@@ -66,8 +66,6 @@ function ProblemCard({ problem, index }: { problem: typeof problems[0], index: n
   // Animações simples e visíveis
   const opacity = useTransform(scrollYProgress, [0, 0.4, 0.8], [0, 0.5, 1]);
   const y = useTransform(scrollYProgress, [0, 0.4, 0.8], [40, 20, 0]);
-
-  const Icon = problem.icon;
 
   return (
     <motion.div
@@ -147,8 +145,8 @@ export function ProblemsScrollSection() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {problems.map((problem, index) => (
-            <ProblemCard key={problem.id} problem={problem} index={index} />
+          {problems.map((problem) => (
+            <ProblemCard key={problem.id} problem={problem} />
           ))}
         </div>
       </div>

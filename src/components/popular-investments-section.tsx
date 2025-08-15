@@ -6,6 +6,15 @@ import { useState } from 'react';
 import { ArrowRight, InfoIcon } from 'lucide-react';
 import { InvestmentModal } from './investment-modal';
 
+interface InvestmentProduct {
+  title: string;
+  description: string;
+  fullDescription: string;
+  example: string;
+  risks: string;
+  benefits: string[];
+}
+
 const investmentCategories = [
   {
     id: 'renda-fixa',
@@ -182,12 +191,12 @@ const investmentCategories = [
 
 export function PopularInvestmentsSection() {
   const [activeTab, setActiveTab] = useState('renda-fixa');
-  const [selectedInvestment, setSelectedInvestment] = useState<any>(null);
+  const [selectedInvestment, setSelectedInvestment] = useState<InvestmentProduct | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   const activeCategory = investmentCategories.find(cat => cat.id === activeTab);
 
-  const handleSaibaMais = (product: any) => {
+  const handleSaibaMais = (product: InvestmentProduct) => {
     setSelectedInvestment(product);
     setIsModalOpen(true);
   };
@@ -298,8 +307,8 @@ export function PopularInvestmentsSection() {
         >
           <div className="text-left">
             <p className="text-lg text-gray-400 italic mb-2">
-              "O juro composto é a oitava maravilha do mundo.<br />
-              Quem entende, ganha. Quem não entende, paga."
+              &quot;O juro composto é a oitava maravilha do mundo.&quot;<br />
+              &quot;Quem entende, ganha. Quem não entende, paga.&quot;
             </p>
             <p className="text-sm text-gray-500">
               — Albert Einstein

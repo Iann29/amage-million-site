@@ -2,7 +2,6 @@
 
 import React from "react";
 import { Timeline } from "@/components/ui/timeline";
-import { TrendingDown, Users, AlertCircle, DollarSign, Timer } from 'lucide-react';
 
 export function ProblemsTimelineNew() {
   const data = [
@@ -12,7 +11,7 @@ export function ProblemsTimelineNew() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="order-2 md:order-1">
             <p className="text-white/80 text-base md:text-lg font-semibold mb-4">
-              "A economia do Brasil sempre foi caracterizada por instabilidade"
+              &quot;A economia do Brasil sempre foi caracterizada por instabilidade&quot;
             </p>
             <p className="text-gray-400 text-sm md:text-base mb-6 leading-relaxed">
               Desde a independência em 1822, o Brasil já nasceu em crise econômica. 
@@ -45,7 +44,7 @@ export function ProblemsTimelineNew() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="order-2 md:order-1">
             <p className="text-white/80 text-base md:text-lg font-semibold mb-4">
-              "O governo não ensina você a investir"
+              &quot;O governo não ensina você a investir&quot;
             </p>
             <p className="text-gray-400 text-sm md:text-base mb-6 leading-relaxed">
               Apenas 21% das crianças brasileiras recebem alguma educação financeira. 
@@ -78,11 +77,11 @@ export function ProblemsTimelineNew() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="order-2 md:order-1">
             <p className="text-white/80 text-base md:text-lg font-semibold mb-4">
-              "77% das famílias estão endividadas"
+              &quot;77% das famílias estão endividadas&quot;
             </p>
             <p className="text-gray-400 text-sm md:text-base mb-6 leading-relaxed">
               61% não conseguem poupar nada do que ganham. 55% não controlam os gastos do cartão. 
-              56% cedem aos impulsos de compra. A mentalidade do "vou aproveitar agora" está criando 
+              56% cedem aos impulsos de compra. A mentalidade do &quot;vou aproveitar agora&quot; está criando 
               uma geração inteira sem patrimônio.
             </p>
             
@@ -111,12 +110,12 @@ export function ProblemsTimelineNew() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="order-2 md:order-1">
             <p className="text-white/80 text-base md:text-lg font-semibold mb-4">
-              "90% reconhecem necessidade de educação financeira"
+              &quot;90% reconhecem necessidade de educação financeira&quot;
             </p>
             <p className="text-gray-400 text-sm md:text-base mb-6 leading-relaxed">
               Mas o medo paralisa. Décadas de planos econômicos fracassados criaram um trauma coletivo. 
               A maioria prefere perder dinheiro na poupança do que aprender a investir. 
-              O medo de "perder tudo" paralisa milhões de brasileiros.
+              O medo de &quot;perder tudo&quot; paralisa milhões de brasileiros.
             </p>
             
             <div className="bg-black/50 border border-red-500/20 rounded-xl p-6 inline-block">
@@ -145,7 +144,7 @@ export function ProblemsTimelineNew() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="order-2 md:order-1">
               <p className="text-white/80 text-base md:text-lg font-semibold mb-4">
-                "R$ 100 = R$ 75 em 5 anos"
+                &quot;R$ 100 = R$ 75 em 5 anos&quot;
               </p>
               <p className="text-gray-400 text-sm md:text-base mb-6 leading-relaxed">
                 A inflação é um imposto invisível que corrói seu dinheiro 24 horas por dia. 

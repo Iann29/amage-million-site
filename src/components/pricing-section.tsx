@@ -18,7 +18,7 @@ export function PricingSection() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.3 }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
@@ -33,7 +33,7 @@ export function PricingSection() {
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4 }}
+              transition={{ duration: 0.2 }}
               viewport={{ once: true }}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
@@ -124,7 +124,7 @@ export function PricingSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.3 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
             viewport={{ once: true }}
             className="max-w-4xl mx-auto"
           >
@@ -167,7 +167,7 @@ export function PricingSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.2 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
             viewport={{ once: true }}
             className="mt-32 max-w-4xl mx-auto text-center"
           >
@@ -198,7 +198,7 @@ export function PricingSection() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: index * 0.05 }}
                   className="text-center"
                 >
                   <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center mx-auto mb-4 transition-all duration-300 hover:scale-105 hover:rotate-[10deg]">
@@ -224,7 +224,7 @@ export function PricingSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.4 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
             viewport={{ once: true }}
             className="mt-24 text-center"
           >

@@ -115,7 +115,7 @@ export function MarketData() {
     <>
       {/* Desktop - Vertical Left */}
       <div 
-        className="absolute z-50 hidden xl:block"
+        className="absolute z-30 hidden xl:block"
         style={{
           left: '20px',
           top: '50%',
@@ -145,7 +145,7 @@ export function MarketData() {
       </div>
       
       {/* Mobile - Horizontal Bottom */}
-      <div className={`xl:hidden absolute bottom-0 left-0 right-0 ${isModalOpen ? 'z-10' : 'z-50'} backdrop-blur-md bg-white/5 border-t border-white/10`}>
+      <div className={`xl:hidden absolute bottom-0 left-0 right-0 ${isModalOpen ? 'z-10' : 'z-30'} backdrop-blur-md bg-white/5 border-t border-white/10`}>
         <div className="flex items-center justify-between px-4 py-3 text-white/60 text-xs font-light">
           {marketItems.map((item, index) => (
             <motion.div
