@@ -95,9 +95,9 @@ export default function SobrePage() {
 
           <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
             {[
-              { name: "Matheus Gonçalves", image: "/images/Matheus.jpg", position: '60% 15%' },
-              { name: "Nicolas Cauduro", image: "/images/Nicolas.jpg", position: '60% 20%' },
-              { name: "Gabriel Boff", image: "/images/Gabriel.jpg", position: '65% 15%' }
+              { name: "Matheus Gonçalves", image: "/imgOtimized/Matheus.webp", position: '60% 15%' },
+              { name: "Nicolas Cauduro", image: "/imgOtimized/Nicolas.webp", position: '60% 20%' },
+              { name: "Gabriel Boff", image: "/imgOtimized/Gabriel.webp", position: '65% 15%' }
             ].map((member, index) => (
               <motion.div
                 key={index}
@@ -112,6 +112,7 @@ export default function SobrePage() {
                     src={member.image}
                     alt={member.name}
                     fill
+                    unoptimized={true}
                     className="object-cover transition-transform duration-500 group-hover:scale-[1.05]"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     style={{ objectPosition: member.position }}

@@ -44,6 +44,10 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
         <meta name="apple-mobile-web-app-title" content="Million" />
+        <link rel="preload" href="/imgOtimized/mulher-hero.webp" as="image" type="image/webp" media="(min-width: 768px)" />
+        <link rel="preload" href="/imgOtimized/hero-background-mobile.webp" as="image" type="image/webp" media="(max-width: 767px)" />
+        <link rel="dns-prefetch" href="//images.unsplash.com" />
+        <meta name="color-scheme" content="dark" />
       </head>
       <body className={`${inter.variable} ${lato.variable} font-sans antialiased`}>
         <StructuredData />

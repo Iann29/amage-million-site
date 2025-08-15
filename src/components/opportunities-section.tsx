@@ -72,28 +72,16 @@ export function OpportunitiesSection() {
         
         <div className="container mx-auto px-4 relative z-10">
           {/* Title */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="max-w-6xl mx-auto mb-12 text-center"
-          >
+          <div className="max-w-6xl mx-auto mb-12 text-center">
             <h2 className="text-3xl md:text-5xl lg:text-5xl text-[#151515] font-bold font-[family-name:var(--font-lato)]">
               E como a <span className="text-primary">Million</span> vai te ajudar?
             </h2>
-          </motion.div>
+          </div>
 
           {/* Solution cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 max-w-5xl mx-auto">
           {solutions.map((solution, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
+            <div key={index} className="group h-full">
               <GlareCard className="p-10 md:p-6">
                 <div className="flex flex-col min-h-full">
                   <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center mb-6">
@@ -112,18 +100,12 @@ export function OpportunitiesSection() {
                   </div>
                 </div>
               </GlareCard>
-            </motion.div>
+            </div>
           ))}
           </div>
 
           {/* CTA Button */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="flex justify-center mt-12"
-          >
+          <div className="flex justify-center mt-12">
             <GetStartedButton 
               href="#contato"
               className="bg-[#151515] text-white hover:bg-[#151515]/90 py-4 shadow-lg hover:shadow-xl inline-flex items-center gap-2 group"
@@ -131,7 +113,7 @@ export function OpportunitiesSection() {
               Comece sua jornada agora
               <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
             </GetStartedButton>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

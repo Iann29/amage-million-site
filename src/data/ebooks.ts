@@ -51,7 +51,7 @@ export const ebooks: Ebook[] = [
     `,
     price: 19.90,
     originalPrice: 49.90,
-    coverImage: '/images/Ebook-1.png',
+    coverImage: '/imgOtimized/Ebook-1.webp',
     author: 'Million Educação',
     pages: 120,
     chapters: [
@@ -164,7 +164,7 @@ export const ebooks: Ebook[] = [
     `,
     price: 19.90,
     originalPrice: 39.90,
-    coverImage: '/images/Ebook-2.png',
+    coverImage: '/imgOtimized/Ebook-2.webp',
     author: 'Million Educação',
     pages: 95,
     chapters: [

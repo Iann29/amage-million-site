@@ -11,12 +11,12 @@ interface InstagramPost {
 }
 
 const instagramPosts: InstagramPost[] = [
-  { id: 1, image: '/images/instagram-1.jpg', alt: 'Post sobre investimentos' },
-  { id: 2, image: '/images/instagram-2.jpg', alt: 'Dica financeira' },
-  { id: 3, image: '/images/instagram-3.jpg', alt: 'Análise de mercado' },
-  { id: 4, image: '/images/instagram-4.jpg', alt: 'Educação financeira' },
-  { id: 5, image: '/images/instagram-5.jpg', alt: 'Oportunidades' },
-  { id: 6, image: '/images/instagram-6.jpg', alt: 'Resultados' }
+  { id: 1, image: '/imgOtimized/instagram-1.webp', alt: 'Post sobre investimentos' },
+  { id: 2, image: '/imgOtimized/instagram-2.webp', alt: 'Dica financeira' },
+  { id: 3, image: '/imgOtimized/instagram-3.webp', alt: 'Análise de mercado' },
+  { id: 4, image: '/imgOtimized/instagram-4.webp', alt: 'Educação financeira' },
+  { id: 5, image: '/imgOtimized/instagram-5.webp', alt: 'Oportunidades' },
+  { id: 6, image: '/imgOtimized/instagram-6.webp', alt: 'Resultados' }
 ];
 
 export function InstagramGrid() {

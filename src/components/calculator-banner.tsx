@@ -35,7 +35,7 @@ export function CalculatorBanner() {
           className="hidden md:block absolute bottom-0 right-5 md:right-20 lg:right-5 w-64 md:w-80 lg:w-[450px] z-30"
         >
           <Image
-            src="/images/Tourinhocalculator.svg"
+            src="/imgOtimized/Tourinhocalculator.webp"
             alt="Tourinho Bull"
             width={600}
             height={600}

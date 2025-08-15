@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { Hero } from '@/components/hero';
 // import { WhyInvestSection } from '@/components/why-invest-section';
 // import { ProblemsTimelineNew } from '@/components/problems-timeline-new';
+// import { ProblemSection } from '@/components/problem-section'; // Lazy load apenas quando necessário
 import { ProblemsScrollSection } from '@/components/problems-scroll-section';
 import { OpportunitiesSection } from '@/components/opportunities-section';
 import { PopularInvestmentsSection } from '@/components/popular-investments-section';

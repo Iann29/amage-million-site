@@ -3,6 +3,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { TrendingDown, GraduationCap, ShoppingCart, Brain } from 'lucide-react';
+import Image from 'next/image';
 
 const problems = [
   {
@@ -12,7 +13,7 @@ const problems = [
     description: "Desde 1822, o Brasil já nasceu em crise econômica. São mais de 200 anos alternando entre recessões e crescimento insuficiente.",
     stat: "82%",
     statLabel: "dos países cresceram mais que o Brasil",
-    image: "/images/problema-1.svg",
+    image: "/imgOtimized/problema-1.webp",
     icon: TrendingDown,
     color: "from-red-500/20",
     borderColor: "border-gray-700"
@@ -24,7 +25,7 @@ const problems = [
     description: "Com inflação acima de 5% ao ano, guardar dinheiro embaixo do colchão ou na poupança significa perder poder de compra constantemente.",
     stat: "-3,5%",
     statLabel: "ao ano a poupança perde para inflação",
-    image: "/images/problema-5.svg",
+    image: "/imgOtimized/problema-5.webp",
     icon: GraduationCap,
     color: "from-orange-500/20",
     borderColor: "border-gray-700"
@@ -36,7 +37,7 @@ const problems = [
     description: "61% não conseguem poupar. 55% não controlam gastos. A mentalidade do 'aproveitar agora' cria uma geração sem patrimônio.",
     stat: "77%",
     statLabel: "das famílias brasileiras endividadas",
-    image: "/images/problema-3.svg",
+    image: "/imgOtimized/problema-3.webp",
     icon: ShoppingCart,
     color: "from-yellow-500/20",
     borderColor: "border-gray-700"
@@ -48,7 +49,7 @@ const problems = [
     description: "Mas o medo paralisa. Décadas de planos fracassados criaram trauma. A maioria prefere perder na poupança do que aprender.",
     stat: "-3,5%",
     statLabel: "ao ano a poupança perde para inflação",
-    image: "/images/problema-4.svg",
+    image: "/imgOtimized/problema-4.webp",
     icon: Brain,
     color: "from-purple-500/20",
     borderColor: "border-gray-700"
@@ -92,12 +93,14 @@ function ProblemCard({ problem }: { problem: typeof problems[0] }) {
         {/* Imagem com estatística sobreposta */}
         <div className="relative h-56 overflow-hidden">
           {problem.image && (
-            <img 
-              src={problem.image} 
-              alt=""
-              className={`absolute inset-0 w-full h-full ${
-                problem.id === 2 ? 'object-cover object-[center_10%] scale-125' : 'object-cover'
-              }`}
+            <Image 
+              src={problem.image}
+              alt={`Ilustração do problema: ${problem.title}`}
+              fill
+              unoptimized={true}
+              className={`object-cover ${problem.id === 2 ? 'object-[center_10%] scale-125' : ''}`}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              loading="lazy"
             />
           )}
           {/* Overlay para escurecer a imagem */}

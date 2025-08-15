@@ -8,17 +8,17 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 const ebooks = [
   {
     id: 1,
-    coverImage: '/images/Ebook-1.png',
+    coverImage: '/imgOtimized/Ebook-1.webp',
     slug: 'economia-sem-complicacao'
   },
   {
     id: 2,
-    coverImage: '/images/Ebook-2.png',
+    coverImage: '/imgOtimized/Ebook-2.webp',
     slug: 'entenda-termos-mercado-financeiro'
   },
   {
     id: 3,
-    coverImage: '/images/Ebook-2.png',
+    coverImage: '/imgOtimized/Ebook-2.webp',
     slug: 'entenda-termos-mercado-financeiro'
   }
 ];
