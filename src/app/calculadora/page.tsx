@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Calculator, TrendingUp, DollarSign, Calendar, Percent, Download } from 'lucide-react';
+import { TrendingUp, DollarSign, Calendar, Percent, Download } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { GetStartedButton } from '@/components/ui/get-started-button';
 
@@ -60,7 +60,7 @@ export default function CalculadoraPage() {
   };
   
   const [result, setResult] = useState<CalculationResult | null>(null);
-  const [userData, setUserData] = useState<any>(null);
+  const [, setUserData] = useState<{ name: string; phone: string } | null>(null);
 
   useEffect(() => {
     // Get user data from localStorage
@@ -321,7 +321,7 @@ export default function CalculadoraPage() {
               <div className="flex flex-col items-center justify-center h-full text-center py-12">
                 <TrendingUp className="w-12 h-12 text-primary/20 mb-4" />
                 <p className="text-secondary">
-                  Configure os valores ao lado e clique em "Calcular rendimento" para ver a simulação
+                  Configure os valores ao lado e clique em &quot;Calcular rendimento&quot; para ver a simulação
                 </p>
               </div>
             )}
@@ -394,7 +394,7 @@ export default function CalculadoraPage() {
               Como funcionam os <span className="text-primary">juros compostos</span>?
             </h2>
             <p className="text-secondary max-w-3xl mx-auto">
-              Albert Einstein chamou os juros compostos de "a força mais poderosa do universo". 
+              Albert Einstein chamou os juros compostos de &quot;a força mais poderosa do universo&quot;. 
               Entenda por que essa estratégia pode transformar pequenos valores em grandes fortunas.
             </p>
           </div>

@@ -51,12 +51,13 @@ export function useModalScroll(isOpen: boolean) {
     }
 
     // Cleanup function
+    const currentLenis = lenisRef?.current;
     return () => {
       document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
       
-      if (lenisRef?.current) {
-        lenisRef.current.start();
+      if (currentLenis) {
+        currentLenis.start();
       }
     };
   }, [isOpen, lenisRef]);

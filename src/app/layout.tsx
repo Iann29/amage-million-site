@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Lato } from "next/font/google";
 import { LenisProvider } from "@/providers/lenis-provider";
-import { AuthProvider } from "@/contexts/auth-context";
 import { ModernHeader } from "@/components/modern-header";
 import { WhatsAppButton } from "@/components/whatsapp-button";
+import { Footer } from "@/components/footer";
 import { ModalProvider } from "@/contexts/modal-context";
 import "./globals.css";
 
@@ -45,15 +45,14 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${lato.variable} font-sans antialiased`}>
         <div style={{ overflowX: 'clip', width: '100%' }}>
-          <AuthProvider>
-            <ModalProvider>
-              <LenisProvider>
-                <ModernHeader />
-                {children}
-                <WhatsAppButton />
-              </LenisProvider>
-            </ModalProvider>
-          </AuthProvider>
+          <ModalProvider>
+            <LenisProvider>
+              <ModernHeader />
+              {children}
+              <Footer />
+              <WhatsAppButton />
+            </LenisProvider>
+          </ModalProvider>
         </div>
       </body>
     </html>

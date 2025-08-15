@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 import Image from 'next/image';
 import { GetStartedButton } from '@/components/ui/get-started-button';
 
@@ -36,15 +35,14 @@ export default function SobrePage() {
               <span className="text-primary font-bold"> história</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-6 leading-relaxed">
-              Começamos em Tapejara, RS, com um objetivo simples: tornar os investimentos 
-              acessíveis para todos os brasileiros. O que começou como um sonho de três 
-              jovens está se transformando em uma plataforma de educação financeira que 
-              cresce a cada dia.
+              Três jovens de Tapejara, RS, que decidiram compartilhar o que aprenderam 
+              sobre investimentos. Sem grandes pretensões, apenas a vontade de ajudar 
+              pessoas próximas a não perderem dinheiro com a inflação.
             </p>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-              Nosso compromisso vai além dos números. É sobre dar a cada brasileiro as 
-              ferramentas e o conhecimento para construir patrimônio com segurança e 
-              inteligência.
+              Hoje ajudamos dezenas de pessoas a investir melhor. Não somos gurus, 
+              somos jovens que criaram um negócio para tornar o investimento acessível 
+              de forma simples e direta.
             </p>
           </motion.div>
           
@@ -97,9 +95,9 @@ export default function SobrePage() {
 
           <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
             {[
-              { name: "Matheus Gonçalves", image: "/images/Matheus.jpg", position: '60% 25%' },
-              { name: "Nicolas Cauduro", image: "/images/Nicolas.jpg", position: '60% 25%' },
-              { name: "Gabriel Boff", image: "/images/Gabriel.jpg", position: '70% 25%' }
+              { name: "Matheus Gonçalves", image: "/images/Matheus.jpg", position: '60% 15%' },
+              { name: "Nicolas Cauduro", image: "/images/Nicolas.jpg", position: '60% 20%' },
+              { name: "Gabriel Boff", image: "/images/Gabriel.jpg", position: '65% 15%' }
             ].map((member, index) => (
               <motion.div
                 key={index}
@@ -109,16 +107,17 @@ export default function SobrePage() {
                 transition={{ duration: 0.3 }}
                 className="group"
               >
-                <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden">
+                <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-xl">
                   <Image
                     src={member.image}
                     alt={member.name}
                     fill
-                    className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.05]"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     style={{ objectPosition: member.position }}
+                    priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                     <h3 className="font-bold text-2xl text-white">{member.name}</h3>
                   </div>
                 </div>
@@ -174,7 +173,7 @@ export default function SobrePage() {
       </section>
 
       {/* CTA Final */}
-      <section className="py-4 bg-background">
+      <section className="py-8 bg-background mb-12">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -182,7 +181,7 @@ export default function SobrePage() {
             transition={{ duration: 0.3 }}
             className="text-center"
           >
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6">
               Pronto para fazer parte desta história?
             </h2>
             <GetStartedButton

@@ -47,7 +47,7 @@ export const BlurredStagger = ({
     >
       {headingText.split("").map((char, index) => {
         const textUpToChar = headingText.slice(0, index);
-        const isInHighlightWord = highlightWord && 
+        // const isInHighlightWord = highlightWord && 
           textUpToChar.includes(highlightWord.split("")[0]) && 
           headingText.slice(
             textUpToChar.lastIndexOf(highlightWord.split("")[0]), 

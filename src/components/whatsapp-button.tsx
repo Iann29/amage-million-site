@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 export function WhatsAppButton() {
-  const whatsappNumber = '5554965778874'; // Número atualizado
+  const whatsappNumber = '5554996578874'; // Número atualizado
   const message = 'Olá! Gostaria de saber mais sobre os investimentos da Million Capital.';
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
   const [showMobile, setShowMobile] = useState(false);

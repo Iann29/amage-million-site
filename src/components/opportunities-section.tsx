@@ -1,16 +1,14 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { TrendingUp, Shield, BookOpen, Users, BarChart3, Building2, Wallet, ArrowRight } from 'lucide-react';
-import { BlurredStagger } from '@/components/ui/blurred-stagger-text';
+import { Shield, BookOpen, Users, BarChart3, ArrowRight } from 'lucide-react';
 import { GlareCard } from '@/components/ui/glare-card';
-import Link from 'next/link';
 import { GetStartedButton } from '@/components/ui/get-started-button';
 
 const solutions = [
   {
     icon: BookOpen,
-    title: "Educação Financeira Completa",
+    title: "Educação Financeira",
     description: "Conteúdo educativo sobre renda fixa, ações e fundos imobiliários para você entender cada modalidade.",
     highlight: "Conhecimento é poder"
   },
@@ -48,7 +46,7 @@ export function OpportunitiesSection() {
           </div>
         </div>
         
-        <section className="bg-white pt-16 pb-32 md:pt-20 md:pb-20 rounded-t-2xl md:rounded-t-3xl rounded-b-2xl md:rounded-b-3xl shadow-[0_-20px_60px_rgba(0,0,0,0.06)] relative">
+        <section className="bg-white pt-16 pb-16 md:pt-20 md:pb-20 rounded-t-2xl md:rounded-t-3xl rounded-b-2xl md:rounded-b-3xl shadow-[0_-20px_60px_rgba(0,0,0,0.06)] relative">
         {/* Background effects */}
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl" />

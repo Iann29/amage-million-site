@@ -83,7 +83,7 @@ export function TestimonialsSection() {
             className="text-center mt-12"
           >
             <p className="text-gray-600">
-              Junte-se a centenas de pessoas que já estão construindo um futuro financeiro sólido
+              Junte-se a dezenas de pessoas que já estão construindo um futuro financeiro sólido
             </p>
           </motion.div>
         </div>

@@ -3,10 +3,7 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
-import { GetStartedButton } from '@/components/ui/get-started-button';
 
 const ebooks = [
   {
@@ -29,7 +26,7 @@ const ebooks = [
 export function EbooksSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const router = useRouter();
+  
 
   useEffect(() => {
     const checkMobile = () => {
@@ -86,11 +83,7 @@ export function EbooksSection() {
                           ease: [0.32, 0.72, 0, 1]
                         }}
                         onClick={() => {
-                          if (position === 0) {
-                            router.push(`/ebooks/${ebook.slug}`);
-                          } else {
-                            setCurrentIndex(index);
-                          }
+                          setCurrentIndex(index);
                         }}
                       >
                         <div className="relative w-full h-full">
@@ -100,6 +93,13 @@ export function EbooksSection() {
                             fill
                             className="object-contain rounded-lg"
                           />
+                          {position === 0 && (
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <div className="bg-primary text-background px-6 py-3 rounded-full font-bold text-lg shadow-xl">
+                                EM BREVE
+                              </div>
+                            </div>
+                          )}
                         </div>
                       </motion.div>
                     );
@@ -183,13 +183,13 @@ export function EbooksSection() {
               </div>
 
               <div className="flex justify-center lg:justify-start">
-                <GetStartedButton 
-                  href="/ebooks"
-                  className="py-4 inline-flex items-center gap-3 group"
+                <button 
+                  className="py-4 px-8 bg-primary/20 text-primary rounded-lg font-semibold inline-flex items-center gap-3 cursor-not-allowed"
+                  disabled
                 >
-                  Ver todos os ebooks
-                  <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-                </GetStartedButton>
+                  Lançamento em breve
+                  <ArrowRight className="w-5 h-5" />
+                </button>
               </div>
             </motion.div>
           </div>

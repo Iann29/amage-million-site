@@ -1,8 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { TrendingUp, Calendar, Shield, Award, ChartBar, Target } from 'lucide-react';
-import Image from 'next/image';
+import { Calendar, ChartBar, Target, Shield } from 'lucide-react';
 
 const portfolioItems = [
   {

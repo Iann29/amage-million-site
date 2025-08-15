@@ -1,5 +1,4 @@
 'use client';
-import { ReactLenis } from 'lenis/react';
 import { useTransform, motion, useScroll, MotionValue, useInView } from 'framer-motion';
 import { useRef, forwardRef, useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
@@ -71,7 +70,7 @@ export const Card = ({
     offset: ['start end', 'start start'],
   });
 
-  const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
+  // const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
   const scale = useTransform(progress, range, [1, targetScale]);
 
   return (
@@ -112,7 +111,7 @@ interface ComponentRootProps {
   projects: ProjectData[];
 }
 
-const Component = forwardRef<HTMLElement, ComponentRootProps>(({ projects }, ref) => {
+const Component = forwardRef<HTMLElement, ComponentRootProps>(({ projects }) => {
   const container = useRef(null);
   const [currentCard, setCurrentCard] = useState(0);
   const { scrollYProgress } = useScroll({

@@ -1,18 +1,18 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Check, Star, TrendingUp, Shield, Users, MessageSquare, BarChart3, Zap, Clock, Award, BookOpen } from 'lucide-react';
+import { Check, Shield, MessageSquare, Clock } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import Link from 'next/link';
 import { useState } from 'react';
-import { GetStartedButton } from '@/components/ui/get-started-button';
 
 export function PricingSection() {
-  const [isHovered, setIsHovered] = useState(false);
+  const [, setIsHovered] = useState(false);
 
   return (
     <section className="relative overflow-hidden">
       {/* Seção com fundo branco */}
-      <div className="bg-white pt-20 pb-32">
+      <div className="bg-white pt-16 pb-32 rounded-t-[3rem]">
         <div className="container mx-auto px-4 relative z-10">
           {/* Header com persuasão */}
           <motion.div 
@@ -20,19 +20,15 @@ export function PricingSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="max-w-3xl mb-16"
+            className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-5xl font-light mb-4 text-gray-900">
+            <h2 className="text-3xl md:text-5xl font-light text-gray-900">
               Tenha a <span className="text-primary font-bold">luz</span> que você precisa
               <span className="block">para começar a investir...</span>
             </h2>
-            <p className="text-lg text-gray-600 leading-relaxed max-w-2xl">
-              Saia da escuridão financeira. Com orientação profissional, você enxerga
-              <strong className="text-primary"> oportunidades</strong> onde outros vêem apenas <strong className="text-gray-900">riscos</strong>.
-            </p>
           </motion.div>
 
-          {/* Plano único centralizado */}
+          {/* Plano único centralizado - SEM VALORES */}
           <div className="max-w-lg mx-auto">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
@@ -47,33 +43,9 @@ export function PricingSection() {
               `}
             >
               {/* Nome do plano */}
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-white mb-1">Plano Start</h3>
-                <p className="text-sm text-gray-400">Pontapé inicial com estrutura completa</p>
-              </div>
-
-              {/* Preços */}
-              <div className="text-center mb-6 space-y-3">
-                <div className="bg-primary/10 rounded-xl p-5 border border-primary/20">
-                  <p className="text-xs text-gray-400 mb-1">Investimento inicial</p>
-                  <div className="flex items-baseline justify-center gap-1">
-                    <span className="text-3xl font-bold text-white">R$ 149</span>
-                    <span className="text-lg text-gray-400">,90</span>
-                  </div>
-                  <p className="text-xs text-gray-500 mt-1">Pagamento único</p>
-                </div>
-                
-                <div className="flex items-center justify-center gap-2 text-gray-400 my-4">
-                  <span className="text-2xl">+</span>
-                </div>
-                
-                <div className="bg-background/50 rounded-xl p-4 border border-gray-800">
-                  <div className="flex items-baseline justify-center gap-1">
-                    <span className="text-xl font-bold text-white">R$ 69,90</span>
-                    <span className="text-sm text-gray-400">/mês</span>
-                  </div>
-                  <p className="text-xs text-gray-500">Acompanhamento e atualização</p>
-                </div>
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-bold text-white mb-2">Plano Start</h3>
+                <p className="text-gray-400">Seu primeiro passo rumo à liberdade financeira</p>
               </div>
 
               {/* Features */}
@@ -83,8 +55,8 @@ export function PricingSection() {
                     <Check className="w-3 h-3 text-primary" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm text-white font-medium">Contato próximo com analistas</p>
-                    <p className="text-xs text-gray-500">Tire dúvidas direto com especialistas</p>
+                    <p className="text-sm text-white font-medium">Acompanhamento personalizado</p>
+                    <p className="text-xs text-gray-500">Analistas dedicados ao seu sucesso</p>
                   </div>
                 </div>
                 
@@ -93,18 +65,8 @@ export function PricingSection() {
                     <Check className="w-3 h-3 text-primary" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm text-white font-medium">Abertura de conta com suporte</p>
-                    <p className="text-xs text-gray-500">Acompanhamento total no processo</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center mt-0.5">
-                    <Check className="w-3 h-3 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-sm text-white font-medium">Definição do perfil de investidor</p>
-                    <p className="text-xs text-gray-500">Descubra a melhor estratégia para você</p>
+                    <p className="text-sm text-white font-medium">Setup completo de investimentos</p>
+                    <p className="text-xs text-gray-500">Do zero ao primeiro investimento</p>
                   </div>
                 </div>
                 
@@ -114,7 +76,7 @@ export function PricingSection() {
                   </div>
                   <div className="flex-1">
                     <p className="text-sm text-white font-medium">Carteira Exclusiva Million</p>
-                    <p className="text-xs text-gray-500">Composição ideal para o cenário atual</p>
+                    <p className="text-xs text-gray-500">Estratégias que geraram +127% em 2023</p>
                   </div>
                 </div>
                 
@@ -123,53 +85,40 @@ export function PricingSection() {
                     <Check className="w-3 h-3 text-primary" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm text-white font-medium">Grupo VIP de notícias diárias</p>
-                    <p className="text-xs text-gray-500">Informações exclusivas do mercado</p>
+                    <p className="text-sm text-white font-medium">Grupo VIP de oportunidades</p>
+                    <p className="text-xs text-gray-500">Alertas e análises em tempo real</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center mt-0.5">
-                    <BookOpen className="w-3 h-3 text-green-500" />
+                  <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center mt-0.5">
+                    <Check className="w-3 h-3 text-primary" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm text-gray-900 font-medium flex items-center gap-2">
-                      2 Ebooks GRÁTIS 
-                      <span className="text-xs bg-green-500/20 text-green-400 px-2 py-0.5 rounded-full">Bônus exclusivo</span>
-                    </p>
-                    <p className="text-xs text-gray-500">Economia Sem Complicação + Termos do Mercado</p>
+                    <p className="text-sm text-white font-medium">Suporte direto via WhatsApp</p>
+                    <p className="text-xs text-gray-500">Tire suas dúvidas quando precisar</p>
                   </div>
                 </div>
               </div>
+
 
               {/* CTA Button */}
-              <GetStartedButton 
-                href="https://pay.kiwify.com.br/example" 
-                className="w-full py-3 text-base"
+              <Link 
+                href="https://wa.me/5554996578874?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20Plano%20Start"
+                target="_blank"
+                className="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-lg font-semibold text-base transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2"
               >
-                Começar agora mesmo
-              </GetStartedButton>
+                <FaWhatsapp className="w-5 h-5" />
+                Quero conhecer o Plano Start
+              </Link>
 
-              {/* Garantias */}
-              <div className="mt-6 pt-6 border-t border-primary/20">
-                <div className="flex items-center justify-center gap-4 text-xs text-gray-400">
-                  <div className="flex items-center gap-1">
-                    <Shield className="w-3 h-3" />
-                    <span>Garantia de 7 dias</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <MessageSquare className="w-3 h-3" />
-                    <span>Suporte prioritário</span>
-                  </div>
-                </div>
-              </div>
             </motion.div>
           </div>
         </div>
       </div>
 
       {/* Seção com fundo escuro */}
-      <div className="bg-[#151515] pt-32 pb-20">
+      <div className="bg-[#151515] pt-24 pb-20">
         <div className="container mx-auto px-4 relative z-10">
           {/* Comparação */}
           <motion.div
@@ -179,9 +128,9 @@ export function PricingSection() {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto"
           >
-            <h3 className="text-2xl font-bold text-center mb-8">
-              Por que investir com orientação?
-            </h3>
+            <h2 className="text-3xl md:text-4xl font-light text-center mb-8">
+              Por que investir com <span className="text-primary font-bold">orientação</span>?
+            </h2>
             
             <div className="grid md:grid-cols-2 gap-8">
               {/* Sem orientação */}
@@ -194,7 +143,7 @@ export function PricingSection() {
                   <li>• Compra na alta, vende na baixa</li>
                   <li>• Sem estratégia definida</li>
                   <li>• Perde oportunidades importantes</li>
-                  <li>• Média de -8% ao ano (perde pra inflação)</li>
+                  <li>• Risco de perder dinheiro</li>
                 </ul>
               </div>
               
@@ -208,13 +157,13 @@ export function PricingSection() {
                   <li>• Aproveita correções para comprar</li>
                   <li>• Estratégia personalizada e clara</li>
                   <li>• Recebe alertas de oportunidades</li>
-                  <li>• Média de +18,2% ao ano (bate a inflação)</li>
+                  <li>• Resultados comprovados e consistentes</li>
                 </ul>
               </div>
             </div>
           </motion.div>
 
-          {/* Seção sobre acompanhamento mensal */}
+          {/* Seção sobre acompanhamento */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -223,7 +172,7 @@ export function PricingSection() {
             className="mt-32 max-w-4xl mx-auto text-center"
           >
             <h2 className="text-3xl md:text-4xl font-light mb-16">
-              Por que o acompanhamento mensal é <span className="text-primary font-bold">essencial</span>?
+              Por que o acompanhamento é <span className="text-primary font-bold">essencial</span>?
             </h2>
             
             <div className="grid md:grid-cols-3 gap-8 mb-12 max-w-5xl mx-auto">
@@ -231,17 +180,17 @@ export function PricingSection() {
                 {
                   icon: Clock,
                   title: "Mercado em movimento",
-                  description: "O cenário econômico muda diariamente. Sem orientação contínua, você perde oportunidades e pode tomar decisões erradas."
+                  description: "O cenário econômico muda diariamente. Sem orientação contínua, você perde oportunidades."
                 },
                 {
                   icon: Shield,
                   title: "Proteção do patrimônio",
-                  description: "Ajustamos sua carteira conforme o mercado, protegendo seus investimentos de crises e maximizando ganhos."
+                  description: "Ajustamos sua carteira conforme o mercado, protegendo e maximizando seus ganhos."
                 },
                 {
                   icon: MessageSquare,
                   title: "Suporte quando precisar",
-                  description: "Dúvidas surgem a qualquer momento. Com nosso acompanhamento, você tem respostas rápidas e precisas sempre."
+                  description: "Dúvidas surgem a qualquer momento. Tenha respostas rápidas e precisas sempre."
                 }
               ].map((item, index) => (
                 <motion.div
@@ -263,10 +212,10 @@ export function PricingSection() {
             
             <div className="bg-white rounded-2xl p-6 shadow-lg">
               <p className="text-lg text-gray-900 font-medium mb-2">
-                💡 Investir sem acompanhamento é como dirigir vendado
+                💡 Investir sem orientação é como dirigir vendado
               </p>
               <p className="text-gray-600">
-                Por apenas R$ 69,90/mês, você tem um time de especialistas cuidando do seu dinheiro 24/7
+                Tenha especialistas cuidando do seu dinheiro todos os dias
               </p>
             </div>
           </motion.div>
@@ -282,12 +231,14 @@ export function PricingSection() {
             <p className="text-lg text-gray-400 mb-6">
               Não perca mais tempo vendo seu dinheiro perder valor
             </p>
-            <GetStartedButton 
-              href="https://pay.kiwify.com.br/example"
-              className="py-4 text-lg"
+            <Link 
+              href="https://wa.me/5554996578874?text=Olá!%20Vim%20pelo%20site%20e%20quero%20começar%20a%20investir"
+              target="_blank"
+              className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white py-4 px-8 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-[1.02]"
             >
-              Garantir minha vaga agora
-            </GetStartedButton>
+              <FaWhatsapp className="w-5 h-5" />
+              Falar com um especialista agora
+            </Link>
           </motion.div>
         </div>
       </div>

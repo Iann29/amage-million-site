@@ -7,14 +7,12 @@ import { ArrowRight, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
-import { UserDropdown } from '@/components/user-dropdown';
 import { useModal } from '@/contexts/modal-context';
 
 const menuItems = [
   { name: 'Início', href: '/' },
-  { name: 'Ebooks', href: '/ebooks' },
-  { name: 'Plano', href: '/planos' },
   { name: 'Sobre', href: '/sobre' },
+  { name: 'Plano', href: '/planos' },
 ];
 
 export function ModernHeader() {
@@ -120,7 +118,6 @@ export function ModernHeader() {
                 </ul>
               </div>
               <div className="flex w-full items-center gap-6 sm:w-fit">
-                <UserDropdown />
                 <Button
                   asChild
                   className={cn(

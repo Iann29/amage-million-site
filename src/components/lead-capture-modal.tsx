@@ -15,7 +15,6 @@ export function LeadCaptureModal({ isOpen, onClose }: LeadCaptureModalProps) {
   const router = useRouter();
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
     phone: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -33,7 +32,9 @@ export function LeadCaptureModal({ isOpen, onClose }: LeadCaptureModalProps) {
     // Store lead data in localStorage for now
     localStorage.setItem('leadData', JSON.stringify(formData));
     
-    // Redirect to calculator page
+    // Close modal and redirect to calculator
+    setIsSubmitting(false);
+    onClose();
     router.push('/calculadora');
   };
 
@@ -87,10 +88,10 @@ export function LeadCaptureModal({ isOpen, onClose }: LeadCaptureModalProps) {
               </motion.div>
               
               <h3 className="text-2xl font-bold mb-2">
-                Acesse a calculadora completa
+                Calcule seus rendimentos
               </h3>
               <p className="text-secondary">
-                Preencha seus dados para simular seus rendimentos com juros compostos
+                Deixe seus dados para receber uma simulação personalizada
               </p>
             </div>
             
@@ -108,21 +109,6 @@ export function LeadCaptureModal({ isOpen, onClose }: LeadCaptureModalProps) {
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
                   placeholder="Seu nome completo"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  E-mail
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                  placeholder="seu@email.com"
                 />
               </div>
               

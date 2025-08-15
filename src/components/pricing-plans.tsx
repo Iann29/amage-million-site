@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Check, Star } from 'lucide-react';
+import {} from 'lucide-react';
 import { GetStartedButton } from '@/components/ui/get-started-button';
 
 const plans = [

@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { GetStartedButton } from '@/components/ui/get-started-button';
 import { motion } from 'framer-motion';
 import { MarketData } from '@/components/market-data';
