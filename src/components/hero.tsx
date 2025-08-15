@@ -20,7 +20,7 @@ export function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
           style={{
-            backgroundImage: `url('/images/gostosa-hero.svg')`,
+            backgroundImage: `url('/images/mulher-hero.svg')`,
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
             backgroundSize: 'cover'
