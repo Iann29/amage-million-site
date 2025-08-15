@@ -133,7 +133,11 @@ export function ModernHeader() {
                   asChild
                   className="bg-primary text-background hover:bg-primary/90 w-full lg:w-auto"
                 >
-                  <Link href="#iniciar-jornada">
+                  <Link 
+                    href="https://wa.me/5554996578874?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20investimentos%20da%20Million%20Capital."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <span>Fale conosco</span>
                   </Link>
                 </Button>

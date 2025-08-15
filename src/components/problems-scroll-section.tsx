@@ -98,6 +98,7 @@ function ProblemCard({ problem }: { problem: typeof problems[0] }) {
               alt={`Ilustração do problema: ${problem.title}`}
               fill
               unoptimized={true}
+              quality={100}
               className={`object-cover ${problem.id === 2 ? 'object-[center_10%] scale-125' : ''}`}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               loading="lazy"

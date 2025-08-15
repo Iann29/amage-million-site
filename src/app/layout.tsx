@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Lato } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { LenisProvider } from "@/providers/lenis-provider";
 import { ModernHeader } from "@/components/modern-header";
 import { WhatsAppButton } from "@/components/whatsapp-button";
@@ -61,6 +62,7 @@ export default function RootLayout({
             </LenisProvider>
           </ModalProvider>
         </div>
+        <Analytics />
       </body>
     </html>
   );

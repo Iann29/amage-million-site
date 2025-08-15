@@ -28,7 +28,7 @@ export function FinalCTA() {
 
               <div className="flex justify-center md:justify-start">
                 <GetStartedButton 
-                  onClick={() => window.location.href = '#contato'}
+                  onClick={() => window.open('https://wa.me/5554996578874?text=Olá!%20Gostaria%20de%20começar%20minha%20jornada%20de%20investimentos%20com%20a%20Million%20Capital.', '_blank')}
                   className="py-4 bg-[#151515] text-white hover:bg-[#151515]/90 flex items-center gap-2 group"
                 >
                   Começar agora

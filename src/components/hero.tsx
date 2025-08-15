@@ -27,6 +27,7 @@ export function Hero() {
             fill
             priority
             unoptimized={true}
+            quality={100}
             className="object-cover"
             sizes="100vw"
           />
@@ -44,6 +45,7 @@ export function Hero() {
             fill
             priority
             unoptimized={true}
+            quality={100}
             className="object-cover"
             sizes="100vw"
           />
