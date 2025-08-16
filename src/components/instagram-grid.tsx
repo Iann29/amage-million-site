@@ -161,15 +161,15 @@ export function InstagramGrid() {
       <div className="p-4">
         <div className="grid grid-cols-3 gap-4 text-center">
           <div>
-            <p className="font-bold text-white">26</p>
+            <p className="font-bold text-white">33</p>
             <p className="text-xs text-gray-400">publicações</p>
           </div>
           <div>
-            <p className="font-bold text-white">800</p>
+            <p className="font-bold text-white">816</p>
             <p className="text-xs text-gray-400">seguidores</p>
           </div>
           <div>
-            <p className="font-bold text-white">500</p>
+            <p className="font-bold text-white">787</p>
             <p className="text-xs text-gray-400">seguindo</p>
           </div>
         </div>
