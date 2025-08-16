@@ -6,7 +6,6 @@ import { X, Calculator, Lock } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useModal } from '@/contexts/modal-context';
 import { useMutation } from 'convex/react';
-import { api } from '../../convex/_generated/api';
 
 interface FormData {
   name: string;
@@ -29,7 +28,7 @@ export function LeadCaptureModal() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const createLead = useMutation(api.leads.createLead);
+  const createLead = useMutation('leads:createLead' as any);
   const isOpen = activeModal === 'lead-capture';
 
   const validateForm = (): boolean => {
