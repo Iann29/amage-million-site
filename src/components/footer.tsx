@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Instagram, Youtube, Linkedin } from 'lucide-react';
 
 const socialLinks = [
-  { icon: Instagram, href: 'https://instagram.com/millionstreet', label: 'Instagram' },
+  { icon: Instagram, href: 'https://www.instagram.com/millioncapital_/', label: 'Instagram' },
   { icon: Youtube, href: 'https://youtube.com/millionstreet', label: 'YouTube' },
   { icon: Linkedin, href: 'https://linkedin.com/company/millionstreet', label: 'LinkedIn' },
 ];
