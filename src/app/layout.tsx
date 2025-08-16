@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import { Inter, Lato } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { LenisProvider } from "@/providers/lenis-provider";
+import { ConvexClientProvider } from "@/providers/convex-provider";
 import { ModernHeader } from "@/components/modern-header";
 import { WhatsAppButton } from "@/components/whatsapp-button";
 import { Footer } from "@/components/footer";
 import { ModalProvider } from "@/contexts/modal-context";
+import { LeadCaptureModal } from "@/components/lead-capture-modal";
 import { StructuredData } from "@/components/structured-data";
 import "./globals.css";
 
@@ -53,14 +55,17 @@ export default function RootLayout({
       <body className={`${inter.variable} ${lato.variable} font-sans antialiased`}>
         <StructuredData />
         <div style={{ overflowX: 'clip', width: '100%' }}>
-          <ModalProvider>
-            <LenisProvider>
-              <ModernHeader />
-              {children}
-              <Footer />
-              <WhatsAppButton />
-            </LenisProvider>
-          </ModalProvider>
+          <ConvexClientProvider>
+            <ModalProvider>
+              <LenisProvider>
+                <ModernHeader />
+                {children}
+                <Footer />
+                <WhatsAppButton />
+              </LenisProvider>
+              <LeadCaptureModal />
+            </ModalProvider>
+          </ConvexClientProvider>
         </div>
         <Analytics />
       </body>

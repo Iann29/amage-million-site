@@ -2,7 +2,12 @@
 
 import React, { createContext, useContext, useState } from 'react';
 
+type ModalType = 'lead-capture' | null;
+
 interface ModalContextType {
+  activeModal: ModalType;
+  openModal: (modal: ModalType) => void;
+  closeModal: () => void;
   isModalOpen: boolean;
   setIsModalOpen: (isOpen: boolean) => void;
 }
@@ -10,10 +15,27 @@ interface ModalContextType {
 const ModalContext = createContext<ModalContextType | undefined>(undefined);
 
 export function ModalProvider({ children }: { children: React.ReactNode }) {
+  const [activeModal, setActiveModal] = useState<ModalType>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const openModal = (modal: ModalType) => {
+    setActiveModal(modal);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setActiveModal(null);
+    setIsModalOpen(false);
+  };
+
   return (
-    <ModalContext.Provider value={{ isModalOpen, setIsModalOpen }}>
+    <ModalContext.Provider value={{ 
+      activeModal, 
+      openModal, 
+      closeModal, 
+      isModalOpen, 
+      setIsModalOpen 
+    }}>
       {children}
     </ModalContext.Provider>
   );

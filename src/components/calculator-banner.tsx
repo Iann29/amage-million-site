@@ -1,13 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
-import { LeadCaptureModal } from './lead-capture-modal';
+import { useModal } from '@/contexts/modal-context';
 import { GetStartedButton } from './ui/get-started-button';
 import Image from 'next/image';
 
 export function CalculatorBanner() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { openModal } = useModal();
 
   return (
     <>
@@ -63,7 +62,7 @@ export function CalculatorBanner() {
                 Pequenos aportes mensais podem se transformar em uma fortuna
               </p>
 
-              <GetStartedButton onClick={() => setIsModalOpen(true)}>
+              <GetStartedButton onClick={() => openModal('lead-capture')}>
                 Simular rendimentos
               </GetStartedButton>
             </motion.div>
@@ -73,8 +72,6 @@ export function CalculatorBanner() {
           </div>
         </div>
       </section>
-
-      <LeadCaptureModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 }

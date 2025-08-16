@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { Shield, BookOpen, Users, BarChart3, ArrowRight } from 'lucide-react';
 import { GlareCard } from '@/components/ui/glare-card';
 import { GetStartedButton } from '@/components/ui/get-started-button';

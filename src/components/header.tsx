@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import { useModal } from '@/contexts/modal-context';
 
 const navItems = [
   { label: 'Início', href: '#inicio' },
@@ -16,6 +17,7 @@ const navItems = [
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { openModal } = useModal();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,12 +64,12 @@ export function Header() {
             </nav>
 
             <div className="hidden md:block">
-              <Link
-                href="#iniciar-jornada"
+              <button
+                onClick={() => openModal('lead-capture')}
                 className="bg-primary text-background px-5 py-2.5 rounded-lg font-semibold transition-all duration-300 hover:bg-white hover:text-background hover:shadow-lg text-sm"
               >
-                Iniciar Jornada
-              </Link>
+                Simular Rendimentos
+              </button>
             </div>
 
             <button
@@ -123,13 +125,15 @@ export function Header() {
                   transition={{ delay: navItems.length * 0.1 }}
                   className="pt-6"
                 >
-                  <Link
-                    href="#iniciar-jornada"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                  <button
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      openModal('lead-capture');
+                    }}
                     className="bg-primary text-background px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-white hover:text-background inline-block"
                   >
-                    Iniciar Jornada
-                  </Link>
+                    Simular Rendimentos
+                  </button>
                 </motion.div>
               </div>
             </nav>

@@ -4,38 +4,79 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Calculator, Lock } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useModalScroll } from '@/hooks/use-modal-scroll';
+import { useModal } from '@/contexts/modal-context';
+import { useMutation } from 'convex/react';
+import { api } from '../../convex/_generated/api';
 
-interface LeadCaptureModalProps {
-  isOpen: boolean;
-  onClose: () => void;
+interface FormData {
+  name: string;
+  phone: string;
 }
 
-export function LeadCaptureModal({ isOpen, onClose }: LeadCaptureModalProps) {
+interface FormErrors {
+  name?: string;
+  phone?: string;
+  submit?: string;
+}
+
+export function LeadCaptureModal() {
   const router = useRouter();
-  const [formData, setFormData] = useState({
+  const { activeModal, closeModal } = useModal();
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     phone: '',
   });
+  const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
-  // Gerencia o scroll do modal
-  useModalScroll(isOpen);
+
+  const createLead = useMutation(api.leads.createLead);
+  const isOpen = activeModal === 'lead-capture';
+
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Nome completo é obrigatório';
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = 'Nome deve ter pelo menos 2 caracteres';
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Telefone é obrigatório';
+    } else if (!/^[\d\s\(\)\-\+]{10,}$/.test(formData.phone.replace(/\s/g, ''))) {
+      newErrors.phone = 'Formato de telefone inválido';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) return;
+
     setIsSubmitting(true);
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // Store lead data in localStorage for now
-    localStorage.setItem('leadData', JSON.stringify(formData));
-    
-    // Close modal and redirect to calculator
-    setIsSubmitting(false);
-    onClose();
-    router.push('/calculadora');
+    setErrors({});
+
+    try {
+      await createLead({
+        nome_completo: formData.name.trim(),
+        telefone: formData.phone.trim(),
+      });
+
+      // Close modal and redirect to calculator
+      closeModal();
+      router.push('/calculadora');
+
+    } catch (error) {
+      console.error('Erro ao salvar lead:', error);
+      setErrors({
+        submit: 'Erro ao processar sua solicitação. Tente novamente.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const formatPhone = (value: string) => {
@@ -44,6 +85,27 @@ export function LeadCaptureModal({ isOpen, onClose }: LeadCaptureModalProps) {
       return numbers.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
     }
     return value;
+  };
+
+  const handleInputChange = (field: keyof FormData, value: string) => {
+    if (field === 'phone') {
+      value = formatPhone(value);
+    }
+
+    setFormData(prev => ({ ...prev, [field]: value }));
+    
+    // Limpar erro específico quando usuário começa a digitar
+    if (errors[field]) {
+      setErrors(prev => ({ ...prev, [field]: undefined }));
+    }
+  };
+
+  const handleClose = () => {
+    if (isSubmitting) return;
+    
+    setFormData({ name: '', phone: '' });
+    setErrors({});
+    closeModal();
   };
 
   return (
@@ -55,7 +117,7 @@ export function LeadCaptureModal({ isOpen, onClose }: LeadCaptureModalProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={onClose}
+            onClick={handleClose}
             className="fixed inset-0 bg-black/70 backdrop-blur-md z-[100]"
           />
           
@@ -70,8 +132,9 @@ export function LeadCaptureModal({ isOpen, onClose }: LeadCaptureModalProps) {
             >
             {/* Close button */}
             <button
-              onClick={onClose}
-              className="absolute right-4 top-4 p-2 rounded-full hover:bg-white/10 transition-colors"
+              onClick={handleClose}
+              disabled={isSubmitting}
+              className="absolute right-4 top-4 p-2 rounded-full hover:bg-white/10 transition-colors disabled:opacity-50"
             >
               <X className="w-5 h-5" />
             </button>
@@ -106,10 +169,16 @@ export function LeadCaptureModal({ isOpen, onClose }: LeadCaptureModalProps) {
                   id="name"
                   required
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                  onChange={(e) => handleInputChange('name', e.target.value)}
+                  className={`w-full px-4 py-3 bg-background border ${
+                    errors.name ? 'border-red-500' : 'border-border'
+                  } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all`}
                   placeholder="Seu nome completo"
+                  disabled={isSubmitting}
                 />
+                {errors.name && (
+                  <p className="text-red-500 text-xs mt-1">{errors.name}</p>
+                )}
               </div>
               
               <div>
@@ -121,21 +190,41 @@ export function LeadCaptureModal({ isOpen, onClose }: LeadCaptureModalProps) {
                   id="phone"
                   required
                   value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: formatPhone(e.target.value) })}
-                  className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                  onChange={(e) => handleInputChange('phone', e.target.value)}
+                  className={`w-full px-4 py-3 bg-background border ${
+                    errors.phone ? 'border-red-500' : 'border-border'
+                  } rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all`}
                   placeholder="(11) 99999-9999"
                   maxLength={15}
+                  disabled={isSubmitting}
                 />
+                {errors.phone && (
+                  <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
+                )}
               </div>
+
+              {/* Erro de Submit */}
+              {errors.submit && (
+                <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-3">
+                  <p className="text-red-500 text-sm">{errors.submit}</p>
+                </div>
+              )}
               
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold transition-all hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold transition-all hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
-                {isSubmitting ? 'Acessando...' : 'Acessar calculadora'}
+                {isSubmitting ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+                    Acessando...
+                  </>
+                ) : (
+                  'Acessar calculadora'
+                )}
               </motion.button>
             </form>
             
