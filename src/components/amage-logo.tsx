@@ -11,12 +11,13 @@ export function AmageLogo({ className = "" }: AmageLogoProps) {
   const [isStolen, setIsStolen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [isOverLogo, setIsOverLogo] = useState(false);
+  const [isFadingOut, setIsFadingOut] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const floatingIconRef = useRef<HTMLDivElement>(null);
   const hasBeenStolenRef = useRef(false);
   const mousePositionRef = useRef({ x: 0, y: 0 });
   const targetPositionRef = useRef({ x: 0, y: 0 });
-  const animationFrameRef = useRef<number>();
+  const animationFrameRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     setIsMounted(true);
@@ -28,40 +29,56 @@ export function AmageLogo({ className = "" }: AmageLogoProps) {
     let currentX = mousePositionRef.current.x;
     let currentY = mousePositionRef.current.y;
 
-    const smoothFactor = 0.125; // Ultra smooth (ajustado para perfeição)
-    const threshold = 0.2; // Ignora micro-movimentos
-
     const updatePosition = () => {
-      // Calcula diferença
-      const dx = targetPositionRef.current.x - currentX;
-      const dy = targetPositionRef.current.y - currentY;
+      // Para a animação se estiver fazendo fade out
+      if (isFadingOut) return;
+      
+      const targetX = targetPositionRef.current.x;
+      const targetY = targetPositionRef.current.y;
 
-      // Só atualiza se o movimento for significativo
-      if (Math.abs(dx) > threshold || Math.abs(dy) > threshold) {
+      const dx = targetX - currentX;
+      const dy = targetY - currentY;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      const smoothFactor = 0.125;
+      const threshold = 0.2;
+      
+      if (distance > threshold) {
         currentX += dx * smoothFactor;
         currentY += dy * smoothFactor;
       }
 
-      // Atualiza posição diretamente no DOM (sem re-render)
       if (floatingIconRef.current) {
         const scale = isOverLogo ? 'scale(1.3)' : 'scale(1)';
-        const rotation = isOverLogo ? 'rotate(360deg)' : 'rotate(0deg)';
-        floatingIconRef.current.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) ${scale} ${rotation}`;
+        floatingIconRef.current.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) ${scale}`;
       }
 
-      // Continua animação
       animationFrameRef.current = requestAnimationFrame(updatePosition);
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-      // Apenas atualiza o alvo, não a posição real
-      targetPositionRef.current = {
-        x: e.clientX - 15,
-        y: e.clientY - 15
-      };
+      if (!isFadingOut) {
+        targetPositionRef.current = {
+          x: e.clientX - 15,
+          y: e.clientY - 15
+        };
+      }
     };
 
-    // Inicia com posição atual do mouse
+    const handleClick = () => {
+      if (!isFadingOut) {
+        setIsFadingOut(true);
+        if (animationFrameRef.current) {
+          cancelAnimationFrame(animationFrameRef.current);
+        }
+        setTimeout(() => {
+          setIsStolen(false);
+          setIsFadingOut(false);
+          hasBeenStolenRef.current = false;
+        }, 300);
+      }
+    };
+
     const initMouse = (e: MouseEvent) => {
       const x = e.clientX - 15;
       const y = e.clientY - 15;
@@ -71,39 +88,44 @@ export function AmageLogo({ className = "" }: AmageLogoProps) {
       currentY = y;
     };
 
-    // Captura posição inicial
     window.addEventListener('mousemove', initMouse, { once: true });
-    
-    // Adiciona listener para movimento
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    window.addEventListener('click', handleClick);
     
-    // Inicia loop de animação
     animationFrameRef.current = requestAnimationFrame(updatePosition);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('click', handleClick);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [isStolen, isOverLogo]);
+  }, [isStolen, isOverLogo, isFadingOut]);
 
   const handleMouseEnter = (e: React.MouseEvent) => {
     setIsOverLogo(true);
     
-    // If icon was already stolen, return it
+    if (isFadingOut) return;
+    
+    // Retorna o ícone com fade out se já foi roubado
     if (hasBeenStolenRef.current && isStolen) {
-      setIsStolen(false);
-      hasBeenStolenRef.current = false;
+      setIsFadingOut(true);
+      setTimeout(() => {
+        setIsStolen(false);
+        setIsFadingOut(false);
+        hasBeenStolenRef.current = false;
+      }, 300);
       return;
     }
     
-    // First time hovering - steal the icon
+    // Primeira vez - rouba o ícone
     if (!hasBeenStolenRef.current) {
       const x = e.clientX - 15;
       const y = e.clientY - 15;
       mousePositionRef.current = { x, y };
       targetPositionRef.current = { x, y };
+      
       setIsStolen(true);
       hasBeenStolenRef.current = true;
     }
@@ -111,7 +133,6 @@ export function AmageLogo({ className = "" }: AmageLogoProps) {
 
   const handleMouseLeave = () => {
     setIsOverLogo(false);
-    // Don't return the icon when leaving - keep it stolen!
   };
 
   return (
@@ -136,13 +157,12 @@ export function AmageLogo({ className = "" }: AmageLogoProps) {
       <path d="M114.3 1.59085C61.8 11.0908 21.3 51.4908 6.5 108.991C1.6 128.491 0 141.991 0 165.991C0 189.991 1.6 203.491 6.5 222.791C16.9 263.591 39.9 296.091 71.9 315.291C83 321.891 99.1 327.891 113.4 330.691C124.1 332.791 150.8 333.091 161.4 331.091C185.4 326.791 204.5 316.991 220.8 300.691C231.2 290.291 232.2 290.191 234 300.191C236.3 312.291 242.7 320.891 253.3 325.891L258.9 328.491L303.2 328.791C346.5 329.091 347.4 329.091 347.4 327.091C347.4 322.291 308.3 59.8908 306.8 54.9908C301.5 36.7908 287.4 20.0908 270.4 11.6908C259.5 6.39085 250.7 3.99085 241.3 3.99085C236.1 3.99085 234.5 4.39085 234 5.59085C233.7 6.49085 233.4 12.4908 233.4 18.8908C233.4 29.0908 233.1 30.8908 231.6 32.2908C228.2 35.3908 224.7 34.3908 218.1 28.3908C202 13.7908 183.7 4.99085 162 1.49085C150.6 -0.409154 124.6 -0.309154 114.3 1.59085ZM192.6 101.991C210.1 107.391 225.7 124.291 230.9 143.491C233.2 151.991 234 171.091 232.4 180.691C229.7 197.791 221.2 212.491 208.6 221.891C199.2 228.991 190.4 232.091 177.9 232.691C159.9 233.591 147.3 228.891 134.8 216.491C127 208.891 122 199.891 118.8 187.991C116.2 178.791 116.2 153.191 118.7 143.991C125.1 120.191 142 104.091 165 99.9908C172 98.6908 185.1 99.6908 192.6 101.991Z" fill="white"/>
       <path d="M1407.4 1.20928C1408.8 1.00931 1418.7 0.908704 1429.4 1.10869C1445.2 1.30869 1450.5 1.80914 1457.3 3.50908C1475.5 8.10906 1491.6 16.509 1504 27.8089C1512.1 35.2089 1515.7 36.3087 1519.4 32.6087C1521.2 30.8089 1521.4 29.3084 1521.4 19.5091C1521.4 13.4091 1521.9 7.60908 1522.4 6.50908C1523.3 4.90924 1524.6 4.60869 1531.7 4.60869C1541.8 4.60872 1555.3 7.3091 1565.9 11.5091C1598.9 24.3091 1622.7 50.9096 1632.2 85.4095L1634.9 95.1087L1635.2 216.609C1635.39 297.443 1635.42 328.694 1634.32 345.996C1627.89 344.049 1621.07 343 1614 343C1575.34 343 1544 374.34 1544 413C1544 433.543 1552.85 452.018 1566.94 464.824C1549.39 475.682 1528.76 483.122 1505.4 486.809C1491.9 488.909 1444.8 488.609 1430.9 486.309C1389.7 479.509 1361.7 466.209 1337.8 442.209C1317.8 422.109 1310.1 407.309 1312.4 393.309C1314.9 378.009 1327.5 364.809 1344.9 359.309C1351 357.409 1354.7 355.5 1370 355.5C1392.1 355.5 1393.5 357.809 1416.6 373.209C1436.9 386.909 1441.4 388.609 1458.9 389.309C1474.6 390.009 1483.3 388.509 1493.4 383.509C1506.6 376.909 1514 367.009 1518.5 350.109C1520.1 343.909 1520.7 338.009 1521.1 323.909C1521.4 314.01 1521.4 304.71 1521.1 303.409C1520.4 300.909 1516.8 298.609 1513.5 298.609C1512.6 298.609 1510.5 300.009 1508.8 301.709C1503.6 307.209 1490.3 316.609 1481.5 321.009C1471.7 326.009 1460.3 329.809 1449.4 331.709C1438.6 333.709 1412.1 333.409 1401.2 331.309C1341.8 319.509 1300.7 271.909 1289.9 202.609C1287.7 187.909 1286.9 159.809 1288.3 144.609C1290.9 117.809 1296.5 97.0086 1306.9 76.1087C1325.9 37.809 1357.2 12.2093 1395.5 3.70928C1400.7 2.60928 1406 1.40928 1407.4 1.20928ZM1472.4 100.609C1458.1 98.4087 1443.5 101.009 1432.9 107.709C1420.9 115.309 1412.6 126.009 1407.8 140.109C1404.2 150.709 1403.3 171.709 1405.8 184.709C1411.6 214.109 1434.1 233.609 1462.4 233.609C1478.6 233.609 1490.8 228.409 1502.4 216.709C1511 208.109 1515.2 200.809 1518.6 189.109C1520.5 182.409 1520.8 178.809 1520.8 166.609C1520.7 143.209 1516 130.409 1502.8 116.909C1494.5 108.41 1483.1 102.309 1472.4 100.609Z" fill="white"/>
       
-      {/* Ícone web com animação */}
       <g 
         style={{ 
           opacity: isStolen ? 0 : 1,
           transform: isStolen ? 'scale(0.8)' : 'scale(1)',
           transformOrigin: '1615px 413px',
-          transition: 'all 0.3s ease'
+          transition: 'all 0.3s ease-in-out'
         }}
       >
         <path fillRule="evenodd" clipRule="evenodd" d="M1600.37 362.114C1590.03 365.127 1580.84 371.186 1574 379.501C1567.15 387.816 1562.97 398.002 1562 408.728H1586.46C1587.88 392.405 1592.62 376.543 1600.37 362.107L1600.37 362.114ZM1586.46 418.282H1562C1562.97 429.009 1567.15 439.195 1573.99 447.512C1580.83 455.829 1590.03 461.889 1600.37 464.903C1592.62 450.467 1587.88 434.605 1586.46 418.282ZM1612.63 466.944C1603.36 452.248 1597.68 435.578 1596.04 418.282H1634.52C1632.89 435.578 1627.2 452.248 1617.94 466.944C1616.17 467.032 1614.4 467.032 1612.63 466.944ZM1630.2 464.896C1640.54 461.882 1649.74 455.823 1656.58 447.507C1663.42 439.192 1667.6 429.008 1668.57 418.282H1644.11C1642.69 434.605 1637.96 450.467 1630.2 464.903V464.896ZM1644.11 408.728H1668.57C1667.6 398.001 1663.43 387.815 1656.58 379.498C1649.74 371.182 1640.55 365.121 1630.2 362.107C1637.96 376.543 1642.69 392.405 1644.11 408.728ZM1612.63 360.066C1614.4 359.978 1616.17 359.978 1617.95 360.066C1627.21 374.763 1632.89 391.432 1634.52 408.728H1596.05C1597.71 391.325 1603.4 374.641 1612.63 360.066Z" fill="#00B4D8"/>
@@ -153,7 +173,6 @@ export function AmageLogo({ className = "" }: AmageLogoProps) {
     
     </div>
     
-    {/* Floating icon that follows cursor - outside the main div */}
     {isMounted && isStolen && createPortal(
       <div
         ref={floatingIconRef}
@@ -162,18 +181,22 @@ export function AmageLogo({ className = "" }: AmageLogoProps) {
           left: 0,
           top: 0,
           willChange: 'transform',
+          opacity: isFadingOut ? 0 : 1,
+          transition: 'opacity 0.3s ease-out'
         }}
       >
-        <svg 
-          width="30" 
-          height="30" 
-          viewBox="1550 340 140 140" 
-          fill="none" 
-          xmlns="http://www.w3.org/2000/svg"
-          className={`${isOverLogo ? 'animate-bounce' : 'animate-pulse'} drop-shadow-[0_0_10px_rgba(0,180,216,0.8)]`}
-        >
-          <path fillRule="evenodd" clipRule="evenodd" d="M1600.37 362.114C1590.03 365.127 1580.84 371.186 1574 379.501C1567.15 387.816 1562.97 398.002 1562 408.728H1586.46C1587.88 392.405 1592.62 376.543 1600.37 362.107L1600.37 362.114ZM1586.46 418.282H1562C1562.97 429.009 1567.15 439.195 1573.99 447.512C1580.83 455.829 1590.03 461.889 1600.37 464.903C1592.62 450.467 1587.88 434.605 1586.46 418.282ZM1612.63 466.944C1603.36 452.248 1597.68 435.578 1596.04 418.282H1634.52C1632.89 435.578 1627.2 452.248 1617.94 466.944C1616.17 467.032 1614.4 467.032 1612.63 466.944ZM1630.2 464.896C1640.54 461.882 1649.74 455.823 1656.58 447.507C1663.42 439.192 1667.6 429.008 1668.57 418.282H1644.11C1642.69 434.605 1637.96 450.467 1630.2 464.903V464.896ZM1644.11 408.728H1668.57C1667.6 398.001 1663.43 387.815 1656.58 379.498C1649.74 371.182 1640.55 365.121 1630.2 362.107C1637.96 376.543 1642.69 392.405 1644.11 408.728ZM1612.63 360.066C1614.4 359.978 1616.17 359.978 1617.95 360.066C1627.21 374.763 1632.89 391.432 1634.52 408.728H1596.05C1597.71 391.325 1603.4 374.641 1612.63 360.066Z" fill="#00B4D8"/>
-        </svg>
+        <div className="relative">
+          <svg 
+            width="30" 
+            height="30" 
+            viewBox="1550 340 140 140" 
+            fill="none" 
+            xmlns="http://www.w3.org/2000/svg"
+            className={`${isOverLogo ? 'animate-bounce' : 'animate-pulse'} drop-shadow-[0_0_10px_rgba(0,180,216,0.8)]`}
+          >
+            <path fillRule="evenodd" clipRule="evenodd" d="M1600.37 362.114C1590.03 365.127 1580.84 371.186 1574 379.501C1567.15 387.816 1562.97 398.002 1562 408.728H1586.46C1587.88 392.405 1592.62 376.543 1600.37 362.107L1600.37 362.114ZM1586.46 418.282H1562C1562.97 429.009 1567.15 439.195 1573.99 447.512C1580.83 455.829 1590.03 461.889 1600.37 464.903C1592.62 450.467 1587.88 434.605 1586.46 418.282ZM1612.63 466.944C1603.36 452.248 1597.68 435.578 1596.04 418.282H1634.52C1632.89 435.578 1627.2 452.248 1617.94 466.944C1616.17 467.032 1614.4 467.032 1612.63 466.944ZM1630.2 464.896C1640.54 461.882 1649.74 455.823 1656.58 447.507C1663.42 439.192 1667.6 429.008 1668.57 418.282H1644.11C1642.69 434.605 1637.96 450.467 1630.2 464.903V464.896ZM1644.11 408.728H1668.57C1667.6 398.001 1663.43 387.815 1656.58 379.498C1649.74 371.182 1640.55 365.121 1630.2 362.107C1637.96 376.543 1642.69 392.405 1644.11 408.728ZM1612.63 360.066C1614.4 359.978 1616.17 359.978 1617.95 360.066C1627.21 374.763 1632.89 391.432 1634.52 408.728H1596.05C1597.71 391.325 1603.4 374.641 1612.63 360.066Z" fill="#00B4D8"/>
+          </svg>
+        </div>
       </div>,
       document.body
     )}
