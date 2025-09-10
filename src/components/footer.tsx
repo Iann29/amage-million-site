@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Instagram, Youtube, Linkedin } from 'lucide-react';
+import { AmageLogo } from './amage-logo';
 
 const socialLinks = [
   { icon: Instagram, href: 'https://www.instagram.com/millioncapital_/', label: 'Instagram' },
@@ -31,7 +32,7 @@ export function Footer() {
 
           {/* Center - Contact & CNPJ */}
           <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-xs text-gray-500">
-            <p>CNPJ: 12.345.678/0001-90</p>
+            <p>CNPJ: 62.307.979/0001-00</p>
             <span className="hidden md:inline">•</span>
             <a href="mailto:contato@million.com.br" className="hover:text-primary transition-colors">
               contato@million.com.br
@@ -67,32 +68,32 @@ export function Footer() {
             <div className="hidden md:block w-px h-4 bg-gray-700"></div>
 
             {/* Agency Credit */}
-            <p className="hidden md:block text-xs text-gray-500">
-              Desenvolvido por{' '}
+            <div className="hidden md:flex items-center gap-2 text-xs text-gray-500">
+              <span>Desenvolvido por</span>
               <a 
-                href="https://amage.com.br" 
+                href="https://www.amageweb.com/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-primary hover:underline"
+                className="group relative flex items-center"
               >
-                amage
+                <AmageLogo className="h-8 w-auto opacity-50 transition-all duration-500 group-hover:opacity-100 group-hover:drop-shadow-[0_0_20px_rgba(0,180,216,0.5)]" />
               </a>
-            </p>
+            </div>
           </div>
         </div>
 
         {/* Mobile only - Agency credit */}
-        <p className="md:hidden text-center mt-4 text-xs text-gray-500">
-          Desenvolvido por{' '}
+        <div className="md:hidden flex items-center justify-center gap-2 mt-4 text-xs text-gray-500">
+          <span>Desenvolvido por</span>
           <a 
-            href="https://amage.com.br" 
+            href="https://www.amageweb.com/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-primary hover:underline"
+            className="group relative flex items-center"
           >
-            amage
+            <AmageLogo className="h-8 w-auto opacity-50 transition-all duration-500 group-hover:opacity-100 group-hover:drop-shadow-[0_0_20px_rgba(0,180,216,0.5)]" />
           </a>
-        </p>
+        </div>
       </div>
     </footer>
   );
